@@ -1,5 +1,5 @@
 {
-  "name": "boilerplate",
+  "name": "react-next-boilerplate",
   "version": "0.0.0-development",
   "private": true,
   "scripts": {
@@ -53,6 +53,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/letanure/parlor.git"
+    "url": "https://github.com/letanure/react-next-boilerplate.git"
   }
 }
