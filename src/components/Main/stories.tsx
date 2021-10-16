@@ -5,7 +5,6 @@ import Main from '.'
 export default {
   title: 'Layout/Main',
   component: Main,
-  // decorators: [withKnobs],
   argTypes: {
     title: { control: 'text' },
     description: { control: 'text' }
