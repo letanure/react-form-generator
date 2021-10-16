@@ -16,7 +16,6 @@ const Template: ComponentStory<typeof Main> = (args) => <Main {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {
-  // primary: true,
   title: 'Main title',
   description: 'description'
 }
