@@ -33,3 +33,7 @@ yarn-error.log*
 # vercel
 .vercel
 .todo
+
+# sw stuff
+public/sw.js
+public/workbox-*.js

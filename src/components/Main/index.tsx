@@ -4,7 +4,7 @@ interface Props {
   /**
    * Main heading title
    */
-  title: string
+  title?: string
   description?: string
 }
 
