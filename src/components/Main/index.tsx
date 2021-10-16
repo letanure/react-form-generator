@@ -1,12 +1,21 @@
 import * as S from './styles'
 
-const Main = () => (
+interface Props {
+  /**
+   * Main heading title
+   */
+  title: string
+  description?: string
+}
+
+const Main = ({
+  title = 'React Next Boilerplate',
+  description = 'TypeScript, ReactJS, NextJS e Styled Components'
+}: Props) => (
   <S.Wrapper>
     <S.Logo src="/img/icon-512.png" alt="Atom image." />
-    <S.Title>React Next Boilerplate</S.Title>
-    <S.Description>
-      TypeScript, ReactJS, NextJS e Styled Components
-    </S.Description>
+    <S.Title>{title}</S.Title>
+    <S.Description>{description}</S.Description>
     <S.Illustration
       src="/img/hero-illustration.svg"
       alt="Developer with screen."
