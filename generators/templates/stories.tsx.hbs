@@ -6,8 +6,7 @@ export default {
   title: 'Layout/{{pascalCase name}}',
   component: {{pascalCase name}},
   argTypes: {
-    title: { control: 'text' },
-    description: { control: 'text' }
+    prop1: { control: 'text' }
   }
 } as ComponentMeta<typeof {{pascalCase name}}>
 
@@ -15,6 +14,5 @@ const Template: ComponentStory<typeof {{pascalCase name}}> = (args) => <{{pascal
 
 export const Basic = Template.bind({})
 Basic.args = {
-  title: '{{pascalCase name}} title',
-  description: 'description'
+  prop1: 'something'
 }

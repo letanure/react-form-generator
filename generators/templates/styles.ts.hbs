@@ -1,3 +1,9 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const Wrapper = styled.div``
+import { {{pascalCase name}}Props } from '.'
+
+export const Wrapper = styled.div<{{pascalCase name}}Props>`
+  ${({ theme, prop1 }) => css`
+    content: '${prop1}';
+  `}
+`
