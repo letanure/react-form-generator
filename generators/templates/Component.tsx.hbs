@@ -1,7 +1,11 @@
 import * as S from './styles'
 
-const {{pascalCase name}} = () => (
-  <S.Wrapper>
+export type {{pascalCase name}}Props = {
+  prop1?: string | number
+}
+
+const {{pascalCase name}} = ({ prop1 = 'default' }: {{pascalCase name}}Props) => (
+  <S.Wrapper prop1={prop1}>
     <h1>{{pascalCase name}}</h1>
   </S.Wrapper>
 )
