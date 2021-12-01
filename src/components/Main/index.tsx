@@ -8,18 +8,10 @@ interface Props {
   description?: string
 }
 
-const Main = ({
-  title = 'React Next Boilerplate',
-  description = 'TypeScript, ReactJS, NextJS e Styled Components'
-}: Props) => (
+const Main = ({ title = 'React Form Generator' }: Props) => (
   <S.Wrapper>
     <S.Logo src="/img/icon-512.png" alt="Atom image." />
     <S.Title>{title}</S.Title>
-    <S.Description>{description}</S.Description>
-    <S.Illustration
-      src="/img/hero-illustration.svg"
-      alt="Developer with screen."
-    />
   </S.Wrapper>
 )
 
