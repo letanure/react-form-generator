@@ -1,0 +1,13 @@
+repo:
+  - '*'
+storybook:
+  - src/**/stories.tsx
+test:
+  - src/**/test.ts(x)
+style:
+  - src/**/styles.ts
+  - src/styles/*
+UI:
+  - src/components/ui/*
+ts-type:
+  - src/**/*.d.ts
