@@ -24,6 +24,8 @@
     ]
   },
   "dependencies": {
+    "@swc/core": "^1.2.115",
+    "@swc/jest": "^0.2.11",
     "next": "12",
     "next-pwa": "^5.4.1",
     "react": "^17.0.2",
