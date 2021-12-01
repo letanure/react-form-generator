@@ -1,6 +1,6 @@
 {
-  "name": "React Next Boilerplate",
-  "short_name": "React Boilerplate",
+  "name": "React Form Generator",
+  "short_name": "React Form Generator",
   "icons": [
     {
       "src": "/img/icon-192.png",
@@ -14,7 +14,7 @@
     }
   ],
   "background_color": "#06092B",
-  "description": "Boilerlate with Typescript, React, NextJS and Styled Components!",
+  "description": "Render forms based on config objects",
   "display": "fullscreen",
   "start_url": "/",
   "theme_color": "#06092B"
