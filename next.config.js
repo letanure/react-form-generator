@@ -8,5 +8,9 @@ module.exports = withPWA({
   pwa: {
     dest: 'public',
     disable: !isProd
+  },
+  experimental: {
+    // ssr and displayName are configured by default
+    styledComponents: true
   }
 })
