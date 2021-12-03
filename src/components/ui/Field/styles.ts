@@ -14,6 +14,28 @@ export const Wrapper = styled.div`
       color: #0c072c;
       display: block;
     }
+    textarea {
+      font-family: inherit;
+      color: #0c072c;
+      background: #fff;
+      width: 100%;
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid #0c072c33;
+      border-radius: 8px;
+      min-height: 70px;
+      display: block;
+
+      &:focus,
+      &:focus-visible {
+        outline: 1px solid #b336a0;
+        border-color: #b336a0;
+      }
+
+      &.hasError {
+        border: 1px solid rgb(233, 75, 75);
+      }
+    }
     input {
       font-family: inherit;
       color: #0c072c;

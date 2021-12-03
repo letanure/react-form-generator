@@ -15,6 +15,7 @@ type FieldTypes =
   | 'text'
   | 'time'
   | 'url'
+  | 'textarea'
 
 type FieldConfig = {
   label: string
@@ -23,6 +24,8 @@ type FieldConfig = {
   value: FieldData['value']
   placeholder?: string
   validate?: ValidationSchema[]
+  // textarea
+  rows?: number
 }
 
 type FormConfig = {

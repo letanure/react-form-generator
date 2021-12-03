@@ -182,3 +182,15 @@ url.args = {
   name: 'name',
   value: 'https://www.google.com'
 }
+
+export const textarea = Template.bind({})
+textarea.args = {
+  onChange: (e: unknown) => console.log(e),
+  label: 'Textarea',
+  type: 'textarea',
+  name: 'name',
+  rows: 5,
+  value: `some text
+  some more text
+  some more text`
+}
