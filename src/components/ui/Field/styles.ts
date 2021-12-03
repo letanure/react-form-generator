@@ -14,6 +14,21 @@ export const Wrapper = styled.div`
       color: #0c072c;
       display: block;
     }
+    .radioLabel {
+      display: flex;
+      padding: 12px;
+      font-size: 14px;
+      border-radius: 8px;
+      input {
+        display: inline-block;
+        width: 20px;
+        transform: translate(-3px, 2px);
+        &:focus,
+        &:focus-visible {
+          outline: none;
+        }
+      }
+    }
     select {
       font-family: inherit;
       color: #0c072c;

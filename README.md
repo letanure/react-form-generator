@@ -115,6 +115,7 @@ by default, the type is `text`, but you can choose one of the following options
 | 'url'
 | 'textarea'
 | 'select'
+| 'radioGroup'
 ```
 
 #### Validation methods
@@ -161,8 +162,8 @@ The available built in methods:
 { type: 'equal', value: 'CCC', strict?: true }
 
 // number
-{ type: 'number', 
-    min?: 5 
+{ type: 'number',
+    min?: 5
     max?: 10
     equal?: 'DD'
     notEqual?: 'EE'
@@ -173,7 +174,7 @@ The available built in methods:
 }
 
 // Strings
-{ type: 'string', 
+{ type: 'string',
   empty?: false,
   min?: true,
   max?: true,

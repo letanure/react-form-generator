@@ -17,6 +17,7 @@ type FieldTypes =
   | 'url'
   | 'textarea'
   | 'select'
+  | 'radioGroup'
 
 type FieldOption = {
   value: FieldData['value']

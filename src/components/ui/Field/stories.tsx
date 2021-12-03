@@ -32,7 +32,8 @@ export default {
         'time',
         'url',
         'textarea',
-        'select'
+        'select',
+        'radioGroup'
       ],
       control: {
         type: 'select'
@@ -203,6 +204,20 @@ select.args = {
   label: 'Select',
   type: 'select',
   name: 'name',
+  value: '2',
+  options: [
+    { value: '1', label: 'Option 1' },
+    { value: '2', label: 'Option 2' },
+    { value: '3', label: 'Option 3' }
+  ]
+}
+
+export const radioGroup = Template.bind({})
+radioGroup.args = {
+  onChange: (e: unknown) => console.log(e),
+  label: 'Radio Group',
+  type: 'radioGroup',
+  name: 'radioGroup',
   value: '2',
   options: [
     { value: '1', label: 'Option 1' },
