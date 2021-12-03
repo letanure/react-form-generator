@@ -37,6 +37,7 @@ type FieldConfig = {
   rows?: number
   options?: FieldOptions
   disabled?: boolean
+  readonly?: boolean
 }
 
 type FormConfig = {

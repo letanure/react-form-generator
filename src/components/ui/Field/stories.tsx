@@ -47,6 +47,14 @@ export default {
       description: 'initial value',
       type: { name: 'string', required: false }
     },
+    readonly: {
+      description: 'readonly',
+      type: { name: 'boolean', required: false },
+      default: false,
+      table: {
+        defaultValue: { summary: 'text' }
+      }
+    },
     disabled: {
       description: 'Flag to disable input',
       type: { name: 'boolean', required: false },

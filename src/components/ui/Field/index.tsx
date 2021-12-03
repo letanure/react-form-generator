@@ -20,6 +20,7 @@ const Field = ({
   rows,
   options,
   disabled = false,
+  readonly = true,
   onChange
 }: FieldProps) => {
   const [errorsMessages, setEerrorsMessages] = useState<string[]>([])
@@ -103,6 +104,7 @@ const Field = ({
             autoComplete="off"
             rows={rows}
             disabled={disabled}
+            readOnly={readonly}
           />
         )}
         {type === 'radioGroup' && (
@@ -117,6 +119,7 @@ const Field = ({
                     checked={fieldData.value === option.value}
                     onChange={handleOnChange}
                     disabled={disabled}
+                    readOnly={readonly}
                   />
                   <span>{option.label}</span>
                 </label>
@@ -152,6 +155,7 @@ const Field = ({
             onChange={handleOnChange}
             autoComplete="off"
             disabled={disabled}
+            readOnly={readonly}
           />
         )}
         {!fieldData.valid &&

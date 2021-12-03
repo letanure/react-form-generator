@@ -9,6 +9,9 @@ export const Wrapper = styled.div`
     [disabled] {
       opacity: 0.5;
     }
+    [readonly] {
+      opacity: 0.8;
+    }
     .label {
       visibility: inherit;
       margin: 6px 0px;
