@@ -2,6 +2,7 @@ import * as S from './styles'
 import Form from 'components/ui/Form'
 import { useState } from 'react'
 import CodeBlock from 'components/ui/CodeBlock'
+import { FieldsetMeta, FieldsValues, FormConfig } from 'types'
 
 const formConfig: FormConfig = {
   title: 'My form',
@@ -23,7 +24,8 @@ const formConfig: FormConfig = {
       label: 'Email',
       name: 'email',
       type: 'email',
-      value: 'aa@bb.cc'
+      value: 'aa@bb.cc',
+      validate: [{ type: 'string', min: 3, max: 255 }, { type: 'email' }]
     },
     {
       label: 'Number',

@@ -65,7 +65,8 @@ configurable.args = {
   type: 'text',
   name: 'name',
   value: 'something',
-  placeholder: 'Placeholder'
+  placeholder: 'Placeholder',
+  validate: [{ type: 'string', min: 3, max: 255 }, { type: 'email' }]
 }
 export const color = Template.bind({})
 color.args = {

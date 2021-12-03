@@ -1,3 +1,5 @@
+import { ValidationSchema } from 'fastest-validator'
+
 type FieldTypes =
   | 'color'
   | 'datetime-local'
@@ -15,12 +17,12 @@ type FieldTypes =
   | 'url'
 
 type FieldConfig = {
-  /**teste */
   label: string
   name: string
   type?: FieldTypes
   value: FieldData['value']
   placeholder?: string
+  validate?: ValidationSchema[]
 }
 
 type FormConfig = {
