@@ -40,3 +40,4 @@ public/workbox-*.js
 
 # storybook stuff
 storybook-static/
+build-storybook.log
