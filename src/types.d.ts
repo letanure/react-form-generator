@@ -36,6 +36,7 @@ type FieldConfig = {
   // textarea
   rows?: number
   options?: FieldOptions
+  disabled?: boolean
 }
 
 type FormConfig = {

@@ -83,6 +83,7 @@ type FieldConfig = {
   value: FieldData['value']
   placeholder?: string
   validate?: ValidationSchema[]
+  disabled: boolean
   // textarea
   rows?: number
   // select
