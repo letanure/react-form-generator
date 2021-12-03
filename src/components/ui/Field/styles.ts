@@ -24,6 +24,16 @@ export const Wrapper = styled.div`
       border: 1px solid #0c072c33;
       border-radius: 8px;
 
+      &:focus,
+      &:focus-visible {
+        outline: 1px solid #b336a0;
+        border-color: #b336a0;
+      }
+
+      &.hasError {
+        border: 1px solid rgb(233, 75, 75);
+      }
+
       &[type='color'] {
         width: 50px;
         padding: 4px;
@@ -31,4 +41,10 @@ export const Wrapper = styled.div`
       }
     }
   `}
+`
+
+export const ErrorMessage = styled.div`
+  padding-top: 4px;
+  font-size: 14px;
+  color: rgb(233, 75, 75);
 `

@@ -47,18 +47,18 @@ describe('<Fieldset />', () => {
     const meta = {
       changed: false,
       touched: false,
-      valid: false,
+      valid: true,
       fields: {
         test1: {
           changed: false,
           touched: false,
-          valid: false,
+          valid: true,
           value: 'val1'
         },
         test2: {
           changed: false,
           touched: false,
-          valid: false,
+          valid: true,
           value: 'val2'
         }
       }

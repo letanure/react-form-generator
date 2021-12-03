@@ -55,7 +55,7 @@ describe('<Field />', () => {
     expect(spyOnChange).toBeCalledWith({
       changed: false,
       touched: false,
-      valid: false,
+      valid: true,
       value: 'val'
     })
   })
@@ -81,7 +81,7 @@ describe('<Field />', () => {
     expect(spyOnChange).toBeCalledWith({
       changed: true,
       touched: true,
-      valid: false,
+      valid: true,
       value: 'bar'
     })
   })
@@ -102,7 +102,7 @@ describe('<Field />', () => {
     expect(spyOnChange).toBeCalledWith({
       changed: false,
       touched: false,
-      valid: false,
+      valid: true,
       value: 'foo'
     })
 
@@ -113,7 +113,7 @@ describe('<Field />', () => {
     expect(spyOnChange).toBeCalledWith({
       changed: true,
       touched: true,
-      valid: false,
+      valid: true,
       value: 'bar'
     })
     fireEvent.change(input, { target: { value: 'foo' } })
@@ -121,7 +121,7 @@ describe('<Field />', () => {
     expect(spyOnChange).toBeCalledWith({
       changed: false,
       touched: true,
-      valid: false,
+      valid: true,
       value: 'foo'
     })
   })
