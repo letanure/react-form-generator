@@ -15,7 +15,8 @@
     "test:ci": "jest --runInBand",
     "generate": "yarn plop --plopfile generators/plopfile.js",
     "storybook": "start-storybook -p 6006 -c .storybook -p 6008",
-    "build-storybook": "build-storybook -c .storybook"
+    "build-storybook": "build-storybook -c .storybook",
+    "chromatic": "npx chromatic --project-token=5d592a3eb42e"
   },
   "lint-staged": {
     "src/**/*": [
