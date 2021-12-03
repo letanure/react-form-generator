@@ -103,6 +103,23 @@ const Field = ({
             rows={rows}
           />
         )}
+        {type === 'radioGroup' && (
+          <div className={fieldData.valid ? '' : 'hasError'}>
+            {options &&
+              options.map((option: FieldOption, index) => (
+                <label key={index} className="radioLabel">
+                  <input
+                    type="radio"
+                    value={option.value}
+                    name={name}
+                    checked={fieldData.value === option.value}
+                    onChange={handleOnChange}
+                  />
+                  <span>{option.label}</span>
+                </label>
+              ))}
+          </div>
+        )}
         {type === 'select' && (
           <select
             className={fieldData.valid ? '' : 'hasError'}
@@ -121,7 +138,7 @@ const Field = ({
               ))}
           </select>
         )}
-        {!['textarea', 'select'].includes(type) && (
+        {!['textarea', 'select', 'radioGroup'].includes(type) && (
           <input
             className={fieldData.valid ? '' : 'hasError'}
             name={name}
