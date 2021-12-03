@@ -2,6 +2,7 @@ type FieldTypes =
   | 'color'
   | 'datetime-local'
   | 'datetime'
+  | 'date'
   | 'email'
   | 'hidden'
   | 'month'
@@ -25,6 +26,8 @@ type FieldConfig = {
 type FormConfig = {
   fields: FieldConfig[]
   title?: string
+  submitText?: string
+  description?: string
 }
 
 type FieldData = {
