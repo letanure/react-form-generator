@@ -18,6 +18,7 @@ type FieldTypes =
   | 'textarea'
   | 'select'
   | 'radioGroup'
+  | 'checkboxGroup'
 
 type FieldOption = {
   value: FieldData['value']

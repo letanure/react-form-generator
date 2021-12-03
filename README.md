@@ -116,6 +116,7 @@ by default, the type is `text`, but you can choose one of the following options
 | 'textarea'
 | 'select'
 | 'radioGroup'
+| 'checkboxGroup'
 ```
 
 #### Validation methods

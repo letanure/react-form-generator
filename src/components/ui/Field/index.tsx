@@ -88,6 +88,10 @@ const Field = ({
       valid: isValid
     })
   }
+
+  const handleOnChangeCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.checked)
+  }
   return (
     <S.Wrapper className={`field-${type}`}>
       <label>
@@ -103,17 +107,20 @@ const Field = ({
             rows={rows}
           />
         )}
-        {type === 'radioGroup' && (
+        {['radioGroup', 'checkboxGroup'].includes(type) && (
           <div className={fieldData.valid ? '' : 'hasError'}>
             {options &&
               options.map((option: FieldOption, index) => (
                 <label key={index} className="radioLabel">
                   <input
-                    type="radio"
+                    type={type === 'radioGroup' ? 'radio' : 'checkbox'}
                     value={option.value}
                     name={name}
                     checked={fieldData.value === option.value}
-                    onChange={handleOnChange}
+                    onChange={(e) => {
+                      if (type === 'radioGroup') handleOnChange(e)
+                      if (type === 'checkboxGroup') handleOnChangeCheckbox(e)
+                    }}
                   />
                   <span>{option.label}</span>
                 </label>
@@ -138,7 +145,9 @@ const Field = ({
               ))}
           </select>
         )}
-        {!['textarea', 'select', 'radioGroup'].includes(type) && (
+        {!['textarea', 'select', 'radioGroup', 'checkboxGroup'].includes(
+          type
+        ) && (
           <input
             className={fieldData.valid ? '' : 'hasError'}
             name={name}
