@@ -1,8 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import { CodeBlockProps } from '.'
-
-export const Wrapper = styled.div<CodeBlockProps>`
+export const Wrapper = styled.div`
   ${() => css`
     font-size: 11px;
     border: 1px solid #999;
