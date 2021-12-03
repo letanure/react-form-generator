@@ -30,7 +30,9 @@ export default {
         'tel',
         'text',
         'time',
-        'url'
+        'url',
+        'textarea',
+        'select'
       ],
       control: {
         type: 'select'
