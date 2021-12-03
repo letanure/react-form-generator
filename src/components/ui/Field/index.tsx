@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import { useEffect, useState } from 'react'
 import Validator, { ValidationSchema, ValidationError } from 'fastest-validator'
 import * as S from './styles'
+import { FieldConfig, FieldData } from 'types'
 
 const validator = new Validator()
 
@@ -63,9 +64,11 @@ const Field = ({
   }
 
   const runValidations = (value: unknown) => {
-    const hasFalseValue = validate
-      .map((ruleConfig: ValidationSchema) => runValidation(ruleConfig, value))
-      .some((result: boolean) => result === false)
+    const hasFalseValue =
+      validate &&
+      validate
+        .map((ruleConfig: ValidationSchema) => runValidation(ruleConfig, value))
+        .some((result: boolean) => result === false)
     return !hasFalseValue
   }
 
