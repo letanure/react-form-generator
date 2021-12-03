@@ -19,6 +19,70 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Development
+## Usage
+
+### TLDR
+
+```ts
+const formConfig: FormConfig = {
+  title: 'He',
+  fields: [
+    {
+      label: 'Name',
+      name: 'name',
+      value: ''
+    },
+    {
+      label: 'Description',
+      name: 'field1',
+      type: 'text'
+      value: 'test'
+    },
+    {
+      label: 'Age',
+      name: 'age',
+      type: 'number'
+      value: ''
+    }
+  ]
+}
+
+<Form
+    {...formConfig}
+    onChange={handleOnChange}
+    onSubmit={handleSubmit}
+  />`
+```
+
+#### Form config
+
+The form config has text (title, description, button) and a array of field configs
+
+```ts
+type FormConfig = {
+  fields: FieldConfig[]
+  title?: string
+  submitText?: string
+  description?: string
+}
+```
+
+#### Field config
+
+The field config should use the default  HTML `<input />` and `<textarea />` props
+
+
+```ts
+type FieldConfig = {
+  label: string
+  name: string
+  type?: FieldTypes
+  value: FieldData['value']
+  placeholder?: string
+  validate?: ValidationSchema[]
+  // textarea
+  rows?: number
+}
+```
 
 
