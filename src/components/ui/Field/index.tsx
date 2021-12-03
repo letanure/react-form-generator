@@ -64,16 +64,17 @@ const Field = ({
   }
 
   const runValidations = (value: unknown) => {
-    const hasFalseValue =
-      validate &&
-      validate
+    let hasFalseValue
+    if (validate) {
+      hasFalseValue = validate
         .map((ruleConfig: ValidationSchema) => runValidation(ruleConfig, value))
         .some((result: boolean) => result === false)
+    }
     return !hasFalseValue
   }
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const isValid = validate ? runValidations(e.target.value) : true
+    const isValid = runValidations(e.target.value)
     setFieldData({
       value: e.target.value,
       changed: e.target.value !== value,
