@@ -89,13 +89,10 @@ const formConfig: FormConfig = {
 }
 
 const Main = () => {
-  const [formData, setFormData] = useState<FormFieldData>()
+  const [formData, setFormData] = useState<FieldsValues>()
   const [formMeta, setFormMeta] = useState<FieldsetMeta>()
 
-  const handleOnChange = (
-    formValues: FormFieldData,
-    formMeta: FieldsetMeta
-  ) => {
+  const handleOnChange = (formValues: FieldsValues, formMeta: FieldsetMeta) => {
     setFormData(formValues)
     setFormMeta(formMeta)
   }
