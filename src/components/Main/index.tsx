@@ -86,6 +86,13 @@ const formConfig: FormConfig = {
       name: 'search',
       type: 'search',
       value: 'my search'
+    },
+    {
+      label: 'Textarea',
+      name: 'textarea',
+      type: 'textarea',
+      value: `some text\nsome text\nsome text`,
+      rows: 4
     }
   ]
 }

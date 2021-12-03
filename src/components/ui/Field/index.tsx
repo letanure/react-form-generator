@@ -17,6 +17,7 @@ const Field = ({
   type = 'text',
   validate,
   value,
+  rows,
   onChange
 }: FieldProps) => {
   const [errorsMessages, setEerrorsMessages] = useState<string[]>([])
@@ -73,7 +74,9 @@ const Field = ({
     return !hasFalseValue
   }
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleOnChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const isValid = runValidations(e.target.value)
     setFieldData({
       value: e.target.value,
@@ -86,15 +89,28 @@ const Field = ({
     <S.Wrapper className={`field-${type}`}>
       <label>
         <div className="label">{label}</div>
-        <input
-          className={fieldData.valid ? '' : 'hasError'}
-          name={name}
-          placeholder={placeholder}
-          type={type}
-          value={fieldData.value}
-          onChange={handleOnChange}
-          autoComplete="off"
-        />
+        {type === 'textarea' && (
+          <textarea
+            className={fieldData.valid ? '' : 'hasError'}
+            name={name}
+            placeholder={placeholder}
+            value={fieldData.value}
+            onChange={handleOnChange}
+            autoComplete="off"
+            rows={rows}
+          />
+        )}
+        {type !== 'textarea' && (
+          <input
+            className={fieldData.valid ? '' : 'hasError'}
+            name={name}
+            placeholder={placeholder}
+            type={type}
+            value={fieldData.value}
+            onChange={handleOnChange}
+            autoComplete="off"
+          />
+        )}
         {!fieldData.valid &&
           errorsMessages.map((errorMessage: string, index) => (
             <S.ErrorMessage key={index}>{errorMessage}</S.ErrorMessage>
