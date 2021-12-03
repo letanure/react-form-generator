@@ -104,7 +104,6 @@ The available built in methods:
 // date, convert from string with convert
 { type: 'date', convert?: true },
 
-
 // enum
 { type: 'enum', values: ['AA', 'BBB'] }
 
