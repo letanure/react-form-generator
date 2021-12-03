@@ -1,3 +1,4 @@
+![ci](https://github.com/letanure/react-form-generator/actions/workflows/ci.yml/badge.svg)
 [![Maintainability](https://api.codeclimate.com/v1/badges/2b0de1d6ddad8de70c1a/maintainability)](https://codeclimate.com/github/letanure/react-form-generator/maintainability)
 
 # React form generator
