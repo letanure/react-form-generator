@@ -56,8 +56,6 @@ export default {
 
 const Template: ComponentStory<typeof Field> = (args) => <Field {...args} />
 
-console.log(process.env.NODE_ENV)
-
 export const configurable = Template.bind({})
 configurable.args = {
   onChange: (e: unknown) => console.log(e),

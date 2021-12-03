@@ -44,7 +44,7 @@ const Fieldset = ({ fields = [], onChange }: FieldsetProps) => {
       return {
         changed: Object.values(newValues).some((item) => item.changed),
         touched: Object.values(newValues).some((item) => item.touched),
-        valid: Object.values(newValues).some((item) => item.valid),
+        valid: !Object.values(newValues).some((item) => !item.valid),
         fields: newValues
       }
     })
