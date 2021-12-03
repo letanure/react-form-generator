@@ -6,6 +6,12 @@ export const Wrapper = styled.div`
     &.field-hidden {
       display: none;
     }
+    [disabled] {
+      opacity: 0.5;
+    }
+    [readonly] {
+      opacity: 0.8;
+    }
     .label {
       visibility: inherit;
       margin: 6px 0px;
