@@ -23,7 +23,6 @@ export const FormArea = styled.div`
 export const CodeArea = styled.div`
   position: sticky;
   top: 30px;
-  border: 2px solid red;
 `
 
 export const Description = styled.h2`
