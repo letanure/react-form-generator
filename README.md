@@ -89,9 +89,28 @@ type FieldConfig = {
 #### Validation methods
 
 The validation uses [fastest-validator](https://github.com/icebob/fastest-validator) as root element schema.
+
+to add validation to a field, add:
+
+```ts
+{
+  label: 'Age',
+  name: 'age',
+  type: 'number'
+  value: '',
+  validation: [
+    { type: 'number',  min: 18, max: 69 }
+  ]
+}
+```
+
+
+##### ValidationSchema
+
 The available built in methods:
 
 ```js
+
 // No validation
 { type: 'any' }
 
