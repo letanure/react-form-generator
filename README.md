@@ -86,3 +86,59 @@ type FieldConfig = {
 ```
 
 
+#### Validation methods
+
+The validation uses [fastest-validator](https://github.com/icebob/fastest-validator) as root element schema.
+The available built in methods:
+
+```js
+// No validation
+{ type: 'any' }
+
+// URL
+{ type: 'url' }
+
+// email
+{ type: 'email' }
+
+// date, convert from string with convert
+{ type: 'date', convert?: true },
+
+
+// enum
+{ type: 'enum', values: ['AA', 'BBB'] }
+
+// equal, strict with type check
+{ type: 'equal', value: 'CCC', strict?: true }
+
+// number
+{ type: 'number', 
+    min?: 5 
+    max?: 10
+    equal?: 'DD'
+    notEqual?: 'EE'
+    integer?: true
+    positive?: true
+    negative?: true
+    convert?: true
+}
+
+// Strings
+{ type: 'string', 
+  empty?: false,
+  min?: true,
+  max?: true,
+  length?: true,
+  pattern?: true,
+  contains?: true,
+  enum?: true,
+  alpha?: true,
+  numeric?: true,
+  alphanum?: true,
+  alphadash?: true,
+  hex?: true,
+  singleLine?: true,
+  base64?: true
+}
+```
+
