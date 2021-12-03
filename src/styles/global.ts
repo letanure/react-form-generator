@@ -12,14 +12,14 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
-   ${({ theme }) => css`
+   ${() => css`
      html {
        font-size: 62.5%;
      }
      body {
-       font-family: ${theme.font.family};
-       font-size: ${theme.font.sizes.medium};
-       background-color: ${theme.background.light};
+       font-family: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif";
+       font-size: 1.6rem;
+       background-color: #f5f5f5;
      }
    `}
 `
