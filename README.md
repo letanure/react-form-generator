@@ -85,6 +85,28 @@ type FieldConfig = {
 }
 ```
 
+#### Field types
+
+by default, the type is `text`, but you can choose one of the following options
+
+```
+| 'color'
+| 'datetime-local'
+| 'datetime'
+| 'date'
+| 'email'
+| 'hidden'
+| 'month'
+| 'number'
+| 'password'
+| 'search'
+| 'tel'
+| 'text'
+| 'time'
+| 'url'
+| 'textarea'
+| 'select'
+```
 
 #### Validation methods
 
