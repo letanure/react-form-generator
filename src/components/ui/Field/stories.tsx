@@ -194,3 +194,17 @@ textarea.args = {
   some more text
   some more text`
 }
+
+export const select = Template.bind({})
+select.args = {
+  onChange: (e: unknown) => console.log(e),
+  label: 'Select',
+  type: 'select',
+  name: 'name',
+  value: '2',
+  options: [
+    { value: '1', label: 'Option 1' },
+    { value: '2', label: 'Option 2' },
+    { value: '3', label: 'Option 3' }
+  ]
+}

@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { useEffect, useState } from 'react'
 import Validator, { ValidationSchema, ValidationError } from 'fastest-validator'
 import * as S from './styles'
-import { FieldConfig, FieldData } from 'types'
+import { FieldConfig, FieldData, FieldOption } from 'types'
 
 const validator = new Validator()
 
@@ -18,6 +18,7 @@ const Field = ({
   validate,
   value,
   rows,
+  options,
   onChange
 }: FieldProps) => {
   const [errorsMessages, setEerrorsMessages] = useState<string[]>([])
@@ -75,7 +76,9 @@ const Field = ({
   }
 
   const handleOnChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     const isValid = runValidations(e.target.value)
     setFieldData({
@@ -100,7 +103,25 @@ const Field = ({
             rows={rows}
           />
         )}
-        {type !== 'textarea' && (
+        {type === 'select' && (
+          <select
+            className={fieldData.valid ? '' : 'hasError'}
+            name={name}
+            placeholder={placeholder}
+            value={fieldData.value}
+            onChange={handleOnChange}
+            autoComplete="off"
+          >
+            {placeholder && <option value="">{placeholder}</option>}
+            {options &&
+              options.map((option: FieldOption, index) => (
+                <option key={index} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+          </select>
+        )}
+        {!['textarea', 'select'].includes(type) && (
           <input
             className={fieldData.valid ? '' : 'hasError'}
             name={name}

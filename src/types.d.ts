@@ -16,6 +16,14 @@ type FieldTypes =
   | 'time'
   | 'url'
   | 'textarea'
+  | 'select'
+
+type FieldOption = {
+  value: FieldData['value']
+  label: string
+}
+
+type FieldOptions = FieldOption[]
 
 type FieldConfig = {
   label: string
@@ -26,6 +34,7 @@ type FieldConfig = {
   validate?: ValidationSchema[]
   // textarea
   rows?: number
+  options?: FieldOptions
 }
 
 type FormConfig = {

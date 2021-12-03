@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react'
+import { FieldTypes } from 'types'
 
 import Field, { FieldProps } from '.'
 
