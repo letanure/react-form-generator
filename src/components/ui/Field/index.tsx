@@ -20,7 +20,7 @@ const Field = ({
   rows,
   options,
   disabled = false,
-  readonly = true,
+  readonly = false,
   onChange
 }: FieldProps) => {
   const [errorsMessages, setEerrorsMessages] = useState<string[]>([])
