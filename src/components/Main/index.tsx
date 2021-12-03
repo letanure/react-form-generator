@@ -8,6 +8,19 @@ const formConfig: FormConfig = {
   title: 'My form',
   fields: [
     {
+      label: 'This needs "foo"',
+      placeholder: 'Placeholder test',
+      name: 'placeholder',
+      type: 'text',
+      value: '',
+      validate: [
+        {
+          type: 'string',
+          pattern: /^foo/
+        }
+      ]
+    },
+    {
       label: 'Placeholder text',
       placeholder: 'Placeholder test',
       name: 'placeholder',
