@@ -14,8 +14,8 @@
     "test:watch": "yarn test --watch",
     "test:ci": "jest --runInBand",
     "generate": "yarn plop --plopfile generators/plopfile.js",
-    "storybook": "start-storybook -s ./public -p 6006",
-    "build-storybook": "build-storybook -s ./public"
+    "storybook": "start-storybook -p 6006 -c .storybook -p 6008",
+    "build-storybook": "build-storybook -c .storybook"
   },
   "lint-staged": {
     "src/**/*": [
@@ -38,6 +38,7 @@
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/npm": "^8.0.3",
     "@semantic-release/release-notes-generator": "^10.0.3",
+    "@storybook/addon-actions": "^6.4.4",
     "@storybook/addon-essentials": "^6.4.4",
     "@storybook/react": "^6.4.4",
     "@swc/core": "^1.2.115",
@@ -49,7 +50,6 @@
     "@types/styled-components": "^5.1.16",
     "@typescript-eslint/eslint-plugin": "^5.5.0",
     "@typescript-eslint/parser": "^5.5.0",
-    "babel-plugin-styled-components": "^2.0.2",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "^8.3.0",

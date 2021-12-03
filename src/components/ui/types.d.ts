@@ -4,12 +4,9 @@ type FieldTypes =
   | 'datetime'
   | 'email'
   | 'hidden'
-  | 'hidden'
-  | 'month'
   | 'month'
   | 'number'
   | 'password'
-  | 'search'
   | 'search'
   | 'tel'
   | 'text'
@@ -20,7 +17,7 @@ type FieldConfig = {
   /**teste */
   label: string
   name: string
-  type: FieldTypes
+  type?: FieldTypes
   value: FieldData['value']
   placeholder?: string
 }
