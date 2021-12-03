@@ -17,7 +17,7 @@ export const Wrapper = styled.div`
     input {
       font-family: inherit;
       color: #0c072c;
-      background: #f5f5f5;
+      background: #fff;
       width: 100%;
       padding: 12px;
       font-size: 14px;
