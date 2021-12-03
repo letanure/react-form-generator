@@ -82,6 +82,13 @@ type FieldConfig = {
   validate?: ValidationSchema[]
   // textarea
   rows?: number
+  // select
+  options?: FieldOption[]
+}
+
+type FieldOption = {
+  value: FieldData['value']
+  label: string
 }
 ```
 
