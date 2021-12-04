@@ -58,7 +58,8 @@ const Field = ({
     if (result !== true) {
       result.map((item: ValidationError) => {
         const errorMessage =
-          item && item.message && item.message.replace("''", label)
+          ruleConfig.message ||
+          (item && item.message && item.message.replace("''", label))
         setEerrorsMessages([errorMessage as string])
       })
     }
