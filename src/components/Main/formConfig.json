@@ -6,16 +6,16 @@
       "placeholder": "Placeholder test",
       "name": "foo",
       "type": "text",
-      "value": "",
+      "value": "bar",
       "validate": [
-        {
-          "type": "string",
-          "min": 5
-        },
         {
           "type": "string",
           "pattern": "^foo",
           "message": "Must start with foo"
+        },
+        {
+          "type": "string",
+          "min": 6
         }
       ]
     },
