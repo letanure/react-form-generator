@@ -27,10 +27,10 @@ type FieldOption = {
 type FieldOptions = FieldOption[]
 
 type FieldConfig = {
-  label: string
   name: string
-  type?: FieldTypes
   value: FieldData['value']
+  label?: string
+  type?: FieldTypes
   placeholder?: string
   validate?: ValidationSchema[]
   // textarea

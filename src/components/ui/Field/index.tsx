@@ -12,15 +12,16 @@ export type FieldProps = FieldConfig & {
 
 const Field = ({
   name,
-  label,
-  placeholder,
-  type = 'text',
-  validate,
   value,
-  rows,
-  options,
-  disabled = false,
+  label = '',
+  type = 'text',
+  placeholder,
   readonly = false,
+  disabled = false,
+
+  options,
+  rows,
+  validate,
   onChange
 }: FieldProps) => {
   const [errorsMessages, setEerrorsMessages] = useState<string[]>([])
@@ -94,7 +95,8 @@ const Field = ({
   return (
     <S.Wrapper className={`field-${type}`}>
       <label>
-        <div className="label">{label}</div>
+        {!!label && label !== '' && <div className="label">{label}</div>}
+
         {type === 'textarea' && (
           <textarea
             className={fieldData.valid ? '' : 'hasError'}
@@ -102,7 +104,6 @@ const Field = ({
             placeholder={placeholder}
             value={fieldData.value}
             onChange={handleOnChange}
-            autoComplete="off"
             rows={rows}
             disabled={disabled}
             readOnly={readonly}
@@ -134,7 +135,6 @@ const Field = ({
             placeholder={placeholder}
             value={fieldData.value}
             onChange={handleOnChange}
-            autoComplete="off"
             disabled={disabled}
           >
             {placeholder && <option value="">{placeholder}</option>}
@@ -148,13 +148,12 @@ const Field = ({
         )}
         {!['textarea', 'select', 'radioGroup'].includes(type) && (
           <input
-            className={fieldData.valid ? '' : 'hasError'}
+            className={fieldData.valid ? undefined : 'hasError'}
             name={name}
             placeholder={placeholder}
             type={type}
             value={fieldData.value}
             onChange={handleOnChange}
-            autoComplete="off"
             disabled={disabled}
             readOnly={readonly}
           />
