@@ -1,3 +1,4 @@
+import TagManager from 'components/TagManager'
 import Document, {
   Html,
   Head,
@@ -41,6 +42,7 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <TagManager />
         </body>
       </Html>
     )
