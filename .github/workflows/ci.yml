@@ -8,9 +8,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Codecov
-        uses: codecov/codecov-action@v2.1.0
-
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
@@ -35,6 +32,11 @@ jobs:
 
       - name: Test
         run: yarn test:ci
+
+      - name: Codecov
+        uses: codecov/codecov-action@v2.1.0
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Build
         run: yarn build
