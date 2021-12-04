@@ -1,7 +1,6 @@
 import React, { useRef } from 'react'
 import { useEffect, useState } from 'react'
 
-import { FieldConfig, FieldData, FieldOption } from 'types'
 import * as S from './styles'
 import { runValidations } from './validation'
 

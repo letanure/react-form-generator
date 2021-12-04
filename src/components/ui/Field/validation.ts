@@ -1,5 +1,4 @@
 import Validator, { ValidationSchema, ValidationError } from 'fastest-validator'
-import { RuleConfig } from 'types'
 
 const validator = new Validator()
 

@@ -2,7 +2,6 @@ import * as S from './styles'
 import Form from 'components/ui/Form'
 import { useState } from 'react'
 import CodeBlock from 'components/ui/CodeBlock'
-import { FieldsetMeta, FieldsValues, FormConfig } from 'types'
 
 import data from './formConfig.json'
 const formConfig: FormConfig = data as FormConfig
