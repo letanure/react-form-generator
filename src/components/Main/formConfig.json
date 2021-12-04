@@ -4,7 +4,7 @@
     {
       "label": "This needs \"foo\"",
       "placeholder": "Placeholder test",
-      "name": "placeholder",
+      "name": "foo",
       "type": "text",
       "value": "",
       "validate": [
