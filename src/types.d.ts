@@ -1,5 +1,3 @@
-import { ValidationSchema } from 'fastest-validator'
-
 type FieldTypes =
   | 'color'
   | 'datetime-local'
@@ -26,13 +24,17 @@ type FieldOption = {
 
 type FieldOptions = FieldOption[]
 
+type RuleConfig = {
+  [key: string]: string | number | boolean
+}
+
 type FieldConfig = {
   name: string
   value: FieldData['value']
   label?: string
   type?: FieldTypes
   placeholder?: string
-  validate?: ValidationSchema[]
+  validate?: RuleConfig[]
   // textarea
   rows?: number
   options?: FieldOptions
