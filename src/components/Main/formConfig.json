@@ -1,0 +1,135 @@
+{
+  "title": "My form",
+  "fields": [
+    {
+      "label": "This needs \"foo\"",
+      "placeholder": "Placeholder test",
+      "name": "placeholder",
+      "type": "text",
+      "value": "",
+      "validate": [
+        {
+          "type": "string",
+          "min": 5
+        },
+        {
+          "type": "string",
+          "pattern": "/^foo/",
+          "message": "Must start with foo"
+        }
+      ]
+    },
+    {
+      "label": "Placeholder text",
+      "placeholder": "Placeholder test",
+      "name": "placeholder",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "label": "Color",
+      "name": "color",
+      "type": "color",
+      "value": "#ff0000"
+    },
+    {
+      "label": "Email",
+      "name": "email",
+      "type": "email",
+      "value": "aa@bb.cc",
+      "validate": [
+        { "type": "string", "min": 3, "max": 255 },
+        { "type": "email" }
+      ]
+    },
+    {
+      "label": "Number",
+      "name": "number",
+      "type": "number",
+      "value": "1"
+    },
+    {
+      "label": "Password",
+      "name": "password",
+      "type": "password",
+      "value": "123456"
+    },
+    {
+      "label": "tel",
+      "name": "tel",
+      "type": "tel",
+      "value": "111222333"
+    },
+    {
+      "label": "Text",
+      "name": "text",
+      "type": "text",
+      "value": "my text"
+    },
+    {
+      "label": "Time",
+      "name": "time",
+      "type": "time",
+      "value": "12:00"
+    },
+    {
+      "label": "URL",
+      "name": "url",
+      "type": "url",
+      "value": "https://www.google.com"
+    },
+    {
+      "label": "Datetime",
+      "name": "datetime",
+      "type": "datetime-local",
+      "value": "2020-01-01T12:00"
+    },
+    {
+      "label": "Hidden",
+      "name": "hidden",
+      "type": "hidden",
+      "value": "9"
+    },
+    {
+      "label": "Month",
+      "name": "month",
+      "type": "month",
+      "value": "2020-01"
+    },
+    {
+      "label": "Search",
+      "name": "search",
+      "type": "search",
+      "value": "my search"
+    },
+    {
+      "label": "Textarea",
+      "name": "textarea",
+      "type": "textarea",
+      "value": "some text\nsome text\nsome text",
+      "rows": 4
+    },
+    {
+      "label": "Select",
+      "name": "select",
+      "type": "select",
+      "value": "2",
+      "options": [
+        { "value": "1", "label": "Option 1" },
+        { "value": "2", "label": "Option 2" },
+        { "value": "3", "label": "Option 3" }
+      ]
+    },
+    {
+      "label": "Radio Group",
+      "name": "radioGroup",
+      "type": "radioGroup",
+      "value": "2",
+      "options": [
+        { "value": "1", "label": "Option 1" },
+        { "value": "2", "label": "Option 2" },
+        { "value": "3", "label": "Option 3" }
+      ]
+    }
+  ]
+}
