@@ -1,5 +1,4 @@
 import { fireEvent, render, screen } from '@testing-library/react'
-import { FieldData, FieldTypes } from 'types'
 
 import Field, { FieldProps } from '.'
 
@@ -92,7 +91,7 @@ describe('<Field />', () => {
         onChange: spyOnChange
       })
 
-      expect(spyOnChange).toBeCalledTimes(1)
+      expect(spyOnChange).toBeCalledTimes(2)
       expect(spyOnChange).toBeCalledWith({
         changed: false,
         touched: false,
@@ -101,15 +100,15 @@ describe('<Field />', () => {
       })
     })
 
-    it.skip('should call on change with data on load', () => {
+    it('should call on change with data on load', () => {
       const spyOnChange = jest.fn<FieldData, []>()
       renderWithProps({
         onChange: spyOnChange
       })
-      const input = screen.getByPlaceholderText(/foo/i)
-      expect(spyOnChange).toBeCalledTimes(1)
-      fireEvent.change(input, { target: { value: 'bar' } })
+      const input = screen.getByRole('textbox')
       expect(spyOnChange).toBeCalledTimes(2)
+      fireEvent.change(input, { target: { value: 'bar' } })
+      expect(spyOnChange).toBeCalledTimes(3)
       expect(spyOnChange).toBeCalledWith({
         changed: true,
         touched: true,
@@ -153,8 +152,6 @@ describe('<Field />', () => {
     })
   })
 
-  // describe('validation', () => {})
-
   describe('Field types', () => {
     const inputTypes: FieldTypes[] = [
       'color',
@@ -187,6 +184,51 @@ describe('<Field />', () => {
         render(<Field {...config} />)
         const input = screen.getByPlaceholderText(/demo/i)
         expect(input).toHaveAttribute('type', inputType)
+      })
+    })
+  })
+
+  describe('validation', () => {
+    it('should be valid on load if no validation provided ', () => {
+      const spyOnChange = jest.fn<FieldData, []>()
+      renderWithProps({
+        onChange: spyOnChange
+      })
+      expect(spyOnChange).toBeCalledTimes(2)
+      expect(spyOnChange).toBeCalledWith({
+        changed: false,
+        touched: false,
+        valid: true,
+        value: 'val'
+      })
+    })
+
+    it('should be valid on load if validation & valid value provided ', () => {
+      const spyOnChange = jest.fn<FieldData, []>()
+      renderWithProps({
+        onChange: spyOnChange
+      })
+      expect(spyOnChange).toBeCalledTimes(2)
+      expect(spyOnChange).toBeCalledWith({
+        changed: false,
+        touched: false,
+        valid: true,
+        value: 'val'
+      })
+    })
+
+    it('should be INVALID on load if validation & invalid value provided ', () => {
+      const spyOnChange = jest.fn<FieldData, []>()
+      renderWithProps({
+        onChange: spyOnChange,
+        validate: [{ type: 'string', min: 5 }]
+      })
+      expect(spyOnChange).toBeCalledTimes(2)
+      expect(spyOnChange).toBeCalledWith({
+        changed: false,
+        touched: false,
+        valid: false,
+        value: 'val'
       })
     })
   })
