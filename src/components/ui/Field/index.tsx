@@ -1,10 +1,9 @@
 import React, { useRef } from 'react'
 import { useEffect, useState } from 'react'
-import Validator, { ValidationSchema, ValidationError } from 'fastest-validator'
-import * as S from './styles'
-import { FieldConfig, FieldData, FieldOption } from 'types'
 
-const validator = new Validator()
+import { FieldConfig, FieldData, FieldOption } from 'types'
+import * as S from './styles'
+import { runValidations } from './validation'
 
 export type FieldProps = FieldConfig & {
   onChange: (data: FieldData) => void // something
@@ -18,7 +17,6 @@ const Field = ({
   placeholder,
   readonly = false,
   disabled = false,
-
   options,
   rows,
   validate,
@@ -32,10 +30,6 @@ const Field = ({
     valid: true
   })
 
-  /**
-   * Using prop onChange as subscription dont have side effects
-   * but adding  the onchange to deps of useEffect will
-   */
   const onChangeRef = useRef((fieldData: FieldData) => {
     onChange(fieldData)
   })
@@ -44,47 +38,18 @@ const Field = ({
     onChangeRef.current(fieldData)
   }, [fieldData])
 
-  type RuleConfig = {
-    [key: string]: string | number | boolean
-  }
-
-  const runValidation = (ruleConfig: RuleConfig, value: unknown): boolean => {
-    const schema: ValidationSchema = {
-      $$root: true,
-      ...ruleConfig
-    }
-    const check = validator.compile(schema)
-    // the lib can return ValidationError[] | true
-    // need to check how to handle this
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const result: any = check(value)
-    if (result !== true) {
-      result.map((item: ValidationError) => {
-        const errorMessage =
-          ruleConfig.message ||
-          (item && item.message && item.message.replace("''", label))
-        setEerrorsMessages([errorMessage as string])
-      })
-    }
-    return result === true
-  }
-
-  const runValidations = (value: unknown) => {
-    let hasFalseValue
-    if (validate) {
-      hasFalseValue = validate
-        .map((ruleConfig: ValidationSchema) => runValidation(ruleConfig, value))
-        .some((result: boolean) => result === false)
-    }
-    return !hasFalseValue
-  }
-
   const handleOnChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >
   ) => {
-    const isValid = runValidations(e.target.value)
+    const [isValid, errors]: [boolean, string[]] = runValidations(
+      validate || [],
+      e.target.value,
+      label
+    )
+    console.log('aaa', isValid, errors)
+    setEerrorsMessages(errors)
     setFieldData({
       value: e.target.value,
       changed: e.target.value !== value,
