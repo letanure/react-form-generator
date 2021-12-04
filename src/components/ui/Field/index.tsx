@@ -5,7 +5,8 @@ import * as S from './styles'
 import { runValidations } from './validation'
 
 export type FieldProps = FieldConfig & {
-  onChange: (data: FieldData) => void // something
+  maxErrors?: number
+  onChange: (data: FieldData) => void
 }
 
 const Field = ({
@@ -19,6 +20,7 @@ const Field = ({
   options,
   rows,
   validate,
+  maxErrors = 1,
   onChange
 }: FieldProps) => {
   const [errorsMessages, setEerrorsMessages] = useState<string[]>([])
@@ -26,7 +28,7 @@ const Field = ({
     value: value,
     changed: false,
     touched: false,
-    valid: true
+    valid: false
   })
 
   const onChangeRef = useRef((fieldData: FieldData) => {
@@ -34,27 +36,36 @@ const Field = ({
   })
 
   useEffect(() => {
+    validateAndSetData(validate, value, label)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [validate, value, label])
+
+  useEffect(() => {
     onChangeRef.current(fieldData)
   }, [fieldData])
+
+  const validateAndSetData = (
+    validate: FieldProps['validate'],
+    newValue: FieldProps['value'],
+    label: FieldProps['label'],
+    touched = false
+  ) => {
+    const errors = runValidations(validate || [], newValue, label)
+    setEerrorsMessages(errors)
+    setFieldData({
+      value: newValue,
+      changed: newValue !== value,
+      touched,
+      valid: errors.length === 0
+    })
+  }
 
   const handleOnChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >
   ) => {
-    const [isValid, errors]: [boolean, string[]] = runValidations(
-      validate || [],
-      e.target.value,
-      label
-    )
-    console.log('aaa', isValid, errors)
-    setEerrorsMessages(errors)
-    setFieldData({
-      value: e.target.value,
-      changed: e.target.value !== value,
-      touched: true,
-      valid: isValid
-    })
+    validateAndSetData(validate, e.target.value, label, true)
   }
   return (
     <S.Wrapper className={`field-${type}`}>
@@ -123,9 +134,11 @@ const Field = ({
           />
         )}
         {!fieldData.valid &&
-          errorsMessages.map((errorMessage: string, index) => (
-            <S.ErrorMessage key={index}>{errorMessage}</S.ErrorMessage>
-          ))}
+          errorsMessages
+            .slice(0, maxErrors)
+            .map((errorMessage: string, index) => (
+              <S.ErrorMessage key={index}>{errorMessage}</S.ErrorMessage>
+            ))}
       </label>
     </S.Wrapper>
   )
