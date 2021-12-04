@@ -3,15 +3,20 @@ import { FieldData, FieldTypes } from 'types'
 
 import Field, { FieldProps } from '.'
 
+const renderWithProps = (props: Partial<FieldProps> = {}) => {
+  const config: FieldProps = {
+    name: 'test',
+    value: 'val',
+    onChange: jest.fn<FieldData, []>(),
+    ...props
+  }
+  return render(<Field {...config} />)
+}
+
 describe('<Field />', () => {
   describe('basic', () => {
     it('should render a input text with minimum config ', () => {
-      const config: FieldProps = {
-        name: 'test',
-        value: 'val',
-        onChange: jest.fn<FieldData, []>()
-      }
-      render(<Field {...config} />)
+      renderWithProps()
       const input = screen.getByRole('textbox')
       expect(input).toBeInTheDocument()
       expect(input).toHaveAttribute('name', 'test')
@@ -22,64 +27,32 @@ describe('<Field />', () => {
 
   describe('props', () => {
     it('should render name attribute ', () => {
-      const config: FieldProps = {
-        name: 'test',
-        value: 'val',
-        onChange: jest.fn<FieldData, []>()
-      }
-      render(<Field {...config} />)
+      renderWithProps()
       expect(screen.getByRole('textbox')).toHaveAttribute('name', 'test')
     })
 
     it('should render value attribute ', () => {
-      const config: FieldProps = {
-        name: 'test',
-        value: 'val',
-        onChange: jest.fn<FieldData, []>()
-      }
-      render(<Field {...config} />)
+      renderWithProps()
       expect(screen.getByRole('textbox')).toHaveAttribute('value', 'val')
     })
 
     it('should render label if provided ', () => {
-      const config: FieldProps = {
-        name: 'test',
-        value: 'val',
-        label: 'myLabel',
-        onChange: jest.fn<FieldData, []>()
-      }
-      render(<Field {...config} />)
+      renderWithProps({ label: 'myLabel' })
       expect(screen.getByText(/mylabel/i)).toBeInTheDocument()
     })
 
     it('should NOT render label tag if not provided ', () => {
-      const config: FieldProps = {
-        name: 'test',
-        value: 'val',
-        onChange: jest.fn<FieldData, []>()
-      }
-      const { container } = render(<Field {...config} />)
+      const { container } = renderWithProps()
       expect(container.querySelector('.label')).toBeNull()
     })
 
     it('should render a input type text by default ', () => {
-      const config: FieldProps = {
-        name: 'test',
-        value: 'val',
-        onChange: jest.fn<FieldData, []>()
-      }
-      render(<Field {...config} />)
+      renderWithProps()
       expect(screen.getByRole('textbox')).toHaveAttribute('type', 'text')
     })
 
     it('should have attibute placeholder if prop provided', () => {
-      const config: FieldProps = {
-        name: 'test',
-        value: 'val',
-        placeholder: 'myPlaceholder',
-        onChange: jest.fn<FieldData, []>()
-      }
-      render(<Field {...config} />)
+      renderWithProps({ placeholder: 'myPlaceholder' })
       expect(screen.getByRole('textbox')).toHaveAttribute(
         'placeholder',
         'myPlaceholder'
@@ -87,54 +60,27 @@ describe('<Field />', () => {
     })
 
     it('should NOT have attribute placeholder if prop NOT provided', () => {
-      const config: FieldProps = {
-        name: 'test',
-        value: 'val',
-        onChange: jest.fn<FieldData, []>()
-      }
-      render(<Field {...config} />)
+      renderWithProps()
       expect(screen.getByRole('textbox')).not.toHaveAttribute('placeholder')
     })
 
     it('should have attribute readonly if prop provided', () => {
-      const config: FieldProps = {
-        name: 'test',
-        value: 'val',
-        readonly: true,
-        onChange: jest.fn<FieldData, []>()
-      }
-      render(<Field {...config} />)
+      renderWithProps({ readonly: true })
       expect(screen.getByRole('textbox')).toHaveAttribute('readonly')
     })
 
     it('should NOT have attribute readonly if prop NOT provided', () => {
-      const config: FieldProps = {
-        name: 'test',
-        value: 'val',
-        onChange: jest.fn<FieldData, []>()
-      }
-      render(<Field {...config} />)
+      renderWithProps()
       expect(screen.getByRole('textbox')).not.toHaveAttribute('readonly')
     })
 
     it('should have attibute disabled if prop provided', () => {
-      const config: FieldProps = {
-        name: 'test',
-        value: 'val',
-        disabled: true,
-        onChange: jest.fn<FieldData, []>()
-      }
-      render(<Field {...config} />)
+      renderWithProps({ disabled: true })
       expect(screen.getByRole('textbox')).toHaveAttribute('disabled')
     })
 
     it('should NOT have attribute disabled if prop NOT provided', () => {
-      const config: FieldProps = {
-        name: 'test',
-        value: 'val',
-        onChange: jest.fn<FieldData, []>()
-      }
-      render(<Field {...config} />)
+      renderWithProps()
       expect(screen.getByRole('textbox')).not.toHaveAttribute('disabled')
     })
   })
@@ -142,13 +88,9 @@ describe('<Field />', () => {
   describe('events', () => {
     it('should call on change with data on load', () => {
       const spyOnChange = jest.fn<FieldData, []>()
-
-      const config: FieldProps = {
-        name: 'test',
-        value: 'val',
+      renderWithProps({
         onChange: spyOnChange
-      }
-      render(<Field {...config} />)
+      })
 
       expect(spyOnChange).toBeCalledTimes(1)
       expect(spyOnChange).toBeCalledWith({
@@ -161,22 +103,13 @@ describe('<Field />', () => {
 
     it.skip('should call on change with data on load', () => {
       const spyOnChange = jest.fn<FieldData, []>()
-
-      const config: FieldProps = {
-        name: 'test',
-        label: 'Test',
-        value: 'val',
-        placeholder: 'foo',
+      renderWithProps({
         onChange: spyOnChange
-      }
-      render(<Field {...config} />)
-
+      })
       const input = screen.getByPlaceholderText(/foo/i)
-
       expect(spyOnChange).toBeCalledTimes(1)
       fireEvent.change(input, { target: { value: 'bar' } })
       expect(spyOnChange).toBeCalledTimes(2)
-
       expect(spyOnChange).toBeCalledWith({
         changed: true,
         touched: true,
@@ -187,15 +120,9 @@ describe('<Field />', () => {
 
     it.skip('should keep changed false if is the same original values', () => {
       const spyOnChange = jest.fn<FieldData, []>()
-
-      const config: FieldProps = {
-        name: 'test',
-        label: 'Test',
-        value: 'foo',
-        placeholder: 'demo',
+      renderWithProps({
         onChange: spyOnChange
-      }
-      render(<Field {...config} />)
+      })
 
       expect(spyOnChange).toBeCalledTimes(1)
       expect(spyOnChange).toBeCalledWith({
