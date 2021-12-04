@@ -16,7 +16,12 @@ const formConfig: FormConfig = {
       validate: [
         {
           type: 'string',
-          pattern: /^foo/
+          min: 5
+        },
+        {
+          type: 'string',
+          pattern: /^foo/,
+          message: 'Must start with foo'
         }
       ]
     },
