@@ -14,7 +14,7 @@
         },
         {
           "type": "string",
-          "pattern": "/^foo/",
+          "pattern": "^foo",
           "message": "Must start with foo"
         }
       ]
