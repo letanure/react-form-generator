@@ -7,7 +7,8 @@ coverage:
   range: "70...100"
 
 ignore:
-  - "style*.tsx"
+  - "styles.ts"
+  - "**/styles.ts"
 
 parsers:
   gcov:
