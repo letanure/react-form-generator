@@ -6,6 +6,13 @@ coverage:
   round: down
   range: "70...100"
 
+ignore:
+  - "styles.ts"
+  - "**/styles.ts"
+  - "src/components/TagManager"
+  - "src/components/Main"
+  - "src/components/ui/CodeBlock"
+
 parsers:
   gcov:
     branch_detection:
