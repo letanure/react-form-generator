@@ -90,6 +90,7 @@ type FieldConfig = {
   rows?: number
   // select
   options?: FieldOption[]
+  maxErrors?: number
 }
 
 type FieldOption = {

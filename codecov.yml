@@ -6,10 +6,6 @@ coverage:
   round: down
   range: "70...100"
 
-ignore:
-  - "styles.ts"
-  - "**/styles.ts"
-
 parsers:
   gcov:
     branch_detection:
