@@ -5,8 +5,8 @@
 # React form generator
 
 
-[live version](https://react-form-generator.vercel.app/)
-check the components on [Storybook](https://61aa03e5bd6766003a35aefa-guefmzqesw.chromatic.com/?path=/story/demo-main--basic)
+Check the [live version](https://react-form-generator.vercel.app/)
+Test all tem components  on [Storybook](https://main--61aa03e5bd6766003a35aefa.chromatic.com/)
 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
