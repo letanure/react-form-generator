@@ -9,6 +9,9 @@ coverage:
 ignore:
   - "**/stories.ts"
   - "**/styles.ts"
+  - "src/pages"
+  - "src/styles"
+  - "src/types"
   - "src/components/TagManager"
   - "src/components/Main"
   - "src/components/ui/CodeBlock"
