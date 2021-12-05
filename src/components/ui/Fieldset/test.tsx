@@ -39,7 +39,7 @@ describe('<Fieldset />', () => {
   it('should get the data from Fields', () => {
     render(<Fieldset {...configFieldset} />)
 
-    expect(spyOnChange).toBeCalledTimes(2)
+    expect(spyOnChange).toBeCalledTimes(4)
     const values = {
       test1: 'val1',
       test2: 'val2'

@@ -1,26 +1,26 @@
 import React, { useRef } from 'react'
 import { useEffect, useState } from 'react'
-import Validator, { ValidationSchema, ValidationError } from 'fastest-validator'
-import * as S from './styles'
-import { FieldConfig, FieldData, FieldOption } from 'types'
 
-const validator = new Validator()
+import * as S from './styles'
+import { runValidations } from './validation'
 
 export type FieldProps = FieldConfig & {
-  onChange: (data: FieldData) => void // something
+  maxErrors?: number
+  onChange: (data: FieldData) => void
 }
 
 const Field = ({
   name,
-  label,
-  placeholder,
-  type = 'text',
-  validate,
   value,
-  rows,
-  options,
-  disabled = false,
+  label = '',
+  type = 'text',
+  placeholder,
   readonly = false,
+  disabled = false,
+  options,
+  rows,
+  validate,
+  maxErrors = 1,
   onChange
 }: FieldProps) => {
   const [errorsMessages, setEerrorsMessages] = useState<string[]>([])
@@ -28,54 +28,36 @@ const Field = ({
     value: value,
     changed: false,
     touched: false,
-    valid: true
+    valid: false
   })
 
-  /**
-   * Using prop onChange as subscription dont have side effects
-   * but adding  the onchange to deps of useEffect will
-   */
   const onChangeRef = useRef((fieldData: FieldData) => {
     onChange(fieldData)
   })
 
   useEffect(() => {
+    validateAndSetData(validate, value, label)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [validate, value, label])
+
+  useEffect(() => {
     onChangeRef.current(fieldData)
   }, [fieldData])
 
-  type RuleConfig = {
-    [key: string]: string | number | boolean
-  }
-
-  const runValidation = (ruleConfig: RuleConfig, value: unknown): boolean => {
-    const schema: ValidationSchema = {
-      $$root: true,
-      ...ruleConfig
-    }
-    const check = validator.compile(schema)
-    // the lib can return ValidationError[] | true
-    // need to check how to handle this
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const result: any = check(value)
-    if (result !== true) {
-      result.map((item: ValidationError) => {
-        const errorMessage =
-          ruleConfig.message ||
-          (item && item.message && item.message.replace("''", label))
-        setEerrorsMessages([errorMessage as string])
-      })
-    }
-    return result === true
-  }
-
-  const runValidations = (value: unknown) => {
-    let hasFalseValue
-    if (validate) {
-      hasFalseValue = validate
-        .map((ruleConfig: ValidationSchema) => runValidation(ruleConfig, value))
-        .some((result: boolean) => result === false)
-    }
-    return !hasFalseValue
+  const validateAndSetData = (
+    validate: FieldProps['validate'],
+    newValue: FieldProps['value'],
+    label: FieldProps['label'],
+    touched = false
+  ) => {
+    const errors = runValidations(validate || [], newValue, label)
+    setEerrorsMessages(errors)
+    setFieldData({
+      value: newValue,
+      changed: newValue !== value,
+      touched,
+      valid: errors.length === 0
+    })
   }
 
   const handleOnChange = (
@@ -83,18 +65,13 @@ const Field = ({
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >
   ) => {
-    const isValid = runValidations(e.target.value)
-    setFieldData({
-      value: e.target.value,
-      changed: e.target.value !== value,
-      touched: true,
-      valid: isValid
-    })
+    validateAndSetData(validate, e.target.value, label, true)
   }
   return (
     <S.Wrapper className={`field-${type}`}>
       <label>
-        <div className="label">{label}</div>
+        {!!label && label !== '' && <div className="label">{label}</div>}
+
         {type === 'textarea' && (
           <textarea
             className={fieldData.valid ? '' : 'hasError'}
@@ -102,7 +79,6 @@ const Field = ({
             placeholder={placeholder}
             value={fieldData.value}
             onChange={handleOnChange}
-            autoComplete="off"
             rows={rows}
             disabled={disabled}
             readOnly={readonly}
@@ -134,7 +110,6 @@ const Field = ({
             placeholder={placeholder}
             value={fieldData.value}
             onChange={handleOnChange}
-            autoComplete="off"
             disabled={disabled}
           >
             {placeholder && <option value="">{placeholder}</option>}
@@ -148,21 +123,22 @@ const Field = ({
         )}
         {!['textarea', 'select', 'radioGroup'].includes(type) && (
           <input
-            className={fieldData.valid ? '' : 'hasError'}
+            className={fieldData.valid ? undefined : 'hasError'}
             name={name}
             placeholder={placeholder}
             type={type}
             value={fieldData.value}
             onChange={handleOnChange}
-            autoComplete="off"
             disabled={disabled}
             readOnly={readonly}
           />
         )}
         {!fieldData.valid &&
-          errorsMessages.map((errorMessage: string, index) => (
-            <S.ErrorMessage key={index}>{errorMessage}</S.ErrorMessage>
-          ))}
+          errorsMessages
+            .slice(0, maxErrors)
+            .map((errorMessage: string, index) => (
+              <S.ErrorMessage key={index}>{errorMessage}</S.ErrorMessage>
+            ))}
       </label>
     </S.Wrapper>
   )

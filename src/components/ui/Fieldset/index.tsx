@@ -1,6 +1,5 @@
 import Field from 'components/ui/Field'
 import { useEffect, useRef, useState } from 'react'
-import { FormConfig, FieldsValues, FieldsetMeta, FieldData } from 'types'
 import * as S from './styles'
 
 export type FieldsetProps = {

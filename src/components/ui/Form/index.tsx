@@ -1,6 +1,5 @@
 import Fieldset from 'components/ui/Fieldset'
 import React, { useEffect, useRef, useState } from 'react'
-import { FormConfig, FieldsValues, FieldsetMeta } from 'types'
 import * as S from './styles'
 
 export type FormProps = FormConfig & {

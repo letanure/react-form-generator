@@ -78,10 +78,10 @@ The field config should use the default  HTML `<input />` and `<textarea />` pro
 
 ```ts
 type FieldConfig = {
-  label: string
   name: string
-  type?: FieldTypes
   value: FieldData['value']
+  label?: string
+  type?: FieldTypes
   placeholder?: string
   validate?: ValidationSchema[]
   disabled: boolean
