@@ -6,9 +6,8 @@ coverage:
   round: down
   range: "70...100"
 
-ignore:   - "styles.ts"
-  - "stories.tsx"
-  - "styles.ts"
+ignore:
+  - "**/stories.ts"
   - "**/styles.ts"
   - "src/components/TagManager"
   - "src/components/Main"
