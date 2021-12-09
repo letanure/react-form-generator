@@ -241,3 +241,26 @@ radioGroup.args = {
     { value: '3', label: 'Option 3' }
   ]
 }
+
+export const object = Template.bind({})
+object.args = {
+  onChange: (e: unknown) => console.log(e),
+  label: 'Object label',
+  type: 'object',
+  name: 'object-name',
+  value: '',
+  fields: [
+    {
+      name: 'name',
+      label: 'Name',
+      type: 'text',
+      value: ''
+    },
+    {
+      name: 'email',
+      label: 'Email',
+      type: 'email',
+      value: ''
+    }
+  ]
+}
