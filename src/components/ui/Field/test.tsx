@@ -117,6 +117,36 @@ describe('<Field />', () => {
       })
     })
 
+    it('should call on change with data on load with object type', () => {
+      const spyOnChange = jest.fn<FieldData, []>()
+      renderWithProps({
+        onChange: spyOnChange,
+        name: 'test',
+        value: '',
+        type: 'object',
+        fields: [
+          {
+            name: 'test2',
+            label: 'inside',
+            value: '',
+            type: 'text'
+          }
+        ]
+      })
+
+      expect(spyOnChange).toBeCalledTimes(4)
+      expect(spyOnChange).toBeCalledWith({
+        changed: false,
+        touched: false,
+        valid: false,
+        value: {
+          test2: ''
+        }
+      })
+      const input = screen.getByLabelText(/inside/i)
+      fireEvent.change(input, { target: { value: 'bar' } })
+    })
+
     it.skip('should keep changed false if is the same original values', () => {
       const spyOnChange = jest.fn<FieldData, []>()
       renderWithProps({
@@ -153,38 +183,216 @@ describe('<Field />', () => {
   })
 
   describe('Field types', () => {
-    const inputTypes: FieldTypes[] = [
-      'color',
-      'datetime-local',
-      'datetime',
-      'email',
-      'hidden',
-      'month',
-      'number',
-      'password',
-      'search',
-      'tel',
-      'text',
-      'time',
-      'url'
-    ]
-
-    inputTypes.map((inputType: FieldTypes) => {
-      it.skip(`should render  input type: ${inputType}`, () => {
-        const spyOnChange = jest.fn<FieldData, []>()
-
-        const config: FieldProps = {
-          name: 'test',
-          label: 'Test',
-          type: inputType,
-          value: 'foo',
-          placeholder: 'demo',
-          onChange: spyOnChange
-        }
-        render(<Field {...config} />)
-        const input = screen.getByPlaceholderText(/demo/i)
-        expect(input).toHaveAttribute('type', inputType)
+    it('should render a url field', () => {
+      renderWithProps({
+        type: 'url'
       })
+      expect(screen.getByRole('textbox')).toHaveAttribute('type', 'url')
+    })
+
+    it('should render a time field', () => {
+      renderWithProps({
+        type: 'time',
+        label: 'field-time'
+      })
+      expect(screen.getByLabelText('field-time')).toHaveAttribute(
+        'type',
+        'time'
+      )
+    })
+
+    it('should render a tel field', () => {
+      renderWithProps({
+        type: 'tel'
+      })
+      expect(screen.getByRole('textbox')).toHaveAttribute('type', 'tel')
+    })
+
+    it('should render a search field', () => {
+      renderWithProps({
+        type: 'search'
+      })
+      expect(screen.getByRole('searchbox')).toHaveAttribute('type', 'search')
+    })
+
+    it('should render a password field', () => {
+      renderWithProps({
+        type: 'password',
+        label: 'field-password'
+      })
+      expect(screen.getByLabelText('field-password')).toHaveAttribute(
+        'type',
+        'password'
+      )
+    })
+
+    it('should render a number field', () => {
+      renderWithProps({
+        type: 'number'
+      })
+      expect(screen.getByRole('spinbutton')).toHaveAttribute('type', 'number')
+    })
+
+    it('should render a month field', () => {
+      renderWithProps({
+        type: 'month',
+        label: 'field-month'
+      })
+      expect(screen.getByLabelText('field-month')).toHaveAttribute(
+        'type',
+        'month'
+      )
+    })
+
+    it.skip('should render a hidden field', () => {
+      renderWithProps({
+        type: 'hidden'
+      })
+      expect(screen.getByRole('textbox')).toHaveAttribute('type', 'hidden')
+    })
+
+    it('should render a email field', () => {
+      renderWithProps({
+        type: 'email'
+      })
+      expect(screen.getByRole('textbox')).toHaveAttribute('type', 'email')
+    })
+
+    it('should render a datetime field', () => {
+      renderWithProps({
+        type: 'datetime',
+        label: 'field-datetime'
+      })
+      expect(screen.getByLabelText('field-datetime')).toHaveAttribute(
+        'type',
+        'datetime'
+      )
+    })
+
+    it('should render a datetime-local field', () => {
+      renderWithProps({
+        type: 'datetime-local',
+        label: 'field-datetime-local'
+      })
+      expect(screen.getByLabelText('field-datetime-local')).toHaveAttribute(
+        'type',
+        'datetime-local'
+      )
+    })
+
+    it('should render a color field', () => {
+      renderWithProps({
+        type: 'color',
+        label: 'field-label'
+      })
+      expect(screen.getByLabelText('field-label')).toHaveAttribute(
+        'type',
+        'color'
+      )
+    })
+
+    it('should render a text field', () => {
+      renderWithProps({
+        type: 'text'
+      })
+      expect(screen.getByRole('textbox')).toHaveAttribute('type', 'text')
+    })
+
+    it('should render a text field by default', () => {
+      renderWithProps()
+      expect(screen.getByRole('textbox')).toHaveAttribute('type', 'text')
+    })
+
+    it('should render a select field', () => {
+      renderWithProps({
+        type: 'select',
+        options: [
+          {
+            label: 'foo',
+            value: '1'
+          },
+          {
+            label: 'bar',
+            value: '2'
+          }
+        ]
+      })
+      const option1 = screen.getByRole('option', { name: /foo/i })
+      const option2 = screen.getByRole('option', { name: /bar/i })
+      expect(screen.getByRole('combobox')).toBeInTheDocument()
+      expect(option1).toBeInTheDocument()
+      expect(option1).toHaveTextContent('foo')
+      expect(option1).toHaveValue('1')
+      expect(option2).toBeInTheDocument()
+      expect(option2).toHaveTextContent('bar')
+      expect(option2).toHaveValue('2')
+    })
+
+    it('should render a select field with placeholder', () => {
+      renderWithProps({
+        type: 'select',
+        placeholder: 'select one',
+        options: [
+          {
+            label: 'foo',
+            value: '1'
+          },
+          {
+            label: 'bar',
+            value: '2'
+          }
+        ]
+      })
+      const optionPlaceholder = screen.getByRole('option', {
+        name: /select one/i
+      })
+      expect(optionPlaceholder).toBeInTheDocument()
+      expect(optionPlaceholder).toHaveTextContent('select one')
+      expect(optionPlaceholder).toHaveValue('')
+    })
+
+    it('should render a sub form for type object ', () => {
+      renderWithProps({
+        type: 'object',
+        fields: [
+          {
+            label: 'foo',
+            name: 'foo',
+            type: 'text'
+          },
+          {
+            label: 'bar',
+            name: 'bar',
+            type: 'text'
+          }
+        ]
+      })
+      expect(screen.getByLabelText('foo')).toBeInTheDocument()
+      expect(screen.getByLabelText('bar')).toBeInTheDocument()
+    })
+
+    it('should render a select field', () => {
+      renderWithProps({
+        type: 'radioGroup',
+        name: 'radioGroup',
+        label: 'radioGroup!!!',
+        options: [
+          {
+            label: 'foo',
+            value: '1'
+          },
+          {
+            label: 'bar',
+            value: '2'
+          }
+        ]
+      })
+      const inputsRadio = screen.getAllByRole('radio')
+      expect(inputsRadio).toHaveLength(2)
+      expect(inputsRadio[0]).toHaveProperty('name', 'radioGroup')
+      expect(inputsRadio[0]).toHaveProperty('value', '1')
+      expect(inputsRadio[1]).toHaveProperty('name', 'radioGroup')
+      expect(inputsRadio[1]).toHaveProperty('value', '2')
     })
   })
 

@@ -12,6 +12,9 @@ export const Wrapper = styled.div`
     [readonly] {
       opacity: 0.8;
     }
+    fieldset {
+      border: none;
+    }
     .label {
       visibility: inherit;
       margin: 6px 0px;
