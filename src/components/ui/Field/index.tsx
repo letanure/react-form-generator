@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import { useEffect, useState } from 'react'
 
 import * as S from './styles'
+import Fieldset from 'components/ui/Fieldset'
 import { runValidations } from './validation'
 
 export type FieldProps = FieldConfig & {
@@ -9,20 +10,23 @@ export type FieldProps = FieldConfig & {
   onChange: (data: FieldData) => void
 }
 
-const Field = ({
-  name,
-  value,
-  label = '',
-  type = 'text',
-  placeholder,
-  readonly = false,
-  disabled = false,
-  options,
-  rows,
-  validate,
-  maxErrors = 1,
-  onChange
-}: FieldProps) => {
+const Field = (props: FieldProps): JSX.Element => {
+  const {
+    disabled = false,
+    label = '',
+    maxErrors = 1,
+    name,
+    placeholder,
+    readonly = false,
+    type = 'text',
+    validate,
+    value,
+    onChange
+  } = props
+  const fields = 'fields' in props && props.fields
+  const options = 'options' in props && props.options
+  const rows = 'rows' in props && props.rows
+
   const [errorsMessages, setEerrorsMessages] = useState<string[]>([])
   const [fieldData, setFieldData] = useState<FieldData>({
     value: value,
@@ -67,19 +71,36 @@ const Field = ({
   ) => {
     validateAndSetData(validate, e.target.value, label, true)
   }
+
+  const handleOnChangeSubform = (
+    valuesub: FieldsValues,
+    meta: FieldsetMeta
+  ) => {
+    setFieldData({
+      value: valuesub,
+      changed: meta.changed,
+      touched: meta.touched,
+      valid: meta.valid
+    })
+  }
+
+  const TagWrapper = type === 'object' ? 'fieldset' : 'label'
+  const TagLabel = type === 'object' ? 'legend' : 'div'
   return (
     <S.Wrapper className={`field-${type}`}>
-      <label>
-        {!!label && label !== '' && <div className="label">{label}</div>}
+      <TagWrapper>
+        {!!label && label !== '' && (
+          <TagLabel className="label">{label}</TagLabel>
+        )}
 
         {type === 'textarea' && (
           <textarea
             className={fieldData.valid ? '' : 'hasError'}
             name={name}
             placeholder={placeholder}
-            value={fieldData.value}
+            value={fieldData.value as string}
             onChange={handleOnChange}
-            rows={rows}
+            rows={rows as number}
             disabled={disabled}
             readOnly={readonly}
           />
@@ -91,7 +112,7 @@ const Field = ({
                 <label key={index} className="radioLabel">
                   <input
                     type="radio"
-                    value={option.value}
+                    value={option.value as string}
                     name={name}
                     checked={fieldData.value === option.value}
                     onChange={handleOnChange}
@@ -108,30 +129,33 @@ const Field = ({
             className={fieldData.valid ? '' : 'hasError'}
             name={name}
             placeholder={placeholder}
-            value={fieldData.value}
+            value={fieldData.value as string}
             onChange={handleOnChange}
             disabled={disabled}
           >
             {placeholder && <option value="">{placeholder}</option>}
             {options &&
               options.map((option: FieldOption, index) => (
-                <option key={index} value={option.value}>
+                <option key={index} value={option.value as string}>
                   {option.label}
                 </option>
               ))}
           </select>
         )}
-        {!['textarea', 'select', 'radioGroup'].includes(type) && (
+        {!['textarea', 'select', 'radioGroup', 'object'].includes(type) && (
           <input
             className={fieldData.valid ? undefined : 'hasError'}
             name={name}
             placeholder={placeholder}
             type={type}
-            value={fieldData.value}
+            value={fieldData.value as string}
             onChange={handleOnChange}
             disabled={disabled}
             readOnly={readonly}
           />
+        )}
+        {type === 'object' && !!fields && (
+          <Fieldset fields={fields} onChange={handleOnChangeSubform} />
         )}
         {!fieldData.valid &&
           errorsMessages
@@ -139,7 +163,7 @@ const Field = ({
             .map((errorMessage: string, index) => (
               <S.ErrorMessage key={index}>{errorMessage}</S.ErrorMessage>
             ))}
-      </label>
+      </TagWrapper>
     </S.Wrapper>
   )
 }

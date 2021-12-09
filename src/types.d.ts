@@ -1,46 +1,67 @@
-type FieldTypes =
-  | 'color'
-  | 'datetime-local'
-  | 'datetime'
-  | 'date'
-  | 'email'
-  | 'hidden'
-  | 'month'
-  | 'number'
-  | 'password'
-  | 'search'
-  | 'tel'
-  | 'text'
-  | 'time'
-  | 'url'
-  | 'textarea'
-  | 'select'
-  | 'radioGroup'
+type RuleConfig = {
+  [key: string]: string | number | boolean
+}
+
+interface FieldConfigBasic {
+  disabled?: boolean
+  label?: string
+  name: string
+  placeholder?: string
+  readonly?: boolean
+  type?:
+    | 'color'
+    | 'datetime-local'
+    | 'datetime'
+    | 'date'
+    | 'email'
+    | 'hidden'
+    | 'month'
+    | 'number'
+    | 'password'
+    | 'search'
+    | 'tel'
+    | 'text'
+    | 'time'
+    | 'url'
+    | undefined
+  validate?: RuleConfig[]
+  value: FieldData['value']
+}
 
 type FieldOption = {
-  value: FieldData['value']
+  value: string | boolean | number
   label: string
 }
 
 type FieldOptions = FieldOption[]
 
-type RuleConfig = {
-  [key: string]: string | number | boolean
+interface FieldSelectConfig extends Omit<FieldConfigBasic, 'type'> {
+  type: 'select'
+  options: FieldOptions
 }
 
-type FieldConfig = {
-  name: string
-  value: FieldData['value']
-  label?: string
-  type?: FieldTypes
-  placeholder?: string
-  validate?: RuleConfig[]
-  // textarea
-  rows?: number
-  options?: FieldOptions
-  disabled?: boolean
-  readonly?: boolean
+interface FieldRadioGroupConfig
+  extends Omit<FieldConfigBasic, 'type | placeholder'> {
+  type: 'radioGroup'
+  options: FieldOptions
 }
+
+interface FieldConfigTextarea extends Omit<FieldConfigBasic, 'type'> {
+  type: 'textarea'
+  rows?: number
+}
+
+interface FieldConfigObject extends Omit<FieldConfigBasic, 'type'> {
+  type: 'object'
+  fields: FieldConfig[]
+}
+
+type FieldConfig =
+  | FieldConfigBasic
+  | FieldSelectConfig
+  | FieldRadioGroupConfig
+  | FieldConfigTextarea
+  | FieldConfigObject
 
 type FormConfig = {
   fields: FieldConfig[]
@@ -50,7 +71,7 @@ type FormConfig = {
 }
 
 type FieldData = {
-  value: string | number | readonly string[] | undefined
+  value: string | number | readonly string[] | undefined | FieldsValues
   changed: boolean
   touched: boolean
   valid: boolean
