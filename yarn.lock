@@ -3368,9 +3368,10 @@
   version "2.0.1"
   resolved "https://registry.npmjs.org/@types/stack-utils/-/stack-utils-2.0.1.tgz"
 
-"@types/styled-components@^5.1.16":
-  version "5.1.16"
-  resolved "https://registry.npmjs.org/@types/styled-components/-/styled-components-5.1.16.tgz"
+"@types/styled-components@^5.1.17":
+  version "5.1.17"
+  resolved "https://registry.yarnpkg.com/@types/styled-components/-/styled-components-5.1.17.tgz#0b5ecf748eb5fb81db4b4115b168a162379c181b"
+  integrity sha512-niMaIan3C2LYCGEPntljGrkxLBfz1RZf4WTTv7w9GJygMsCOl226/UoSwXC8dIHCHs4sQKFQUs5JtdL2hj7k0g==
   dependencies:
     "@types/hoist-non-react-statics" "*"
     "@types/react" "*"
@@ -3481,13 +3482,6 @@
     "@typescript-eslint/typescript-estree" "5.6.0"
     debug "^4.3.2"
 
-"@typescript-eslint/scope-manager@5.5.0":
-  version "5.5.0"
-  resolved "https://registry.npmjs.org/@typescript-eslint/scope-manager/-/scope-manager-5.5.0.tgz"
-  dependencies:
-    "@typescript-eslint/types" "5.5.0"
-    "@typescript-eslint/visitor-keys" "5.5.0"
-
 "@typescript-eslint/scope-manager@5.6.0":
   version "5.6.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/scope-manager/-/scope-manager-5.6.0.tgz#9dd7f007dc8f3a34cdff6f79f5eaab27ae05157e"
@@ -3496,26 +3490,10 @@
     "@typescript-eslint/types" "5.6.0"
     "@typescript-eslint/visitor-keys" "5.6.0"
 
-"@typescript-eslint/types@5.5.0":
-  version "5.5.0"
-  resolved "https://registry.npmjs.org/@typescript-eslint/types/-/types-5.5.0.tgz"
-
 "@typescript-eslint/types@5.6.0":
   version "5.6.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-5.6.0.tgz#745cb1b59daadcc1f32f7be95f0f68accf38afdd"
   integrity sha512-OIZffked7mXv4mXzWU5MgAEbCf9ecNJBKi+Si6/I9PpTaj+cf2x58h2oHW5/P/yTnPkKaayfjhLvx+crnl5ubA==
-
-"@typescript-eslint/typescript-estree@5.5.0":
-  version "5.5.0"
-  resolved "https://registry.npmjs.org/@typescript-eslint/typescript-estree/-/typescript-estree-5.5.0.tgz"
-  dependencies:
-    "@typescript-eslint/types" "5.5.0"
-    "@typescript-eslint/visitor-keys" "5.5.0"
-    debug "^4.3.2"
-    globby "^11.0.4"
-    is-glob "^4.0.3"
-    semver "^7.3.5"
-    tsutils "^3.21.0"
 
 "@typescript-eslint/typescript-estree@5.6.0":
   version "5.6.0"
@@ -3529,13 +3507,6 @@
     is-glob "^4.0.3"
     semver "^7.3.5"
     tsutils "^3.21.0"
-
-"@typescript-eslint/visitor-keys@5.5.0":
-  version "5.5.0"
-  resolved "https://registry.npmjs.org/@typescript-eslint/visitor-keys/-/visitor-keys-5.5.0.tgz"
-  dependencies:
-    "@typescript-eslint/types" "5.5.0"
-    eslint-visitor-keys "^3.0.0"
 
 "@typescript-eslint/visitor-keys@5.6.0":
   version "5.6.0"
