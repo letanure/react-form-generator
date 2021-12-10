@@ -1,33 +1,41 @@
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 
 import Form, { FormProps } from '.'
 
-const spyOnChange = jest.fn<FieldData, []>()
-const spyOnSubmit = jest.fn<FieldData, []>()
-const configFieldset: FormProps = {
-  onChange: spyOnChange,
-  onSubmit: spyOnSubmit,
-  fields: [
-    {
-      name: 'test1',
-      label: 'Test1',
-      type: 'text',
-      value: 'val1',
-      placeholder: 'p1'
-    },
-    {
-      name: 'test2',
-      label: 'Test2',
-      type: 'text',
-      value: 'val2',
-      placeholder: 'p2'
-    }
-  ]
+const renderWithProps = (props: Partial<FormProps> = {}) => {
+  const spyOnChange = jest.fn<FieldData, []>()
+  const spyOnSubmit = jest.fn<FieldData, []>()
+  const config: FormProps = {
+    onChange: spyOnChange,
+    onSubmit: spyOnSubmit,
+    fields: [
+      {
+        name: 'test1',
+        label: 'Test1',
+        type: 'text',
+        value: 'val1',
+        placeholder: 'p1'
+      },
+      {
+        name: 'test2',
+        label: 'Test2',
+        type: 'text',
+        value: 'val2',
+        placeholder: 'p2'
+      }
+    ],
+    ...props
+  }
+  return {
+    rendered: render(<Form {...config} />),
+    spyOnChange: spyOnChange,
+    spyOnSubmit: spyOnSubmit
+  }
 }
 
 describe('<Form />', () => {
-  it('should render the config', () => {
-    render(<Form {...configFieldset} />)
+  it.skip('should render the config', () => {
+    renderWithProps()
 
     const inputs = screen.getAllByRole('textbox')
     expect(inputs.length).toBe(2)
@@ -39,9 +47,9 @@ describe('<Form />', () => {
   })
 
   it('should get the data from Fields', () => {
-    render(<Form {...configFieldset} />)
+    const { spyOnChange } = renderWithProps()
 
-    expect(spyOnChange).toBeCalledTimes(4)
+    expect(spyOnChange).toBeCalledTimes(2)
     const values = {
       test1: 'val1',
       test2: 'val2'
@@ -66,5 +74,76 @@ describe('<Form />', () => {
       }
     }
     expect(spyOnChange).toBeCalledWith(values, meta)
+  })
+
+  it('should call onSubmit', async () => {
+    const { spyOnSubmit } = renderWithProps()
+
+    fireEvent.submit(screen.getByRole('form'))
+    expect(spyOnSubmit).toBeCalledTimes(1)
+    expect(spyOnSubmit).toBeCalledWith(
+      {
+        test1: 'val1',
+        test2: 'val2'
+      },
+      {
+        changed: false,
+        fields: {
+          test1: { changed: false, touched: false, valid: true, value: 'val1' },
+          test2: { changed: false, touched: false, valid: true, value: 'val2' }
+        },
+        touched: false,
+        valid: true
+      }
+    )
+  })
+
+  it('should call onChange', async () => {
+    const { spyOnChange } = renderWithProps()
+
+    fireEvent.submit(screen.getByRole('form'))
+    expect(spyOnChange).toBeCalledTimes(2)
+    expect(spyOnChange).toBeCalledWith(
+      {
+        test1: 'val1',
+        test2: 'val2'
+      },
+      {
+        changed: false,
+        fields: {
+          test1: { changed: false, touched: false, valid: true, value: 'val1' },
+          test2: { changed: false, touched: false, valid: true, value: 'val2' }
+        },
+        touched: false,
+        valid: true
+      }
+    )
+  })
+
+  it('should use the value prop over default in form config', async () => {
+    const { spyOnChange } = renderWithProps({
+      value: {
+        test1: 'val3',
+        test2: 'val4'
+      }
+    })
+
+    fireEvent.submit(screen.getByRole('form'))
+    expect(spyOnChange).toBeCalledTimes(2)
+    expect(spyOnChange).toBeCalledWith(
+      {
+        test1: 'val3',
+        test2: 'val4'
+      },
+      {
+        changed: false,
+        fields: {
+          test1: { changed: false, touched: false, valid: true, value: 'val3' },
+          test2: { changed: false, touched: false, valid: true, value: 'val4' }
+        },
+        touched: false,
+        valid: true
+      }
+    )
   })
 })

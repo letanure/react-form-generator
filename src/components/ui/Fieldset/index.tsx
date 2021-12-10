@@ -1,16 +1,17 @@
 import Field from 'components/ui/Field'
-import { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import * as S from './styles'
 
 export type FieldsetProps = {
   fields: FormConfig['fields']
+  value?: FieldsValues
   onChange: (values: FieldsValues, meta: FieldsetMeta) => void
 }
 /**
  * Loops over an array of Field configs, and renders a Field component for each
  * Assembles a FieldsValues and FieldsetMeta object to pass to the onChange callback
  */
-const Fieldset = ({ fields = [], onChange }: FieldsetProps) => {
+const Fieldset = ({ fields = [], value = {}, onChange }: FieldsetProps) => {
   const [fieldsValues, setFieldsValues] = useState<FieldsValues>()
   const [fieldsetMeta, setFieldsetMeta] = useState<FieldsetMeta>()
 
@@ -48,13 +49,15 @@ const Fieldset = ({ fields = [], onChange }: FieldsetProps) => {
       }
     })
   }
+
   return (
-    <S.Wrapper>
+    <S.Wrapper className="fieldset">
       {!!fields &&
         fields.map((fieldProps, indexInput) => (
           <Field
             key={indexInput}
             {...fieldProps}
+            value={value[fieldProps.name] || fieldProps.value}
             onChange={(fieldData) => handleOnChange(fieldProps.name, fieldData)}
           />
         ))}
