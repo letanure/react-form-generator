@@ -34,6 +34,22 @@ const renderWithProps = (props: Partial<FormProps> = {}) => {
 }
 
 describe('<Form />', () => {
+  describe('props', () => {
+    it.skip('should render a title', () => {
+      renderWithProps({
+        title: 'Test title'
+      })
+      expect(screen.getByText('Test title')).toBeInTheDocument()
+    })
+
+    it.skip('should render a description', () => {
+      renderWithProps({
+        title: 'Test description'
+      })
+      expect(screen.getByText('Test description')).toBeInTheDocument()
+    })
+  })
+
   it.skip('should render the config', () => {
     renderWithProps()
 
