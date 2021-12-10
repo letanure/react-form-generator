@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import * as S from './styles'
 
 export type FormProps = FormConfig & {
+  value?: FieldsValues
   onChange: (values: FieldsValues, meta: FieldsetMeta) => void
   onSubmit: (values: FieldsValues, meta: FieldsetMeta) => void
 }
@@ -12,6 +13,7 @@ const Form = ({
   submitText = 'Submit',
   description,
   fields = [],
+  value,
   onChange,
   onSubmit
 }: FormProps) => {
@@ -43,10 +45,12 @@ const Form = ({
   }
   return (
     <S.Wrapper>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} aria-label="form">
         {title && <S.Title>{title}</S.Title>}
         {description && <S.Description>{description}</S.Description>}
-        {!!fields && <Fieldset fields={fields} onChange={handleOnChange} />}
+        {!!fields && (
+          <Fieldset fields={fields} onChange={handleOnChange} value={value} />
+        )}
         <S.Button type="submit">{submitText}</S.Button>
       </form>
     </S.Wrapper>
