@@ -64,12 +64,8 @@ const Field = (props: FieldProps): JSX.Element => {
     })
   }
 
-  const handleOnChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    validateAndSetData(validate, e.target.value, label, true)
+  const handleOnChange = (e: string) => {
+    validateAndSetData(validate, e, label, true)
   }
 
   const handleOnChangeSubform = (
@@ -99,7 +95,7 @@ const Field = (props: FieldProps): JSX.Element => {
             name={name}
             placeholder={placeholder}
             value={fieldData.value as string}
-            onChange={handleOnChange}
+            onChange={(e) => handleOnChange(e.target.value)}
             rows={rows as number}
             disabled={disabled}
             readOnly={readonly}
@@ -115,7 +111,7 @@ const Field = (props: FieldProps): JSX.Element => {
                     value={option.value as string}
                     name={name}
                     checked={fieldData.value === option.value}
-                    onChange={handleOnChange}
+                    onChange={(e) => handleOnChange(e.target.value)}
                     disabled={disabled}
                     readOnly={readonly}
                   />
@@ -130,7 +126,7 @@ const Field = (props: FieldProps): JSX.Element => {
             name={name}
             placeholder={placeholder}
             value={fieldData.value as string}
-            onChange={handleOnChange}
+            onChange={(e) => handleOnChange(e.target.value)}
             disabled={disabled}
           >
             {placeholder && <option value="">{placeholder}</option>}
@@ -149,7 +145,7 @@ const Field = (props: FieldProps): JSX.Element => {
             placeholder={placeholder}
             type={type}
             value={fieldData.value as string}
-            onChange={handleOnChange}
+            onChange={(e) => handleOnChange(e.target.value)}
             disabled={disabled}
             readOnly={readonly}
           />
