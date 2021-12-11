@@ -64,14 +64,11 @@ const Field = (props: FieldProps): JSX.Element => {
     })
   }
 
-  const handleOnChange = (e: string) => {
-    validateAndSetData(validate, e, label, true)
+  const handleOnChange = (newValue: string) => {
+    validateAndSetData(validate, newValue, label, true)
   }
 
-  const handleOnChangeSubform = (
-    valuesub: FieldsValues,
-    meta: FieldsetMeta
-  ) => {
+  const handleOnChangeObject = (valuesub: FieldsValues, meta: FieldsetMeta) => {
     setFieldData({
       value: valuesub,
       changed: meta.changed,
@@ -151,7 +148,7 @@ const Field = (props: FieldProps): JSX.Element => {
           />
         )}
         {type === 'object' && !!fields && (
-          <Fieldset fields={fields} onChange={handleOnChangeSubform} />
+          <Fieldset fields={fields} onChange={handleOnChangeObject} />
         )}
         {!fieldData.valid &&
           errorsMessages
