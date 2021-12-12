@@ -1,4 +1,4 @@
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/letanure/react-form-generator/ci)](https://github.com/letanure/react-form-generator/actions/workflows/ci.yml)
+[![GitHub Workflow Status](https://img.shields.io/github/checks-status/letanure/react-form-generator/main)](https://github.com/letanure/react-form-generator/actions?query=event%3Apush+branch%3Amain)
 [![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/letanure/react-form-generator)](https://codeclimate.com/github/letanure/react-form-generator/maintainability)
 [![Codecov](https://img.shields.io/codecov/c/github/letanure/react-form-generator)](https://codecov.io/gh/letanure/react-form-generator)
 
