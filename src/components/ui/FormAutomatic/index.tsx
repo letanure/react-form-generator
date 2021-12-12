@@ -2,8 +2,8 @@ import Form from 'components/ui/Form'
 
 export type FormAutomaticProps = {
   value: FieldsValues
-  onChange: (values: FieldsValues, meta: FieldsetMeta) => void
-  onSubmit: (values: FieldsValues, meta: FieldsetMeta) => void
+  onChange: (values: FieldsValues | FieldsValues[], meta: FieldsetMeta) => void
+  onSubmit: (values: FieldsValues | FieldsValues[], meta: FieldsetMeta) => void
 }
 
 function capitalize(str: string) {

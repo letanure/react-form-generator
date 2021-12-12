@@ -7,15 +7,21 @@ import data from './formConfig.json'
 const formConfig: FormConfig = data as FormConfig
 
 const Main = () => {
-  const [formData, setFormData] = useState<FieldsValues>()
+  const [formData, setFormData] = useState<FieldsValues | FieldsValues[]>()
   const [formMeta, setFormMeta] = useState<FieldsetMeta>()
 
-  const handleOnChange = (formValues: FieldsValues, formMeta: FieldsetMeta) => {
+  const handleOnChange = (
+    formValues: FieldsValues | FieldsValues[],
+    formMeta: FieldsetMeta
+  ) => {
     setFormData(formValues)
     setFormMeta(formMeta)
   }
 
-  const handleSubmit = (formValues: FieldsValues, formMeta: FieldsetMeta) => {
+  const handleSubmit = (
+    formValues: FieldsValues | FieldsValues[],
+    formMeta: FieldsetMeta
+  ) => {
     console.log('handleSubmit', formValues, formMeta)
   }
   return (
