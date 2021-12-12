@@ -25,7 +25,7 @@ interface FieldConfigBasic {
     | 'url'
     | undefined
   validate?: RuleConfig[]
-  value: FieldData['value']
+  value: string | FieldsValues | FieldsValues[]
 }
 
 type FieldOption = {
@@ -56,12 +56,18 @@ interface FieldConfigObject extends Omit<FieldConfigBasic, 'type'> {
   fields: FieldConfig[]
 }
 
+interface FieldConfigArray extends Omit<FieldConfigBasic, 'type'> {
+  type: 'array'
+  fields: FieldConfig[]
+}
+
 type FieldConfig =
   | FieldConfigBasic
   | FieldSelectConfig
   | FieldRadioGroupConfig
   | FieldConfigTextarea
   | FieldConfigObject
+  | FieldConfigArray
 
 type FormConfig = {
   fields: FieldConfig[]
@@ -71,14 +77,14 @@ type FormConfig = {
 }
 
 type FieldData = {
-  value: string | number | readonly string[] | undefined | FieldsValues
+  value: string | undefined | FieldsValues | FieldsValues[]
   changed: boolean
   touched: boolean
   valid: boolean
 }
 
 type FieldsValues = {
-  [key: string]: FieldData['value']
+  [key: string]: string | FieldsValues | FieldsValues[]
 }
 
 /** Information about the state of the form and complete data from each field */

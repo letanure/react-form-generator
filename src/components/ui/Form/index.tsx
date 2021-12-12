@@ -3,9 +3,9 @@ import React, { useEffect, useRef, useState } from 'react'
 import * as S from './styles'
 
 export type FormProps = FormConfig & {
-  value?: FieldsValues
-  onChange: (values: FieldsValues, meta: FieldsetMeta) => void
-  onSubmit: (values: FieldsValues, meta: FieldsetMeta) => void
+  value?: FieldsValues | FieldsValues[]
+  onChange: (values: FieldsValues | FieldsValues[], meta: FieldsetMeta) => void
+  onSubmit: (values: FieldsValues | FieldsValues[], meta: FieldsetMeta) => void
 }
 
 const Form = ({
@@ -17,7 +17,7 @@ const Form = ({
   onChange,
   onSubmit
 }: FormProps) => {
-  const [formValues, setFormValues] = useState<FieldsValues>()
+  const [formValues, setFormValues] = useState<FieldsValues | FieldsValues[]>()
   const [formMeta, setFormMeta] = useState<FieldsetMeta>()
 
   const handleSubmit = (event: React.FormEvent) => {
@@ -30,7 +30,10 @@ const Form = ({
    * but adding  the onchange to deps of useEffect will
    */
   const onChangeRef = useRef(
-    (fieldsValues: FieldsValues, fieldsetMeta: FieldsetMeta) => {
+    (
+      fieldsValues: FieldsValues | FieldsValues[],
+      fieldsetMeta: FieldsetMeta
+    ) => {
       onChange(fieldsValues, fieldsetMeta)
     }
   )
@@ -39,7 +42,10 @@ const Form = ({
     formValues && formMeta && onChangeRef.current(formValues, formMeta)
   }, [formValues, formMeta])
 
-  const handleOnChange = (fieldsetValues: FieldsValues, meta: FieldsetMeta) => {
+  const handleOnChange = (
+    fieldsetValues: FieldsValues | FieldsValues[],
+    meta: FieldsetMeta
+  ) => {
     setFormValues(fieldsetValues)
     setFormMeta(meta)
   }

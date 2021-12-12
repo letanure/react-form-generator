@@ -72,6 +72,11 @@ exports[`<Main /> should render the heading 1`] = `
   opacity: 0.8;
 }
 
+.c5 ol,
+.c5 li {
+  padding: 0 0 0 15px;
+}
+
 .c5 fieldset {
   border: none;
 }
@@ -588,6 +593,146 @@ some text
               </div>
             </label>
           </div>
+          <div
+            class="c5 field-object"
+          >
+            <fieldset>
+              <legend
+                class="label"
+              >
+                Object
+              </legend>
+              <div
+                class="c4 fieldset"
+              >
+                <div
+                  class="c5 field-text"
+                >
+                  <label>
+                    <div
+                      class="label"
+                    >
+                      Sub 1
+                    </div>
+                    <input
+                      name="sub-1"
+                      type="text"
+                      value="sub 1"
+                    />
+                  </label>
+                </div>
+                <div
+                  class="c5 field-text"
+                >
+                  <label>
+                    <div
+                      class="label"
+                    >
+                      Sub 2
+                    </div>
+                    <input
+                      name="sub-2"
+                      type="text"
+                      value="sub 2"
+                    />
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div
+            class="c5 field-array"
+          >
+            <label>
+              <div
+                class="label"
+              >
+                Array
+              </div>
+              <ol>
+                <li>
+                  <div
+                    class="c4 fieldset"
+                  >
+                    <div
+                      class="c5 field-text"
+                    >
+                      <label>
+                        <div
+                          class="label"
+                        >
+                          Sub 1
+                        </div>
+                        <input
+                          name="sub1"
+                          type="text"
+                          value="sub 1"
+                        />
+                      </label>
+                    </div>
+                    <div
+                      class="c5 field-text"
+                    >
+                      <label>
+                        <div
+                          class="label"
+                        >
+                          Sub 2
+                        </div>
+                        <input
+                          name="sub2"
+                          type="text"
+                          value="sub 2"
+                        />
+                      </label>
+                    </div>
+                  </div>
+                  <button>
+                    Remove
+                  </button>
+                </li>
+              </ol>
+              <div
+                class="c4 fieldset"
+              >
+                <div
+                  class="c5 field-text"
+                >
+                  <label>
+                    <div
+                      class="label"
+                    >
+                      Sub 1
+                    </div>
+                    <input
+                      name="sub1"
+                      type="text"
+                      value="sub 1"
+                    />
+                  </label>
+                </div>
+                <div
+                  class="c5 field-text"
+                >
+                  <label>
+                    <div
+                      class="label"
+                    >
+                      Sub 2
+                    </div>
+                    <input
+                      name="sub2"
+                      type="text"
+                      value="sub 2"
+                    />
+                  </label>
+                </div>
+                <button>
+                  Add
+                </button>
+              </div>
+            </label>
+          </div>
         </div>
         <button
           class="c7"
@@ -766,6 +911,47 @@ some text
           "label": "Option 3"
         }
       ]
+    },
+    {
+      "label": "Object",
+      "name": "object",
+      "type": "object",
+      "value": {},
+      "fields": [
+        {
+          "name": "sub-1",
+          "label": "Sub 1",
+          "value": "sub 1"
+        },
+        {
+          "name": "sub-2",
+          "label": "Sub 2",
+          "value": "sub 2"
+        }
+      ]
+    },
+    {
+      "label": "Array",
+      "name": "array",
+      "type": "array",
+      "value": [
+        {
+          "sub1": "sub 1",
+          "sub2": "sub 2"
+        }
+      ],
+      "fields": [
+        {
+          "name": "sub1",
+          "label": "Sub 1",
+          "value": "sub 1"
+        },
+        {
+          "name": "sub2",
+          "label": "Sub 2",
+          "value": "sub 2"
+        }
+      ]
     }
   ]
 }
@@ -799,7 +985,17 @@ some text
   "search": "my search",
   "textarea": "some text\\nsome text\\nsome text",
   "select": "2",
-  "radioGroup": "2"
+  "radioGroup": "2",
+  "object": {
+    "sub-1": "sub 1",
+    "sub-2": "sub 2"
+  },
+  "array": [
+    {
+      "sub1": "sub 1",
+      "sub2": "sub 2"
+    }
+  ]
 }
           </pre>
         </code>
@@ -915,6 +1111,26 @@ some text
     },
     "radioGroup": {
       "value": "2",
+      "changed": false,
+      "touched": false,
+      "valid": true
+    },
+    "object": {
+      "value": {
+        "sub-1": "sub 1",
+        "sub-2": "sub 2"
+      },
+      "changed": false,
+      "touched": false,
+      "valid": true
+    },
+    "array": {
+      "value": [
+        {
+          "sub1": "sub 1",
+          "sub2": "sub 2"
+        }
+      ],
       "changed": false,
       "touched": false,
       "valid": true

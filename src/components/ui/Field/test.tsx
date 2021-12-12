@@ -396,6 +396,94 @@ describe('<Field />', () => {
       expect(inputsRadio[1]).toHaveProperty('name', 'radioGroup')
       expect(inputsRadio[1]).toHaveProperty('value', '2')
     })
+
+    it('should render subform for type array', () => {
+      renderWithProps({
+        type: 'array',
+        value: [],
+        fields: [
+          {
+            label: 'foo',
+            name: 'foo',
+            type: 'text',
+            value: ''
+          },
+          {
+            label: 'bar',
+            name: 'bar',
+            type: 'text',
+            value: ''
+          }
+        ]
+      })
+      expect(screen.getByLabelText('foo')).toBeInTheDocument()
+      expect(screen.getByLabelText('bar')).toBeInTheDocument()
+      expect(screen.getByRole('button', { name: /add/i })).toBeInTheDocument()
+    })
+
+    it('should render subform for type array', () => {
+      const { container } = renderWithProps({
+        type: 'array',
+        value: [{ foo: '11', bar: '22' }],
+        fields: [
+          {
+            label: 'foo',
+            name: 'foo',
+            type: 'text',
+            value: '111'
+          },
+          {
+            label: 'bar',
+            name: 'bar',
+            type: 'text',
+            value: '222'
+          }
+        ]
+      })
+      const input1 = container.querySelectorAll('.fieldset input')[0]
+      expect(input1).toBeInTheDocument()
+      expect(input1).toHaveValue('11')
+      const input2 = container.querySelectorAll('.fieldset input')[1]
+      expect(input2).toBeInTheDocument()
+      expect(input2).toHaveValue('22')
+      const input3 = container.querySelectorAll('.fieldset input')[2]
+      expect(input3).toBeInTheDocument()
+      expect(input3).toHaveValue('111')
+      const input4 = container.querySelectorAll('.fieldset input')[3]
+      expect(input4).toBeInTheDocument()
+      expect(input4).toHaveValue('222')
+    })
+
+    it('should render remove a item on click delete', () => {
+      const { container } = renderWithProps({
+        type: 'array',
+        value: [
+          { foo: '1a', bar: '1b' },
+          { foo: '2a', bar: '2b' }
+        ],
+        fields: [
+          {
+            label: 'foo',
+            name: 'foo',
+            type: 'text',
+            value: 'a'
+          },
+          {
+            label: 'bar',
+            name: 'bar',
+            type: 'text',
+            value: 'b'
+          }
+        ]
+      })
+      expect(container.querySelectorAll('button')).toHaveLength(3)
+      fireEvent.click(container.querySelectorAll('button')[0])
+      expect(container.querySelectorAll('button')).toHaveLength(2)
+      fireEvent.click(container.querySelectorAll('button')[0])
+      expect(container.querySelectorAll('button')).toHaveLength(1)
+      fireEvent.click(container.querySelectorAll('button')[0])
+      expect(container.querySelectorAll('button')).toHaveLength(2)
+    })
   })
 
   describe('validation', () => {
