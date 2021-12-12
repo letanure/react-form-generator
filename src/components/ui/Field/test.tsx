@@ -122,7 +122,7 @@ describe('<Field />', () => {
       renderWithProps({
         onChange: spyOnChange,
         name: 'test',
-        value: '',
+        value: {},
         type: 'object',
         fields: [
           {
@@ -354,16 +354,19 @@ describe('<Field />', () => {
     it('should render a sub form for type object ', () => {
       renderWithProps({
         type: 'object',
+        value: {},
         fields: [
           {
             label: 'foo',
             name: 'foo',
-            type: 'text'
+            type: 'text',
+            value: ''
           },
           {
             label: 'bar',
             name: 'bar',
-            type: 'text'
+            type: 'text',
+            value: ''
           }
         ]
       })

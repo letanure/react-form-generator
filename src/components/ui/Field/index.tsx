@@ -98,6 +98,7 @@ const Field = (props: FieldProps): JSX.Element => {
             value={fieldData.value as string}
           />
         )}
+
         {type === 'radioGroup' && (
           <div className={fieldData.valid ? '' : 'hasError'}>
             {options &&
@@ -117,6 +118,7 @@ const Field = (props: FieldProps): JSX.Element => {
               ))}
           </div>
         )}
+
         {type === 'select' && (
           <select
             className={fieldData.valid ? '' : 'hasError'}
@@ -135,6 +137,7 @@ const Field = (props: FieldProps): JSX.Element => {
               ))}
           </select>
         )}
+
         {!['textarea', 'select', 'radioGroup', 'object'].includes(type) && (
           <input
             className={fieldData.valid ? undefined : 'hasError'}
@@ -147,9 +150,11 @@ const Field = (props: FieldProps): JSX.Element => {
             value={fieldData.value as string}
           />
         )}
+
         {type === 'object' && !!fields && (
           <Fieldset fields={fields} onChange={handleOnChangeObject} />
         )}
+
         {!fieldData.valid &&
           errorsMessages
             .slice(0, maxErrors)
