@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CodeBlock /> should render something 1`] = `
+.c0 {
+  font-size: 11px;
+  border: 1px solid #999;
+  padding: 10px;
+  line-height: 1.2em;
+}
+
+<div
+  class="c0"
+>
+  <code>
+    <pre>
+      "\\nimport { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';\\nimport { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';\\nconst Component = () =&gt; {\\n  const codeString = '(num) =&gt; num + 1';\\n  return (\\n    &lt;SyntaxHighlighter language=\\"javascript\\" style={dark}&gt;\\n      {codeString}\\n    &lt;/SyntaxHighlighter&gt;\\n  );\\n};\\n"
+    </pre>
+  </code>
+</div>
+`

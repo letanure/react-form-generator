@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 import CodeBlock from '.'
 
@@ -16,13 +16,8 @@ const Component = () => {
 `
 
 describe('<CodeBlock />', () => {
-  it.skip('should render something', () => {
+  it('should render something', () => {
     const { container } = render(<CodeBlock codeString={codeString} />)
-
-    expect(
-      screen.getByRole('heading', { name: /CodeBlock/i })
-    ).toBeInTheDocument()
-
     expect(container.firstChild).toMatchSnapshot()
   })
 })
