@@ -4,7 +4,8 @@ import * as S from './styles'
 
 export type FieldsetProps = {
   fields: FormConfig['fields']
-  value?: FieldsValues
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  value?: any
   hasSubmit?: boolean
   submitText?: string
   onSubmit?: (values: FieldsValues | FieldsValues[], meta: FieldsetMeta) => void
