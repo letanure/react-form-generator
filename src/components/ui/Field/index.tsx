@@ -64,18 +64,11 @@ const Field = (props: FieldProps): JSX.Element => {
     })
   }
 
-  const handleOnChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    validateAndSetData(validate, e.target.value, label, true)
+  const handleOnChange = (newValue: string) => {
+    validateAndSetData(validate, newValue, label, true)
   }
 
-  const handleOnChangeSubform = (
-    valuesub: FieldsValues,
-    meta: FieldsetMeta
-  ) => {
+  const handleOnChangeObject = (valuesub: FieldsValues, meta: FieldsetMeta) => {
     setFieldData({
       value: valuesub,
       changed: meta.changed,
@@ -96,42 +89,44 @@ const Field = (props: FieldProps): JSX.Element => {
         {type === 'textarea' && (
           <textarea
             className={fieldData.valid ? '' : 'hasError'}
-            name={name}
-            placeholder={placeholder}
-            value={fieldData.value as string}
-            onChange={handleOnChange}
-            rows={rows as number}
             disabled={disabled}
+            name={name}
+            onChange={(e) => handleOnChange(e.target.value)}
+            placeholder={placeholder}
             readOnly={readonly}
+            rows={rows as number}
+            value={fieldData.value as string}
           />
         )}
+
         {type === 'radioGroup' && (
           <div className={fieldData.valid ? '' : 'hasError'}>
             {options &&
               options.map((option: FieldOption, index) => (
                 <label key={index} className="radioLabel">
                   <input
+                    checked={fieldData.value === option.value}
+                    disabled={disabled}
+                    name={name}
+                    onChange={(e) => handleOnChange(e.target.value)}
+                    readOnly={readonly}
                     type="radio"
                     value={option.value as string}
-                    name={name}
-                    checked={fieldData.value === option.value}
-                    onChange={handleOnChange}
-                    disabled={disabled}
-                    readOnly={readonly}
                   />
                   <span>{option.label}</span>
                 </label>
               ))}
           </div>
         )}
+
         {type === 'select' && (
           <select
             className={fieldData.valid ? '' : 'hasError'}
+            disabled={disabled}
             name={name}
+            onChange={(e) => handleOnChange(e.target.value)}
             placeholder={placeholder}
             value={fieldData.value as string}
-            onChange={handleOnChange}
-            disabled={disabled}
           >
             {placeholder && <option value="">{placeholder}</option>}
             {options &&
@@ -142,21 +137,24 @@ const Field = (props: FieldProps): JSX.Element => {
               ))}
           </select>
         )}
+
         {!['textarea', 'select', 'radioGroup', 'object'].includes(type) && (
           <input
             className={fieldData.valid ? undefined : 'hasError'}
+            disabled={disabled}
             name={name}
+            onChange={(e) => handleOnChange(e.target.value)}
             placeholder={placeholder}
+            readOnly={readonly}
             type={type}
             value={fieldData.value as string}
-            onChange={handleOnChange}
-            disabled={disabled}
-            readOnly={readonly}
           />
         )}
+
         {type === 'object' && !!fields && (
-          <Fieldset fields={fields} onChange={handleOnChangeSubform} />
+          <Fieldset fields={fields} onChange={handleOnChangeObject} />
         )}
+
         {!fieldData.valid &&
           errorsMessages
             .slice(0, maxErrors)

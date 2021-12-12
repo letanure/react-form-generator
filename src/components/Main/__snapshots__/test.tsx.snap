@@ -1,0 +1,930 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Main /> should render the heading 1`] = `
+.c0 {
+  background-color: #ffffff;
+  width: 96vw;
+  max-width: 1200px;
+  margin: 2vw auto;
+  box-shadow: 0 1px 8px rgb(0 0 0 / 8%);
+  height: 100%;
+  padding: 3rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border-radius: 8px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+}
+
+.c1 {
+  width: 33.33%;
+  padding-right: 30px;
+}
+
+.c8 {
+  width: 66.66%;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 30px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c8 > div {
+  width: 50%;
+  padding: 15px;
+  overflow: hidden;
+}
+
+.c8 > div pre {
+  overflow: hidden;
+}
+
+.c5 {
+  padding-bottom: 15px;
+}
+
+.c5.field-hidden {
+  display: none;
+}
+
+.c5 [disabled] {
+  opacity: 0.5;
+}
+
+.c5 [readonly] {
+  opacity: 0.8;
+}
+
+.c5 fieldset {
+  border: none;
+}
+
+.c5 .label {
+  visibility: inherit;
+  margin: 6px 0px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #0c072c;
+  display: block;
+}
+
+.c5 .radioLabel {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 8px;
+}
+
+.c5 .radioLabel input {
+  display: inline-block;
+  width: 20px;
+  -webkit-transform: translate(-3px,2px);
+  -ms-transform: translate(-3px,2px);
+  transform: translate(-3px,2px);
+}
+
+.c5 .radioLabel input:focus,
+.c5 .radioLabel input:focus-visible {
+  outline: none;
+}
+
+.c5 select {
+  font-family: inherit;
+  color: #0c072c;
+  background: #fff;
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #0c072c33;
+  border-radius: 8px;
+  display: block;
+  background-image: linear-gradient(45deg,transparent 50%,gray 50%), linear-gradient(135deg,gray 50%,transparent 50%), linear-gradient(to right,#ccc,#ccc);
+  background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px),calc(100% - 2.5em) 0.5em;
+  background-size: 5px 5px,5px 5px,1px 1.5em;
+  background-repeat: no-repeat;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.c5 select:focus {
+  background-image: linear-gradient(45deg,green 50%,transparent 50%), linear-gradient(135deg,transparent 50%,green 50%), linear-gradient(to right,#ccc,#ccc);
+  background-position: calc(100% - 15px) 1em,calc(100% - 20px) 1em, calc(100% - 2.5em) 0.5em;
+  background-size: 5px 5px,5px 5px,1px 1.5em;
+  background-repeat: no-repeat;
+  border-color: green;
+  outline: 0;
+}
+
+.c5 textarea {
+  font-family: inherit;
+  color: #0c072c;
+  background: #fff;
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #0c072c33;
+  border-radius: 8px;
+  min-height: 70px;
+  display: block;
+}
+
+.c5 textarea:focus,
+.c5 textarea:focus-visible {
+  outline: 1px solid #b336a0;
+  border-color: #b336a0;
+}
+
+.c5 textarea.hasError {
+  border: 1px solid rgb(233,75,75);
+}
+
+.c5 input {
+  font-family: inherit;
+  color: #0c072c;
+  background: #fff;
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #0c072c33;
+  border-radius: 8px;
+}
+
+.c5 input:focus,
+.c5 input:focus-visible {
+  outline: 1px solid #b336a0;
+  border-color: #b336a0;
+}
+
+.c5 input.hasError {
+  border: 1px solid rgb(233,75,75);
+}
+
+.c5 input[type='color'] {
+  width: 50px;
+  padding: 4px;
+  height: 43px;
+}
+
+.c6 {
+  padding-top: 4px;
+  font-size: 14px;
+  color: rgb(233,75,75);
+}
+
+.c4 {
+  margin-bottom: 10px;
+}
+
+.c2 {
+  padding: 15px;
+}
+
+.c3 {
+  font-size: 4rem;
+  margin-bottom: 15px;
+}
+
+.c7 {
+  font-family: inherit;
+  padding: 12px 24px;
+  margin-left: auto;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(255,255,255);
+  cursor: pointer;
+  background-color: #b336a0;
+  background-size: 50px 50px;
+  border: none;
+  border-radius: 8px;
+}
+
+.c7:hover {
+  background-color: #b336a0cc;
+}
+
+.c9 {
+  font-size: 11px;
+  border: 1px solid #999;
+  padding: 10px;
+  line-height: 1.2em;
+}
+
+<main
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2"
+    >
+      <form
+        aria-label="form"
+      >
+        <h2
+          class="c3"
+        >
+          My form
+        </h2>
+        <div
+          class="c4 fieldset"
+        >
+          <div
+            class="c5 field-text"
+          >
+            <label>
+              <div
+                class="label"
+              >
+                This needs "foo"
+              </div>
+              <input
+                class="hasError"
+                name="foo"
+                placeholder="Placeholder test"
+                type="text"
+                value="bar"
+              />
+              <div
+                class="c6"
+              >
+                Must start with foo
+              </div>
+            </label>
+          </div>
+          <div
+            class="c5 field-text"
+          >
+            <label>
+              <div
+                class="label"
+              >
+                Placeholder text
+              </div>
+              <input
+                name="placeholder"
+                placeholder="Placeholder test"
+                type="text"
+                value=""
+              />
+            </label>
+          </div>
+          <div
+            class="c5 field-color"
+          >
+            <label>
+              <div
+                class="label"
+              >
+                Color
+              </div>
+              <input
+                name="color"
+                type="color"
+                value="#ff0000"
+              />
+            </label>
+          </div>
+          <div
+            class="c5 field-email"
+          >
+            <label>
+              <div
+                class="label"
+              >
+                Email
+              </div>
+              <input
+                name="email"
+                type="email"
+                value="aa@bb.cc"
+              />
+            </label>
+          </div>
+          <div
+            class="c5 field-number"
+          >
+            <label>
+              <div
+                class="label"
+              >
+                Number
+              </div>
+              <input
+                name="number"
+                type="number"
+                value="1"
+              />
+            </label>
+          </div>
+          <div
+            class="c5 field-password"
+          >
+            <label>
+              <div
+                class="label"
+              >
+                Password
+              </div>
+              <input
+                name="password"
+                type="password"
+                value="123456"
+              />
+            </label>
+          </div>
+          <div
+            class="c5 field-tel"
+          >
+            <label>
+              <div
+                class="label"
+              >
+                tel
+              </div>
+              <input
+                name="tel"
+                type="tel"
+                value="111222333"
+              />
+            </label>
+          </div>
+          <div
+            class="c5 field-text"
+          >
+            <label>
+              <div
+                class="label"
+              >
+                Text
+              </div>
+              <input
+                name="text"
+                type="text"
+                value="my text"
+              />
+            </label>
+          </div>
+          <div
+            class="c5 field-time"
+          >
+            <label>
+              <div
+                class="label"
+              >
+                Time
+              </div>
+              <input
+                name="time"
+                type="time"
+                value="12:00"
+              />
+            </label>
+          </div>
+          <div
+            class="c5 field-url"
+          >
+            <label>
+              <div
+                class="label"
+              >
+                URL
+              </div>
+              <input
+                name="url"
+                type="url"
+                value="https://www.google.com"
+              />
+            </label>
+          </div>
+          <div
+            class="c5 field-datetime-local"
+          >
+            <label>
+              <div
+                class="label"
+              >
+                Datetime
+              </div>
+              <input
+                name="datetime"
+                type="datetime-local"
+                value="2020-01-01T12:00"
+              />
+            </label>
+          </div>
+          <div
+            class="c5 field-hidden"
+          >
+            <label>
+              <div
+                class="label"
+              >
+                Hidden
+              </div>
+              <input
+                name="hidden"
+                type="hidden"
+                value="9"
+              />
+            </label>
+          </div>
+          <div
+            class="c5 field-month"
+          >
+            <label>
+              <div
+                class="label"
+              >
+                Month
+              </div>
+              <input
+                name="month"
+                type="month"
+                value="2020-01"
+              />
+            </label>
+          </div>
+          <div
+            class="c5 field-search"
+          >
+            <label>
+              <div
+                class="label"
+              >
+                Search
+              </div>
+              <input
+                name="search"
+                type="search"
+                value="my search"
+              />
+            </label>
+          </div>
+          <div
+            class="c5 field-textarea"
+          >
+            <label>
+              <div
+                class="label"
+              >
+                Textarea
+              </div>
+              <textarea
+                class=""
+                name="textarea"
+                rows="4"
+              >
+                some text
+some text
+some text
+              </textarea>
+            </label>
+          </div>
+          <div
+            class="c5 field-select"
+          >
+            <label>
+              <div
+                class="label"
+              >
+                Select
+              </div>
+              <select
+                class=""
+                name="select"
+              >
+                <option
+                  value="1"
+                >
+                  Option 1
+                </option>
+                <option
+                  value="2"
+                >
+                  Option 2
+                </option>
+                <option
+                  value="3"
+                >
+                  Option 3
+                </option>
+              </select>
+            </label>
+          </div>
+          <div
+            class="c5 field-radioGroup"
+          >
+            <label>
+              <div
+                class="label"
+              >
+                Radio Group
+              </div>
+              <div
+                class=""
+              >
+                <label
+                  class="radioLabel"
+                >
+                  <input
+                    name="radioGroup"
+                    type="radio"
+                    value="1"
+                  />
+                  <span>
+                    Option 1
+                  </span>
+                </label>
+                <label
+                  class="radioLabel"
+                >
+                  <input
+                    checked=""
+                    name="radioGroup"
+                    type="radio"
+                    value="2"
+                  />
+                  <span>
+                    Option 2
+                  </span>
+                </label>
+                <label
+                  class="radioLabel"
+                >
+                  <input
+                    name="radioGroup"
+                    type="radio"
+                    value="3"
+                  />
+                  <span>
+                    Option 3
+                  </span>
+                </label>
+              </div>
+            </label>
+          </div>
+        </div>
+        <button
+          class="c7"
+          type="submit"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+  <div
+    class="c8"
+  >
+    <div>
+      <h3>
+        Config
+      </h3>
+      <div
+        class="c9"
+      >
+        <code>
+          <pre>
+            {
+  "title": "My form",
+  "fields": [
+    {
+      "label": "This needs \\"foo\\"",
+      "placeholder": "Placeholder test",
+      "name": "foo",
+      "type": "text",
+      "value": "bar",
+      "validate": [
+        {
+          "type": "string",
+          "pattern": "^foo",
+          "message": "Must start with foo"
+        },
+        {
+          "type": "string",
+          "min": 6
+        }
+      ]
+    },
+    {
+      "label": "Placeholder text",
+      "placeholder": "Placeholder test",
+      "name": "placeholder",
+      "type": "text",
+      "value": ""
+    },
+    {
+      "label": "Color",
+      "name": "color",
+      "type": "color",
+      "value": "#ff0000"
+    },
+    {
+      "label": "Email",
+      "name": "email",
+      "type": "email",
+      "value": "aa@bb.cc",
+      "validate": [
+        {
+          "type": "string",
+          "min": 3,
+          "max": 255
+        },
+        {
+          "type": "email"
+        }
+      ]
+    },
+    {
+      "label": "Number",
+      "name": "number",
+      "type": "number",
+      "value": "1"
+    },
+    {
+      "label": "Password",
+      "name": "password",
+      "type": "password",
+      "value": "123456"
+    },
+    {
+      "label": "tel",
+      "name": "tel",
+      "type": "tel",
+      "value": "111222333"
+    },
+    {
+      "label": "Text",
+      "name": "text",
+      "type": "text",
+      "value": "my text"
+    },
+    {
+      "label": "Time",
+      "name": "time",
+      "type": "time",
+      "value": "12:00"
+    },
+    {
+      "label": "URL",
+      "name": "url",
+      "type": "url",
+      "value": "https://www.google.com"
+    },
+    {
+      "label": "Datetime",
+      "name": "datetime",
+      "type": "datetime-local",
+      "value": "2020-01-01T12:00"
+    },
+    {
+      "label": "Hidden",
+      "name": "hidden",
+      "type": "hidden",
+      "value": "9"
+    },
+    {
+      "label": "Month",
+      "name": "month",
+      "type": "month",
+      "value": "2020-01"
+    },
+    {
+      "label": "Search",
+      "name": "search",
+      "type": "search",
+      "value": "my search"
+    },
+    {
+      "label": "Textarea",
+      "name": "textarea",
+      "type": "textarea",
+      "value": "some text\\nsome text\\nsome text",
+      "rows": 4
+    },
+    {
+      "label": "Select",
+      "name": "select",
+      "type": "select",
+      "value": "2",
+      "options": [
+        {
+          "value": "1",
+          "label": "Option 1"
+        },
+        {
+          "value": "2",
+          "label": "Option 2"
+        },
+        {
+          "value": "3",
+          "label": "Option 3"
+        }
+      ]
+    },
+    {
+      "label": "Radio Group",
+      "name": "radioGroup",
+      "type": "radioGroup",
+      "value": "2",
+      "options": [
+        {
+          "value": "1",
+          "label": "Option 1"
+        },
+        {
+          "value": "2",
+          "label": "Option 2"
+        },
+        {
+          "value": "3",
+          "label": "Option 3"
+        }
+      ]
+    }
+  ]
+}
+          </pre>
+        </code>
+      </div>
+    </div>
+    <div>
+      <h3>
+        Data
+      </h3>
+      <div
+        class="c9"
+      >
+        <code>
+          <pre>
+            {
+  "foo": "bar",
+  "placeholder": "",
+  "color": "#ff0000",
+  "email": "aa@bb.cc",
+  "number": "1",
+  "password": "123456",
+  "tel": "111222333",
+  "text": "my text",
+  "time": "12:00",
+  "url": "https://www.google.com",
+  "datetime": "2020-01-01T12:00",
+  "hidden": "9",
+  "month": "2020-01",
+  "search": "my search",
+  "textarea": "some text\\nsome text\\nsome text",
+  "select": "2",
+  "radioGroup": "2"
+}
+          </pre>
+        </code>
+      </div>
+      <h3>
+        Meta
+      </h3>
+      <div
+        class="c9"
+      >
+        <code>
+          <pre>
+            {
+  "changed": false,
+  "touched": false,
+  "valid": false,
+  "fields": {
+    "foo": {
+      "value": "bar",
+      "changed": false,
+      "touched": false,
+      "valid": false
+    },
+    "placeholder": {
+      "value": "",
+      "changed": false,
+      "touched": false,
+      "valid": true
+    },
+    "color": {
+      "value": "#ff0000",
+      "changed": false,
+      "touched": false,
+      "valid": true
+    },
+    "email": {
+      "value": "aa@bb.cc",
+      "changed": false,
+      "touched": false,
+      "valid": true
+    },
+    "number": {
+      "value": "1",
+      "changed": false,
+      "touched": false,
+      "valid": true
+    },
+    "password": {
+      "value": "123456",
+      "changed": false,
+      "touched": false,
+      "valid": true
+    },
+    "tel": {
+      "value": "111222333",
+      "changed": false,
+      "touched": false,
+      "valid": true
+    },
+    "text": {
+      "value": "my text",
+      "changed": false,
+      "touched": false,
+      "valid": true
+    },
+    "time": {
+      "value": "12:00",
+      "changed": false,
+      "touched": false,
+      "valid": true
+    },
+    "url": {
+      "value": "https://www.google.com",
+      "changed": false,
+      "touched": false,
+      "valid": true
+    },
+    "datetime": {
+      "value": "2020-01-01T12:00",
+      "changed": false,
+      "touched": false,
+      "valid": true
+    },
+    "hidden": {
+      "value": "9",
+      "changed": false,
+      "touched": false,
+      "valid": true
+    },
+    "month": {
+      "value": "2020-01",
+      "changed": false,
+      "touched": false,
+      "valid": true
+    },
+    "search": {
+      "value": "my search",
+      "changed": false,
+      "touched": false,
+      "valid": true
+    },
+    "textarea": {
+      "value": "some text\\nsome text\\nsome text",
+      "changed": false,
+      "touched": false,
+      "valid": true
+    },
+    "select": {
+      "value": "2",
+      "changed": false,
+      "touched": false,
+      "valid": true
+    },
+    "radioGroup": {
+      "value": "2",
+      "changed": false,
+      "touched": false,
+      "valid": true
+    }
+  }
+}
+          </pre>
+        </code>
+      </div>
+    </div>
+  </div>
+</main>
+`

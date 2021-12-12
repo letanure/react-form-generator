@@ -35,14 +35,14 @@ const renderWithProps = (props: Partial<FormProps> = {}) => {
 
 describe('<Form />', () => {
   describe('props', () => {
-    it.skip('should render a title', () => {
+    it('should render a title', () => {
       renderWithProps({
         title: 'Test title'
       })
       expect(screen.getByText('Test title')).toBeInTheDocument()
     })
 
-    it.skip('should render a description', () => {
+    it('should render a description', () => {
       renderWithProps({
         title: 'Test description'
       })
@@ -50,7 +50,7 @@ describe('<Form />', () => {
     })
   })
 
-  it.skip('should render the config', () => {
+  it('should render the config', () => {
     renderWithProps()
 
     const inputs = screen.getAllByRole('textbox')

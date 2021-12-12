@@ -31,10 +31,16 @@ const Main = () => {
           </S.FormArea>
 
           <S.CodeArea>
-            <h3>Data</h3>
-            <CodeBlock codeString={formData} />
-            <h3>Meta</h3>
-            <CodeBlock codeString={formMeta} />
+            <div>
+              <h3>Config</h3>
+              <CodeBlock codeString={data} />
+            </div>
+            <div>
+              <h3>Data</h3>
+              <CodeBlock codeString={formData} />
+              <h3>Meta</h3>
+              <CodeBlock codeString={formMeta} />
+            </div>
           </S.CodeArea>
         </>
       )}

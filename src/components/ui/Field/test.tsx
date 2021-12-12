@@ -122,7 +122,7 @@ describe('<Field />', () => {
       renderWithProps({
         onChange: spyOnChange,
         name: 'test',
-        value: '',
+        value: {},
         type: 'object',
         fields: [
           {
@@ -147,37 +147,35 @@ describe('<Field />', () => {
       fireEvent.change(input, { target: { value: 'bar' } })
     })
 
-    it.skip('should keep changed false if is the same original values', () => {
+    it('should keep changed false if is the same original values', () => {
       const spyOnChange = jest.fn<FieldData, []>()
       renderWithProps({
         onChange: spyOnChange
       })
 
-      expect(spyOnChange).toBeCalledTimes(1)
+      expect(spyOnChange).toBeCalledTimes(2)
       expect(spyOnChange).toBeCalledWith({
         changed: false,
         touched: false,
         valid: true,
-        value: 'foo'
+        value: 'val'
       })
-
-      const input = screen.getByPlaceholderText(/demo/i)
-
+      const input = screen.getByRole('textbox')
       fireEvent.change(input, { target: { value: 'bar' } })
-      expect(spyOnChange).toBeCalledTimes(2)
+      expect(spyOnChange).toBeCalledTimes(3)
       expect(spyOnChange).toBeCalledWith({
         changed: true,
         touched: true,
         valid: true,
         value: 'bar'
       })
-      fireEvent.change(input, { target: { value: 'foo' } })
-      expect(spyOnChange).toBeCalledTimes(3)
+      fireEvent.change(input, { target: { value: 'val' } })
+      expect(spyOnChange).toBeCalledTimes(4)
       expect(spyOnChange).toBeCalledWith({
         changed: false,
         touched: true,
         valid: true,
-        value: 'foo'
+        value: 'val'
       })
     })
   })
@@ -244,11 +242,12 @@ describe('<Field />', () => {
       )
     })
 
-    it.skip('should render a hidden field', () => {
-      renderWithProps({
+    it('should render a hidden field', () => {
+      const { container } = renderWithProps({
         type: 'hidden'
       })
-      expect(screen.getByRole('textbox')).toHaveAttribute('type', 'hidden')
+
+      expect(container.querySelector('[type="hidden"]')).toHaveValue('val')
     })
 
     it('should render a email field', () => {
@@ -354,16 +353,19 @@ describe('<Field />', () => {
     it('should render a sub form for type object ', () => {
       renderWithProps({
         type: 'object',
+        value: {},
         fields: [
           {
             label: 'foo',
             name: 'foo',
-            type: 'text'
+            type: 'text',
+            value: ''
           },
           {
             label: 'bar',
             name: 'bar',
-            type: 'text'
+            type: 'text',
+            value: ''
           }
         ]
       })
