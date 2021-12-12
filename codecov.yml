@@ -13,8 +13,6 @@ ignore:
   - "src/styles"
   - "src/types"
   - "src/components/TagManager"
-  - "src/components/Main"
-  - "src/components/ui/CodeBlock"
 
 parsers:
   gcov:
