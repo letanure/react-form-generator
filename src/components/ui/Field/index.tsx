@@ -78,11 +78,12 @@ const Field = (props: FieldProps): JSX.Element => {
   }
 
   const handleOnSubmitArray = (
-    newValue: FieldsValues,
+    newValue: FieldsValues[],
     newMeta: FieldsetMeta
   ) => {
+    const valueArray = fieldData?.value as FieldsValues[]
     setFieldData({
-      value: fieldData.value.concat(newValue),
+      value: valueArray.concat(newValue),
       changed: newMeta.changed,
       touched: newMeta.touched,
       valid: newMeta.valid
@@ -90,8 +91,9 @@ const Field = (props: FieldProps): JSX.Element => {
   }
 
   const removeItemArray = (index: number) => {
+    const valueArray = fieldData?.value as FieldsValues[]
     setFieldData({
-      value: fieldData.value.filter((_, i) => i !== index),
+      value: valueArray.filter((_, i) => i !== index),
       changed: true,
       touched: true,
       valid: fieldData.valid
@@ -180,9 +182,9 @@ const Field = (props: FieldProps): JSX.Element => {
 
         {type === 'array' && !!fields && (
           <>
-            {fieldData.value && (
+            {Array.isArray(fieldData.value) && (
               <ol>
-                {fieldData.value.map((item, index) => (
+                {fieldData.value.map((item: FieldsValues, index: number) => (
                   <li key={index}>
                     <Fieldset
                       value={item}

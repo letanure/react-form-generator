@@ -80,14 +80,14 @@ type FormConfig = {
 }
 
 type FieldData = {
-  value: string | number | readonly string[] | undefined | FieldsValues
+  value: string | undefined | FieldsValues | FieldsValues[]
   changed: boolean
   touched: boolean
   valid: boolean
 }
 
 type FieldsValues = {
-  [key: string]: FieldData['value']
+  [key: string]: string | FieldsValues | FieldsValues[]
 }
 
 /** Information about the state of the form and complete data from each field */
