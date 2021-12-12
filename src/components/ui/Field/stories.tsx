@@ -33,7 +33,9 @@ export default {
         'url',
         'textarea',
         'select',
-        'radioGroup'
+        'radioGroup',
+        'object',
+        'array'
       ],
       control: {
         type: 'select'
@@ -68,7 +70,7 @@ export default {
       type: { name: 'string', required: false }
     },
     onChange: {
-      description: 'Emit the field state on every change'
+      action: 'changed'
     }
   }
 } as ComponentMeta<typeof Field>
@@ -77,7 +79,6 @@ const Template: ComponentStory<typeof Field> = (args) => <Field {...args} />
 
 export const configurable = Template.bind({})
 configurable.args = {
-  onChange: (e: unknown) => console.log(e),
   label: 'Label',
   type: 'text',
   name: 'name',
@@ -87,7 +88,6 @@ configurable.args = {
 }
 export const color = Template.bind({})
 color.args = {
-  onChange: (e: unknown) => console.log(e),
   label: 'Label',
   type: 'color',
   name: 'name',
@@ -96,7 +96,6 @@ color.args = {
 
 export const datetimeLocal = Template.bind({})
 datetimeLocal.args = {
-  onChange: (e: unknown) => console.log(e),
   label: 'Label',
   type: 'datetime-local',
   name: 'name',
@@ -105,7 +104,6 @@ datetimeLocal.args = {
 
 export const datetime = Template.bind({})
 datetime.args = {
-  onChange: (e: unknown) => console.log(e),
   label: 'Label',
   type: 'datetime',
   name: 'name',
@@ -114,7 +112,6 @@ datetime.args = {
 
 export const email = Template.bind({})
 email.args = {
-  onChange: (e: unknown) => console.log(e),
   label: 'Label',
   type: 'email',
   name: 'name',
@@ -123,7 +120,6 @@ email.args = {
 
 export const hidden = Template.bind({})
 hidden.args = {
-  onChange: (e: unknown) => console.log(e),
   label: '',
   type: 'hidden',
   name: 'name',
@@ -132,7 +128,6 @@ hidden.args = {
 
 export const month = Template.bind({})
 month.args = {
-  onChange: (e: unknown) => console.log(e),
   label: 'Month',
   type: 'month',
   name: 'name',
@@ -141,7 +136,6 @@ month.args = {
 
 export const number = Template.bind({})
 number.args = {
-  onChange: (e: unknown) => console.log(e),
   label: 'Number',
   type: 'number',
   name: 'name',
@@ -150,7 +144,6 @@ number.args = {
 
 export const password = Template.bind({})
 password.args = {
-  onChange: (e: unknown) => console.log(e),
   label: 'Password',
   type: 'password',
   name: 'name',
@@ -159,7 +152,6 @@ password.args = {
 
 export const search = Template.bind({})
 search.args = {
-  onChange: (e: unknown) => console.log(e),
   label: 'Search',
   type: 'search',
   name: 'name',
@@ -168,7 +160,6 @@ search.args = {
 
 export const tel = Template.bind({})
 tel.args = {
-  onChange: (e: unknown) => console.log(e),
   label: 'Tel',
   type: 'tel',
   name: 'name',
@@ -177,7 +168,6 @@ tel.args = {
 
 export const text = Template.bind({})
 text.args = {
-  onChange: (e: unknown) => console.log(e),
   label: 'Label',
   type: 'text',
   name: 'name',
@@ -186,7 +176,6 @@ text.args = {
 
 export const time = Template.bind({})
 time.args = {
-  onChange: (e: unknown) => console.log(e),
   label: 'Time',
   type: 'time',
   name: 'name',
@@ -195,7 +184,6 @@ time.args = {
 
 export const url = Template.bind({})
 url.args = {
-  onChange: (e: unknown) => console.log(e),
   label: 'URL',
   type: 'url',
   name: 'name',
@@ -204,7 +192,6 @@ url.args = {
 
 export const textarea = Template.bind({})
 textarea.args = {
-  onChange: (e: unknown) => console.log(e),
   label: 'Textarea',
   type: 'textarea',
   name: 'name',
@@ -216,7 +203,6 @@ textarea.args = {
 
 export const select = Template.bind({})
 select.args = {
-  onChange: (e: unknown) => console.log(e),
   label: 'Select',
   type: 'select',
   name: 'name',
@@ -230,7 +216,6 @@ select.args = {
 
 export const radioGroup = Template.bind({})
 radioGroup.args = {
-  onChange: (e: unknown) => console.log(e),
   label: 'Radio Group',
   type: 'radioGroup',
   name: 'radioGroup',
@@ -244,11 +229,54 @@ radioGroup.args = {
 
 export const object = Template.bind({})
 object.args = {
-  onChange: (e: unknown) => console.log(e),
   label: 'Object label',
   type: 'object',
   name: 'object-name',
-  value: '',
+  value: {},
+  fields: [
+    {
+      name: 'name',
+      label: 'Name',
+      type: 'text',
+      value: ''
+    },
+    {
+      name: 'email',
+      label: 'Email',
+      type: 'email',
+      value: ''
+    }
+  ]
+}
+
+export const arrayEmptyValue = Template.bind({})
+arrayEmptyValue.args = {
+  label: 'Array label',
+  type: 'array',
+  name: 'array-name',
+  value: [],
+  fields: [
+    {
+      name: 'name',
+      label: 'Name',
+      type: 'text',
+      value: ''
+    },
+    {
+      name: 'email',
+      label: 'Email',
+      type: 'email',
+      value: ''
+    }
+  ]
+}
+
+export const arrayWithValue = Template.bind({})
+arrayWithValue.args = {
+  label: 'Array label',
+  type: 'array',
+  name: 'array-name',
+  value: [{ name: 'aaa', email: 'bbb@ccc.com' }],
   fields: [
     {
       name: 'name',

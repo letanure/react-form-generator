@@ -48,11 +48,19 @@ interface FieldRadioGroupConfig
 
 interface FieldConfigTextarea extends Omit<FieldConfigBasic, 'type'> {
   type: 'textarea'
+  value: string
   rows?: number
 }
 
 interface FieldConfigObject extends Omit<FieldConfigBasic, 'type'> {
   type: 'object'
+  value: FieldsValues
+  fields: FieldConfig[]
+}
+
+interface FieldConfigArray extends Omit<FieldConfigBasic, 'type'> {
+  type: 'array'
+  value: FieldsValues[]
   fields: FieldConfig[]
 }
 
@@ -62,6 +70,7 @@ type FieldConfig =
   | FieldRadioGroupConfig
   | FieldConfigTextarea
   | FieldConfigObject
+  | FieldConfigArray
 
 type FormConfig = {
   fields: FieldConfig[]

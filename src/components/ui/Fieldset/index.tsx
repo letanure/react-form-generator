@@ -8,7 +8,7 @@ export type FieldsetProps = {
   hasSubmit?: boolean
   submitText?: string
   onSubmit?: (values: FieldsValues, meta: FieldsetMeta) => void
-  onChange: (values: FieldsValues, meta: FieldsetMeta) => void
+  onChange?: (values: FieldsValues, meta: FieldsetMeta) => void
 }
 /**
  * Loops over an array of Field configs, and renders a Field component for each
@@ -31,7 +31,7 @@ const Fieldset = ({
    */
   const onChangeRef = useRef(
     (fieldsValues: FieldsValues, fieldsetMeta: FieldsetMeta) => {
-      onChange(fieldsValues, fieldsetMeta)
+      onChange && onChange(fieldsValues, fieldsetMeta)
     }
   )
 

@@ -12,6 +12,10 @@ export const Wrapper = styled.div`
     [readonly] {
       opacity: 0.8;
     }
+    ol,
+    li {
+      padding: 0 0 0 15px;
+    }
     fieldset {
       border: none;
     }

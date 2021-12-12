@@ -77,6 +77,27 @@ const Field = (props: FieldProps): JSX.Element => {
     })
   }
 
+  const handleOnSubmitArray = (
+    newValue: FieldsValues,
+    newMeta: FieldsetMeta
+  ) => {
+    setFieldData({
+      value: fieldData.value.concat(newValue),
+      changed: newMeta.changed,
+      touched: newMeta.touched,
+      valid: newMeta.valid
+    })
+  }
+
+  const removeItemArray = (index: number) => {
+    setFieldData({
+      value: fieldData.value.filter((_, i) => i !== index),
+      changed: true,
+      touched: true,
+      valid: fieldData.valid
+    })
+  }
+
   const TagWrapper = type === 'object' ? 'fieldset' : 'label'
   const TagLabel = type === 'object' ? 'legend' : 'div'
   return (
@@ -138,7 +159,9 @@ const Field = (props: FieldProps): JSX.Element => {
           </select>
         )}
 
-        {!['textarea', 'select', 'radioGroup', 'object'].includes(type) && (
+        {!['textarea', 'select', 'radioGroup', 'object', 'array'].includes(
+          type
+        ) && (
           <input
             className={fieldData.valid ? undefined : 'hasError'}
             disabled={disabled}
@@ -153,6 +176,34 @@ const Field = (props: FieldProps): JSX.Element => {
 
         {type === 'object' && !!fields && (
           <Fieldset fields={fields} onChange={handleOnChangeObject} />
+        )}
+
+        {type === 'array' && !!fields && (
+          <>
+            {fieldData.value && (
+              <ol>
+                {fieldData.value.map((item, index) => (
+                  <li key={index}>
+                    <Fieldset
+                      value={item}
+                      fields={fields}
+                      hasSubmit={false}
+                      submitText="Add"
+                    />
+                    <button onClick={() => removeItemArray(index)}>
+                      Remove
+                    </button>
+                  </li>
+                ))}
+              </ol>
+            )}
+            <Fieldset
+              fields={fields}
+              onSubmit={handleOnSubmitArray}
+              hasSubmit={true}
+              submitText="Add"
+            />
+          </>
         )}
 
         {!fieldData.valid &&

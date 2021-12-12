@@ -130,6 +130,47 @@
         { "value": "2", "label": "Option 2" },
         { "value": "3", "label": "Option 3" }
       ]
+    },
+    {
+      "label": "Object",
+      "name": "object",
+      "type": "object",
+      "value": {},
+      "fields": [
+        {
+          "name": "sub-1",
+          "label": "Sub 1",
+          "value": "sub 1"
+        },
+        {
+          "name": "sub-2",
+          "label": "Sub 2",
+          "value": "sub 2"
+        }
+      ]
+    },
+    {
+      "label": "Array",
+      "name": "array",
+      "type": "array",
+      "value": [
+        {
+          "sub1": "sub 1",
+          "sub2": "sub 2"
+        }
+      ],
+      "fields": [
+        {
+          "name": "sub1",
+          "label": "Sub 1",
+          "value": "sub 1"
+        },
+        {
+          "name": "sub2",
+          "label": "Sub 2",
+          "value": "sub 2"
+        }
+      ]
     }
   ]
 }
