@@ -5,13 +5,23 @@ import * as S from './styles'
 export type FieldsetProps = {
   fields: FormConfig['fields']
   value?: FieldsValues
+  hasSubmit?: boolean
+  submitText?: string
+  onSubmit?: (values: FieldsValues, meta: FieldsetMeta) => void
   onChange: (values: FieldsValues, meta: FieldsetMeta) => void
 }
 /**
  * Loops over an array of Field configs, and renders a Field component for each
  * Assembles a FieldsValues and FieldsetMeta object to pass to the onChange callback
  */
-const Fieldset = ({ fields = [], value = {}, onChange }: FieldsetProps) => {
+const Fieldset = ({
+  fields = [],
+  value = {},
+  hasSubmit = false,
+  submitText = 'Submit',
+  onSubmit,
+  onChange
+}: FieldsetProps) => {
   const [fieldsValues, setFieldsValues] = useState<FieldsValues>()
   const [fieldsetMeta, setFieldsetMeta] = useState<FieldsetMeta>()
 
@@ -50,6 +60,14 @@ const Fieldset = ({ fields = [], value = {}, onChange }: FieldsetProps) => {
     })
   }
 
+  const handleOnSubmit = () => {
+    onSubmit &&
+      fieldsValues &&
+      fieldsetMeta &&
+      fieldsetMeta.valid &&
+      onSubmit(fieldsValues, fieldsetMeta)
+  }
+
   return (
     <S.Wrapper className="fieldset">
       {!!fields &&
@@ -61,6 +79,7 @@ const Fieldset = ({ fields = [], value = {}, onChange }: FieldsetProps) => {
             onChange={(fieldData) => handleOnChange(fieldProps.name, fieldData)}
           />
         ))}
+      {hasSubmit && <button onClick={handleOnSubmit}>{submitText}</button>}
     </S.Wrapper>
   )
 }
