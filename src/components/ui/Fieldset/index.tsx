@@ -7,8 +7,8 @@ export type FieldsetProps = {
   value?: FieldsValues
   hasSubmit?: boolean
   submitText?: string
-  onSubmit?: (values: FieldsValues, meta: FieldsetMeta) => void
-  onChange?: (values: FieldsValues, meta: FieldsetMeta) => void
+  onSubmit?: (values: FieldsValues | FieldsValues[], meta: FieldsetMeta) => void
+  onChange?: (values: FieldsValues | FieldsValues[], meta: FieldsetMeta) => void
 }
 /**
  * Loops over an array of Field configs, and renders a Field component for each
@@ -22,7 +22,9 @@ const Fieldset = ({
   onSubmit,
   onChange
 }: FieldsetProps) => {
-  const [fieldsValues, setFieldsValues] = useState<FieldsValues>()
+  const [fieldsValues, setFieldsValues] = useState<
+    FieldsValues | FieldsValues[]
+  >()
   const [fieldsetMeta, setFieldsetMeta] = useState<FieldsetMeta>()
 
   /**
@@ -30,7 +32,10 @@ const Fieldset = ({
    * but adding  the onchange to deps of useEffect will
    */
   const onChangeRef = useRef(
-    (fieldsValues: FieldsValues, fieldsetMeta: FieldsetMeta) => {
+    (
+      fieldsValues: FieldsValues | FieldsValues[],
+      fieldsetMeta: FieldsetMeta
+    ) => {
       onChange && onChange(fieldsValues, fieldsetMeta)
     }
   )

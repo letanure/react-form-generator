@@ -68,7 +68,10 @@ const Field = (props: FieldProps): JSX.Element => {
     validateAndSetData(validate, newValue, label, true)
   }
 
-  const handleOnChangeObject = (valuesub: FieldsValues, meta: FieldsetMeta) => {
+  const handleOnChangeObject = (
+    valuesub: FieldsValues | FieldsValues[],
+    meta: FieldsetMeta
+  ) => {
     setFieldData({
       value: valuesub,
       changed: meta.changed,
@@ -78,7 +81,7 @@ const Field = (props: FieldProps): JSX.Element => {
   }
 
   const handleOnSubmitArray = (
-    newValue: FieldsValues[],
+    newValue: FieldsValues | FieldsValues[],
     newMeta: FieldsetMeta
   ) => {
     const valueArray = fieldData?.value as FieldsValues[]

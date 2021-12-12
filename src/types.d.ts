@@ -25,7 +25,7 @@ interface FieldConfigBasic {
     | 'url'
     | undefined
   validate?: RuleConfig[]
-  value: FieldData['value']
+  value: string | FieldsValues | FieldsValues[]
 }
 
 type FieldOption = {
@@ -48,19 +48,16 @@ interface FieldRadioGroupConfig
 
 interface FieldConfigTextarea extends Omit<FieldConfigBasic, 'type'> {
   type: 'textarea'
-  value: string
   rows?: number
 }
 
 interface FieldConfigObject extends Omit<FieldConfigBasic, 'type'> {
   type: 'object'
-  value: FieldsValues
   fields: FieldConfig[]
 }
 
 interface FieldConfigArray extends Omit<FieldConfigBasic, 'type'> {
   type: 'array'
-  value: FieldsValues[]
   fields: FieldConfig[]
 }
 
