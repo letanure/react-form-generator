@@ -4,7 +4,15 @@ import Form from '.'
 
 export default {
   title: 'UI/Form/Form',
-  component: Form
+  component: Form,
+  argTypes: {
+    onChange: {
+      action: 'changed'
+    },
+    onSubmit: {
+      action: 'submited'
+    }
+  }
 } as ComponentMeta<typeof Form>
 
 const Template: ComponentStory<typeof Form> = (args) => <Form {...args} />
@@ -13,8 +21,6 @@ export const Basic = Template.bind({})
 Basic.args = {
   title: 'Form Generated',
   description: 'Form Generated using config',
-  onChange: (e: unknown) => console.log(e),
-  onSubmit: (e: unknown) => console.log(e),
   fields: [
     {
       label: 'Name',
@@ -41,8 +47,6 @@ export const withInitialValue = Template.bind({})
 withInitialValue.args = {
   title: 'Form with initial value',
   description: 'Form Generated using config',
-  onChange: (e: unknown) => console.log(e),
-  onSubmit: (e: unknown) => console.log(e),
   value: {
     name1: 'Name changed',
     name2: '2001-02-03',
