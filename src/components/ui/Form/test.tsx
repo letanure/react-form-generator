@@ -65,7 +65,7 @@ describe('<Form />', () => {
   it('should get the data from Fields', () => {
     const { spyOnChange } = renderWithProps()
 
-    expect(spyOnChange).toBeCalledTimes(2)
+    expect(spyOnChange).toBeCalledTimes(1)
     const values = {
       test1: 'val1',
       test2: 'val2'
@@ -118,7 +118,7 @@ describe('<Form />', () => {
     const { spyOnChange } = renderWithProps()
 
     fireEvent.submit(screen.getByRole('form'))
-    expect(spyOnChange).toBeCalledTimes(2)
+    expect(spyOnChange).toBeCalledTimes(1)
     expect(spyOnChange).toBeCalledWith(
       {
         test1: 'val1',
@@ -145,7 +145,7 @@ describe('<Form />', () => {
     })
 
     fireEvent.submit(screen.getByRole('form'))
-    expect(spyOnChange).toBeCalledTimes(2)
+    expect(spyOnChange).toBeCalledTimes(1)
     expect(spyOnChange).toBeCalledWith(
       {
         test1: 'val3',

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { useEffect, useState } from 'react'
 
 import * as S from './styles'
@@ -32,11 +32,7 @@ const Field = (props: FieldProps): JSX.Element => {
     value: value,
     changed: false,
     touched: false,
-    valid: false
-  })
-
-  const onChangeRef = useRef((fieldData: FieldData) => {
-    onChange(fieldData)
+    valid: true
   })
 
   useEffect(() => {
@@ -45,7 +41,8 @@ const Field = (props: FieldProps): JSX.Element => {
   }, [validate, value, label])
 
   useEffect(() => {
-    onChangeRef.current(fieldData)
+    onChange(fieldData)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fieldData])
 
   const validateAndSetData = (
@@ -56,12 +53,15 @@ const Field = (props: FieldProps): JSX.Element => {
   ) => {
     const errors = runValidations(validate || [], newValue, label)
     setEerrorsMessages(errors)
-    setFieldData({
+    const newFiledData = {
       value: newValue,
       changed: newValue !== value,
       touched,
       valid: errors.length === 0
-    })
+    }
+    if (JSON.stringify(newFiledData) !== JSON.stringify(fieldData)) {
+      setFieldData(newFiledData)
+    }
   }
 
   const handleOnChange = (newValue: string) => {
