@@ -1,7 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 
-import * as S from './styles'
 import Fieldset from 'components/ui/Fieldset'
 import { runValidations } from './validation'
 
@@ -103,18 +102,29 @@ const Field = (props: FieldProps): JSX.Element => {
     })
   }
 
-  const TagWrapper = type === 'object' ? 'fieldset' : 'label'
-  const TagLabel = type === 'object' ? 'legend' : 'div'
+  const classNames = (classesObj: ClassesObject) =>
+    Object.entries(classesObj)
+      .filter(([, show]) => show)
+      .reduce((classesStr, item) => `${classesStr} ${item[0]}`, '')
+      .trim()
+
+  const TagWrapper = ['object', 'radioGroup'].includes(type)
+    ? 'fieldset'
+    : 'label'
+  const TagLabel = ['object', 'radioGroup'].includes(type) ? 'legend' : 'div'
   return (
-    <S.Wrapper className={`field-${type}`}>
-      <TagWrapper>
+    <div className={`field field-${type}`}>
+      <TagWrapper className={` field-wrapper`}>
         {!!label && label !== '' && (
-          <TagLabel className="label">{label}</TagLabel>
+          <TagLabel className="field-label">{label}</TagLabel>
         )}
 
         {type === 'textarea' && (
           <textarea
-            className={fieldData.valid ? '' : 'hasError'}
+            className={classNames({
+              hasError: !fieldData.valid,
+              [`field-input-${type}`]: true
+            })}
             disabled={disabled}
             name={name}
             onChange={(e) => handleOnChange(e.target.value)}
@@ -126,10 +136,15 @@ const Field = (props: FieldProps): JSX.Element => {
         )}
 
         {type === 'radioGroup' && (
-          <div className={fieldData.valid ? '' : 'hasError'}>
+          <div
+            className={classNames({
+              hasError: !fieldData.valid,
+              [`field-input-${type}`]: true
+            })}
+          >
             {options &&
               options.map((option: FieldOption, index) => (
-                <label key={index} className="radioLabel">
+                <label key={index} className="field-input-radioGroup-option">
                   <input
                     checked={fieldData.value === option.value}
                     disabled={disabled}
@@ -139,36 +154,46 @@ const Field = (props: FieldProps): JSX.Element => {
                     type="radio"
                     value={option.value as string}
                   />
-                  <span>{option.label}</span>
+                  <span className="field-input-radioGroup-option-label">
+                    {option.label}
+                  </span>
                 </label>
               ))}
           </div>
         )}
 
         {type === 'select' && (
-          <select
-            className={fieldData.valid ? '' : 'hasError'}
-            disabled={disabled}
-            name={name}
-            onChange={(e) => handleOnChange(e.target.value)}
-            placeholder={placeholder}
-            value={fieldData.value as string}
-          >
-            {placeholder && <option value="">{placeholder}</option>}
-            {options &&
-              options.map((option: FieldOption, index) => (
-                <option key={index} value={option.value as string}>
-                  {option.label}
-                </option>
-              ))}
-          </select>
+          <div className="field-input-select-wrapper">
+            <select
+              className={classNames({
+                hasError: !fieldData.valid,
+                [`field-input-${type}`]: true
+              })}
+              disabled={disabled}
+              name={name}
+              onChange={(e) => handleOnChange(e.target.value)}
+              placeholder={placeholder}
+              value={fieldData.value as string}
+            >
+              {placeholder && <option value="">{placeholder}</option>}
+              {options &&
+                options.map((option: FieldOption, index) => (
+                  <option key={index} value={option.value as string}>
+                    {option.label}
+                  </option>
+                ))}
+            </select>
+          </div>
         )}
 
         {!['textarea', 'select', 'radioGroup', 'object', 'array'].includes(
           type
         ) && (
           <input
-            className={fieldData.valid ? undefined : 'hasError'}
+            className={classNames({
+              hasError: !fieldData.valid,
+              [`field-input-${type}`]: true
+            })}
             disabled={disabled}
             name={name}
             onChange={(e) => handleOnChange(e.target.value)}
@@ -211,14 +236,19 @@ const Field = (props: FieldProps): JSX.Element => {
           </>
         )}
 
-        {!fieldData.valid &&
-          errorsMessages
-            .slice(0, maxErrors)
-            .map((errorMessage: string, index) => (
-              <S.ErrorMessage key={index}>{errorMessage}</S.ErrorMessage>
-            ))}
+        {!fieldData.valid && (
+          <div className="field-errors">
+            {errorsMessages
+              .slice(0, maxErrors)
+              .map((errorMessage: string, index) => (
+                <div className="field-error" key={index}>
+                  {errorMessage}
+                </div>
+              ))}
+          </div>
+        )}
       </TagWrapper>
-    </S.Wrapper>
+    </div>
   )
 }
 
