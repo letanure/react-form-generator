@@ -47,7 +47,7 @@ describe('<Fieldset />', () => {
       onChange: spyOnChange
     })
 
-    expect(spyOnChange).toBeCalledTimes(2)
+    expect(spyOnChange).toBeCalledTimes(1)
     const values = {
       test1: 'val1',
       test2: 'val2'

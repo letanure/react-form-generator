@@ -82,7 +82,7 @@ configurable.args = {
   label: 'Label',
   type: 'text',
   name: 'name',
-  value: 'something',
+  value: 'email@mail.com',
   placeholder: 'Placeholder',
   validate: [{ type: 'string', min: 3, max: 255 }, { type: 'email' }]
 }

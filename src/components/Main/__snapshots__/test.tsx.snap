@@ -35,7 +35,7 @@ exports[`<Main /> should render the heading 1`] = `
   padding-right: 30px;
 }
 
-.c8 {
+.c6 {
   width: 66.66%;
   position: -webkit-sticky;
   position: sticky;
@@ -46,158 +46,14 @@ exports[`<Main /> should render the heading 1`] = `
   display: flex;
 }
 
-.c8 > div {
+.c6 > div {
   width: 50%;
   padding: 15px;
   overflow: hidden;
 }
 
-.c8 > div pre {
+.c6 > div pre {
   overflow: hidden;
-}
-
-.c5 {
-  padding-bottom: 15px;
-}
-
-.c5.field-hidden {
-  display: none;
-}
-
-.c5 [disabled] {
-  opacity: 0.5;
-}
-
-.c5 [readonly] {
-  opacity: 0.8;
-}
-
-.c5 ol,
-.c5 li {
-  padding: 0 0 0 15px;
-}
-
-.c5 fieldset {
-  border: none;
-}
-
-.c5 .label {
-  visibility: inherit;
-  margin: 6px 0px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #0c072c;
-  display: block;
-}
-
-.c5 .radioLabel {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 12px;
-  font-size: 14px;
-  border-radius: 8px;
-}
-
-.c5 .radioLabel input {
-  display: inline-block;
-  width: 20px;
-  -webkit-transform: translate(-3px,2px);
-  -ms-transform: translate(-3px,2px);
-  transform: translate(-3px,2px);
-}
-
-.c5 .radioLabel input:focus,
-.c5 .radioLabel input:focus-visible {
-  outline: none;
-}
-
-.c5 select {
-  font-family: inherit;
-  color: #0c072c;
-  background: #fff;
-  width: 100%;
-  padding: 12px;
-  font-size: 14px;
-  border: 1px solid #0c072c33;
-  border-radius: 8px;
-  display: block;
-  background-image: linear-gradient(45deg,transparent 50%,gray 50%), linear-gradient(135deg,gray 50%,transparent 50%), linear-gradient(to right,#ccc,#ccc);
-  background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px),calc(100% - 2.5em) 0.5em;
-  background-size: 5px 5px,5px 5px,1px 1.5em;
-  background-repeat: no-repeat;
-  margin: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
-.c5 select:focus {
-  background-image: linear-gradient(45deg,green 50%,transparent 50%), linear-gradient(135deg,transparent 50%,green 50%), linear-gradient(to right,#ccc,#ccc);
-  background-position: calc(100% - 15px) 1em,calc(100% - 20px) 1em, calc(100% - 2.5em) 0.5em;
-  background-size: 5px 5px,5px 5px,1px 1.5em;
-  background-repeat: no-repeat;
-  border-color: green;
-  outline: 0;
-}
-
-.c5 textarea {
-  font-family: inherit;
-  color: #0c072c;
-  background: #fff;
-  width: 100%;
-  padding: 8px;
-  font-size: 14px;
-  border: 1px solid #0c072c33;
-  border-radius: 8px;
-  min-height: 70px;
-  display: block;
-}
-
-.c5 textarea:focus,
-.c5 textarea:focus-visible {
-  outline: 1px solid #b336a0;
-  border-color: #b336a0;
-}
-
-.c5 textarea.hasError {
-  border: 1px solid rgb(233,75,75);
-}
-
-.c5 input {
-  font-family: inherit;
-  color: #0c072c;
-  background: #fff;
-  width: 100%;
-  padding: 12px;
-  font-size: 14px;
-  border: 1px solid #0c072c33;
-  border-radius: 8px;
-}
-
-.c5 input:focus,
-.c5 input:focus-visible {
-  outline: 1px solid #b336a0;
-  border-color: #b336a0;
-}
-
-.c5 input.hasError {
-  border: 1px solid rgb(233,75,75);
-}
-
-.c5 input[type='color'] {
-  width: 50px;
-  padding: 4px;
-  height: 43px;
-}
-
-.c6 {
-  padding-top: 4px;
-  font-size: 14px;
-  color: rgb(233,75,75);
 }
 
 .c4 {
@@ -213,7 +69,7 @@ exports[`<Main /> should render the heading 1`] = `
   margin-bottom: 15px;
 }
 
-.c7 {
+.c5 {
   font-family: inherit;
   padding: 12px 24px;
   margin-left: auto;
@@ -227,11 +83,11 @@ exports[`<Main /> should render the heading 1`] = `
   border-radius: 8px;
 }
 
-.c7:hover {
+.c5:hover {
   background-color: #b336a0cc;
 }
 
-.c9 {
+.c7 {
   font-size: 11px;
   border: 1px solid #999;
   padding: 10px;
@@ -259,38 +115,47 @@ exports[`<Main /> should render the heading 1`] = `
           class="c4 fieldset"
         >
           <div
-            class="c5 field-text"
+            class="field field-text"
           >
-            <label>
+            <label
+              class=" field-wrapper"
+            >
               <div
-                class="label"
+                class="field-label"
               >
                 This needs "foo"
               </div>
               <input
-                class="hasError"
+                class="hasError field-input-text"
                 name="foo"
                 placeholder="Placeholder test"
                 type="text"
                 value="bar"
               />
               <div
-                class="c6"
+                class="field-errors"
               >
-                Must start with foo
+                <div
+                  class="field-error"
+                >
+                  Must start with foo
+                </div>
               </div>
             </label>
           </div>
           <div
-            class="c5 field-text"
+            class="field field-text"
           >
-            <label>
+            <label
+              class=" field-wrapper"
+            >
               <div
-                class="label"
+                class="field-label"
               >
                 Placeholder text
               </div>
               <input
+                class="field-input-text"
                 name="placeholder"
                 placeholder="Placeholder test"
                 type="text"
@@ -299,15 +164,18 @@ exports[`<Main /> should render the heading 1`] = `
             </label>
           </div>
           <div
-            class="c5 field-color"
+            class="field field-color"
           >
-            <label>
+            <label
+              class=" field-wrapper"
+            >
               <div
-                class="label"
+                class="field-label"
               >
                 Color
               </div>
               <input
+                class="field-input-color"
                 name="color"
                 type="color"
                 value="#ff0000"
@@ -315,15 +183,18 @@ exports[`<Main /> should render the heading 1`] = `
             </label>
           </div>
           <div
-            class="c5 field-email"
+            class="field field-email"
           >
-            <label>
+            <label
+              class=" field-wrapper"
+            >
               <div
-                class="label"
+                class="field-label"
               >
                 Email
               </div>
               <input
+                class="field-input-email"
                 name="email"
                 type="email"
                 value="aa@bb.cc"
@@ -331,15 +202,18 @@ exports[`<Main /> should render the heading 1`] = `
             </label>
           </div>
           <div
-            class="c5 field-number"
+            class="field field-number"
           >
-            <label>
+            <label
+              class=" field-wrapper"
+            >
               <div
-                class="label"
+                class="field-label"
               >
                 Number
               </div>
               <input
+                class="field-input-number"
                 name="number"
                 type="number"
                 value="1"
@@ -347,15 +221,18 @@ exports[`<Main /> should render the heading 1`] = `
             </label>
           </div>
           <div
-            class="c5 field-password"
+            class="field field-password"
           >
-            <label>
+            <label
+              class=" field-wrapper"
+            >
               <div
-                class="label"
+                class="field-label"
               >
                 Password
               </div>
               <input
+                class="field-input-password"
                 name="password"
                 type="password"
                 value="123456"
@@ -363,15 +240,18 @@ exports[`<Main /> should render the heading 1`] = `
             </label>
           </div>
           <div
-            class="c5 field-tel"
+            class="field field-tel"
           >
-            <label>
+            <label
+              class=" field-wrapper"
+            >
               <div
-                class="label"
+                class="field-label"
               >
                 tel
               </div>
               <input
+                class="field-input-tel"
                 name="tel"
                 type="tel"
                 value="111222333"
@@ -379,15 +259,18 @@ exports[`<Main /> should render the heading 1`] = `
             </label>
           </div>
           <div
-            class="c5 field-text"
+            class="field field-text"
           >
-            <label>
+            <label
+              class=" field-wrapper"
+            >
               <div
-                class="label"
+                class="field-label"
               >
                 Text
               </div>
               <input
+                class="field-input-text"
                 name="text"
                 type="text"
                 value="my text"
@@ -395,15 +278,18 @@ exports[`<Main /> should render the heading 1`] = `
             </label>
           </div>
           <div
-            class="c5 field-time"
+            class="field field-time"
           >
-            <label>
+            <label
+              class=" field-wrapper"
+            >
               <div
-                class="label"
+                class="field-label"
               >
                 Time
               </div>
               <input
+                class="field-input-time"
                 name="time"
                 type="time"
                 value="12:00"
@@ -411,15 +297,18 @@ exports[`<Main /> should render the heading 1`] = `
             </label>
           </div>
           <div
-            class="c5 field-url"
+            class="field field-url"
           >
-            <label>
+            <label
+              class=" field-wrapper"
+            >
               <div
-                class="label"
+                class="field-label"
               >
                 URL
               </div>
               <input
+                class="field-input-url"
                 name="url"
                 type="url"
                 value="https://www.google.com"
@@ -427,15 +316,18 @@ exports[`<Main /> should render the heading 1`] = `
             </label>
           </div>
           <div
-            class="c5 field-datetime-local"
+            class="field field-datetime-local"
           >
-            <label>
+            <label
+              class=" field-wrapper"
+            >
               <div
-                class="label"
+                class="field-label"
               >
                 Datetime
               </div>
               <input
+                class="field-input-datetime-local"
                 name="datetime"
                 type="datetime-local"
                 value="2020-01-01T12:00"
@@ -443,15 +335,18 @@ exports[`<Main /> should render the heading 1`] = `
             </label>
           </div>
           <div
-            class="c5 field-hidden"
+            class="field field-hidden"
           >
-            <label>
+            <label
+              class=" field-wrapper"
+            >
               <div
-                class="label"
+                class="field-label"
               >
                 Hidden
               </div>
               <input
+                class="field-input-hidden"
                 name="hidden"
                 type="hidden"
                 value="9"
@@ -459,15 +354,18 @@ exports[`<Main /> should render the heading 1`] = `
             </label>
           </div>
           <div
-            class="c5 field-month"
+            class="field field-month"
           >
-            <label>
+            <label
+              class=" field-wrapper"
+            >
               <div
-                class="label"
+                class="field-label"
               >
                 Month
               </div>
               <input
+                class="field-input-month"
                 name="month"
                 type="month"
                 value="2020-01"
@@ -475,15 +373,18 @@ exports[`<Main /> should render the heading 1`] = `
             </label>
           </div>
           <div
-            class="c5 field-search"
+            class="field field-search"
           >
-            <label>
+            <label
+              class=" field-wrapper"
+            >
               <div
-                class="label"
+                class="field-label"
               >
                 Search
               </div>
               <input
+                class="field-input-search"
                 name="search"
                 type="search"
                 value="my search"
@@ -491,16 +392,18 @@ exports[`<Main /> should render the heading 1`] = `
             </label>
           </div>
           <div
-            class="c5 field-textarea"
+            class="field field-textarea"
           >
-            <label>
+            <label
+              class=" field-wrapper"
+            >
               <div
-                class="label"
+                class="field-label"
               >
                 Textarea
               </div>
               <textarea
-                class=""
+                class="field-input-textarea"
                 name="textarea"
                 rows="4"
               >
@@ -511,62 +414,72 @@ some text
             </label>
           </div>
           <div
-            class="c5 field-select"
+            class="field field-select"
           >
-            <label>
+            <label
+              class=" field-wrapper"
+            >
               <div
-                class="label"
+                class="field-label"
               >
                 Select
               </div>
-              <select
-                class=""
-                name="select"
+              <div
+                class="field-input-select-wrapper"
               >
-                <option
-                  value="1"
+                <select
+                  class="field-input-select"
+                  name="select"
                 >
-                  Option 1
-                </option>
-                <option
-                  value="2"
-                >
-                  Option 2
-                </option>
-                <option
-                  value="3"
-                >
-                  Option 3
-                </option>
-              </select>
+                  <option
+                    value="1"
+                  >
+                    Option 1
+                  </option>
+                  <option
+                    value="2"
+                  >
+                    Option 2
+                  </option>
+                  <option
+                    value="3"
+                  >
+                    Option 3
+                  </option>
+                </select>
+              </div>
             </label>
           </div>
           <div
-            class="c5 field-radioGroup"
+            class="field field-radioGroup"
           >
-            <label>
-              <div
-                class="label"
+            <fieldset
+              class=" field-wrapper"
+            >
+              <legend
+                class="field-label"
               >
                 Radio Group
-              </div>
+              </legend>
               <div
-                class=""
+                class="field-input-radioGroup"
               >
                 <label
-                  class="radioLabel"
+                  class="field-input-radioGroup-option"
                 >
                   <input
                     name="radioGroup"
                     type="radio"
                     value="1"
                   />
-                  <span>
+                  <span
+                    class="field-input-radioGroup-option-label"
+                  >
                     Option 1
                   </span>
                 </label>
                 <label
-                  class="radioLabel"
+                  class="field-input-radioGroup-option"
                 >
                   <input
                     checked=""
@@ -574,31 +487,37 @@ some text
                     type="radio"
                     value="2"
                   />
-                  <span>
+                  <span
+                    class="field-input-radioGroup-option-label"
+                  >
                     Option 2
                   </span>
                 </label>
                 <label
-                  class="radioLabel"
+                  class="field-input-radioGroup-option"
                 >
                   <input
                     name="radioGroup"
                     type="radio"
                     value="3"
                   />
-                  <span>
+                  <span
+                    class="field-input-radioGroup-option-label"
+                  >
                     Option 3
                   </span>
                 </label>
               </div>
-            </label>
+            </fieldset>
           </div>
           <div
-            class="c5 field-object"
+            class="field field-object"
           >
-            <fieldset>
+            <fieldset
+              class=" field-wrapper"
+            >
               <legend
-                class="label"
+                class="field-label"
               >
                 Object
               </legend>
@@ -606,15 +525,18 @@ some text
                 class="c4 fieldset"
               >
                 <div
-                  class="c5 field-text"
+                  class="field field-text"
                 >
-                  <label>
+                  <label
+                    class=" field-wrapper"
+                  >
                     <div
-                      class="label"
+                      class="field-label"
                     >
                       Sub 1
                     </div>
                     <input
+                      class="field-input-text"
                       name="sub-1"
                       type="text"
                       value="sub 1"
@@ -622,15 +544,18 @@ some text
                   </label>
                 </div>
                 <div
-                  class="c5 field-text"
+                  class="field field-text"
                 >
-                  <label>
+                  <label
+                    class=" field-wrapper"
+                  >
                     <div
-                      class="label"
+                      class="field-label"
                     >
                       Sub 2
                     </div>
                     <input
+                      class="field-input-text"
                       name="sub-2"
                       type="text"
                       value="sub 2"
@@ -641,11 +566,13 @@ some text
             </fieldset>
           </div>
           <div
-            class="c5 field-array"
+            class="field field-array"
           >
-            <label>
+            <label
+              class=" field-wrapper"
+            >
               <div
-                class="label"
+                class="field-label"
               >
                 Array
               </div>
@@ -655,15 +582,18 @@ some text
                     class="c4 fieldset"
                   >
                     <div
-                      class="c5 field-text"
+                      class="field field-text"
                     >
-                      <label>
+                      <label
+                        class=" field-wrapper"
+                      >
                         <div
-                          class="label"
+                          class="field-label"
                         >
                           Sub 1
                         </div>
                         <input
+                          class="field-input-text"
                           name="sub1"
                           type="text"
                           value="sub 1"
@@ -671,15 +601,18 @@ some text
                       </label>
                     </div>
                     <div
-                      class="c5 field-text"
+                      class="field field-text"
                     >
-                      <label>
+                      <label
+                        class=" field-wrapper"
+                      >
                         <div
-                          class="label"
+                          class="field-label"
                         >
                           Sub 2
                         </div>
                         <input
+                          class="field-input-text"
                           name="sub2"
                           type="text"
                           value="sub 2"
@@ -696,15 +629,18 @@ some text
                 class="c4 fieldset"
               >
                 <div
-                  class="c5 field-text"
+                  class="field field-text"
                 >
-                  <label>
+                  <label
+                    class=" field-wrapper"
+                  >
                     <div
-                      class="label"
+                      class="field-label"
                     >
                       Sub 1
                     </div>
                     <input
+                      class="field-input-text"
                       name="sub1"
                       type="text"
                       value="sub 1"
@@ -712,15 +648,18 @@ some text
                   </label>
                 </div>
                 <div
-                  class="c5 field-text"
+                  class="field field-text"
                 >
-                  <label>
+                  <label
+                    class=" field-wrapper"
+                  >
                     <div
-                      class="label"
+                      class="field-label"
                     >
                       Sub 2
                     </div>
                     <input
+                      class="field-input-text"
                       name="sub2"
                       type="text"
                       value="sub 2"
@@ -735,7 +674,7 @@ some text
           </div>
         </div>
         <button
-          class="c7"
+          class="c5"
           type="submit"
         >
           Submit
@@ -744,14 +683,14 @@ some text
     </div>
   </div>
   <div
-    class="c8"
+    class="c6"
   >
     <div>
       <h3>
         Config
       </h3>
       <div
-        class="c9"
+        class="c7"
       >
         <code>
           <pre>
@@ -964,7 +903,7 @@ some text
         Data
       </h3>
       <div
-        class="c9"
+        class="c7"
       >
         <code>
           <pre>
@@ -1004,7 +943,7 @@ some text
         Meta
       </h3>
       <div
-        class="c9"
+        class="c7"
       >
         <code>
           <pre>

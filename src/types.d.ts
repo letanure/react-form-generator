@@ -87,6 +87,10 @@ type FieldsValues = {
   [key: string]: string | FieldsValues | FieldsValues[]
 }
 
+type ClassesObject = {
+  [key: string]: boolean
+}
+
 /** Information about the state of the form and complete data from each field */
 type FieldsetMeta = {
   changed: boolean

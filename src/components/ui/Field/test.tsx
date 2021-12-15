@@ -91,7 +91,7 @@ describe('<Field />', () => {
         onChange: spyOnChange
       })
 
-      expect(spyOnChange).toBeCalledTimes(2)
+      expect(spyOnChange).toBeCalledTimes(1)
       expect(spyOnChange).toBeCalledWith({
         changed: false,
         touched: false,
@@ -106,9 +106,9 @@ describe('<Field />', () => {
         onChange: spyOnChange
       })
       const input = screen.getByRole('textbox')
-      expect(spyOnChange).toBeCalledTimes(2)
+      expect(spyOnChange).toBeCalledTimes(1)
       fireEvent.change(input, { target: { value: 'bar' } })
-      expect(spyOnChange).toBeCalledTimes(3)
+      expect(spyOnChange).toBeCalledTimes(2)
       expect(spyOnChange).toBeCalledWith({
         changed: true,
         touched: true,
@@ -134,11 +134,11 @@ describe('<Field />', () => {
         ]
       })
 
-      expect(spyOnChange).toBeCalledTimes(4)
+      expect(spyOnChange).toBeCalledTimes(2)
       expect(spyOnChange).toBeCalledWith({
         changed: false,
         touched: false,
-        valid: false,
+        valid: true,
         value: {
           test2: ''
         }
@@ -153,7 +153,7 @@ describe('<Field />', () => {
         onChange: spyOnChange
       })
 
-      expect(spyOnChange).toBeCalledTimes(2)
+      expect(spyOnChange).toBeCalledTimes(1)
       expect(spyOnChange).toBeCalledWith({
         changed: false,
         touched: false,
@@ -162,7 +162,7 @@ describe('<Field />', () => {
       })
       const input = screen.getByRole('textbox')
       fireEvent.change(input, { target: { value: 'bar' } })
-      expect(spyOnChange).toBeCalledTimes(3)
+      expect(spyOnChange).toBeCalledTimes(2)
       expect(spyOnChange).toBeCalledWith({
         changed: true,
         touched: true,
@@ -170,7 +170,7 @@ describe('<Field />', () => {
         value: 'bar'
       })
       fireEvent.change(input, { target: { value: 'val' } })
-      expect(spyOnChange).toBeCalledTimes(4)
+      expect(spyOnChange).toBeCalledTimes(3)
       expect(spyOnChange).toBeCalledWith({
         changed: false,
         touched: true,
@@ -492,7 +492,7 @@ describe('<Field />', () => {
       renderWithProps({
         onChange: spyOnChange
       })
-      expect(spyOnChange).toBeCalledTimes(2)
+      expect(spyOnChange).toBeCalledTimes(1)
       expect(spyOnChange).toBeCalledWith({
         changed: false,
         touched: false,
@@ -506,7 +506,7 @@ describe('<Field />', () => {
       renderWithProps({
         onChange: spyOnChange
       })
-      expect(spyOnChange).toBeCalledTimes(2)
+      expect(spyOnChange).toBeCalledTimes(1)
       expect(spyOnChange).toBeCalledWith({
         changed: false,
         touched: false,
@@ -520,6 +520,13 @@ describe('<Field />', () => {
       renderWithProps({
         onChange: spyOnChange,
         validate: [{ type: 'string', min: 5 }]
+      })
+      expect(spyOnChange).toBeCalledTimes(2)
+      expect(spyOnChange).toBeCalledWith({
+        changed: false,
+        touched: false,
+        valid: true,
+        value: 'val'
       })
       expect(spyOnChange).toBeCalledTimes(2)
       expect(spyOnChange).toBeCalledWith({

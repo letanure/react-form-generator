@@ -65,7 +65,7 @@ describe('<Form />', () => {
   it('should get the data from Fields', () => {
     const { spyOnChange } = renderWithProps()
 
-    expect(spyOnChange).toBeCalledTimes(2)
+    expect(spyOnChange).toBeCalledTimes(1)
     const values = {
       test1: 'val1',
       test2: 'val2'
@@ -118,7 +118,7 @@ describe('<Form />', () => {
     const { spyOnChange } = renderWithProps()
 
     fireEvent.submit(screen.getByRole('form'))
-    expect(spyOnChange).toBeCalledTimes(2)
+    expect(spyOnChange).toBeCalledTimes(1)
     expect(spyOnChange).toBeCalledWith(
       {
         test1: 'val1',
@@ -145,7 +145,7 @@ describe('<Form />', () => {
     })
 
     fireEvent.submit(screen.getByRole('form'))
-    expect(spyOnChange).toBeCalledTimes(2)
+    expect(spyOnChange).toBeCalledTimes(1)
     expect(spyOnChange).toBeCalledWith(
       {
         test1: 'val3',
@@ -159,6 +159,111 @@ describe('<Form />', () => {
         },
         touched: false,
         valid: true
+      }
+    )
+  })
+
+  it('complete form render, onchange, submit', async () => {
+    const { spyOnChange, spyOnSubmit } = renderWithProps({
+      value: {
+        test1: 'val3',
+        test2: 'val4'
+      }
+    })
+
+    const label1 = screen.getByText(/test1/i)
+    expect(label1).toBeInTheDocument()
+    const input1 = screen.getByPlaceholderText(/p1/i)
+    expect(input1).toBeInTheDocument()
+    const label2 = screen.getByText(/test2/i)
+    expect(label2).toBeInTheDocument()
+    const input2 = screen.getByPlaceholderText(/p2/i)
+    expect(input2).toBeInTheDocument()
+    const button = screen.getByRole('button', { name: /submit/i })
+    expect(button).toBeInTheDocument()
+    expect(spyOnChange).toBeCalledTimes(1)
+    expect(spyOnChange).toBeCalledWith(
+      {
+        test1: 'val3',
+        test2: 'val4'
+      },
+      {
+        changed: false,
+        touched: false,
+        valid: true,
+        fields: {
+          test1: { changed: false, touched: false, valid: true, value: 'val3' },
+          test2: { changed: false, touched: false, valid: true, value: 'val4' }
+        }
+      }
+    )
+    fireEvent.change(input1, { target: { value: 'bar' } })
+    expect(spyOnChange).toBeCalledTimes(2)
+    expect(spyOnChange).toBeCalledWith(
+      {
+        test1: 'bar',
+        test2: 'val4'
+      },
+      {
+        changed: true,
+        touched: true,
+        valid: true,
+        fields: {
+          test1: { changed: true, touched: true, valid: true, value: 'bar' },
+          test2: { changed: false, touched: false, valid: true, value: 'val4' }
+        }
+      }
+    )
+    fireEvent.change(input1, { target: { value: 'val3' } })
+    expect(spyOnChange).toBeCalledTimes(3)
+    expect(spyOnChange).toBeCalledWith(
+      {
+        test1: 'val3',
+        test2: 'val4'
+      },
+      {
+        changed: false,
+        touched: true,
+        valid: true,
+        fields: {
+          test1: { changed: false, touched: true, valid: true, value: 'val3' },
+          test2: { changed: false, touched: false, valid: true, value: 'val4' }
+        }
+      }
+    )
+    fireEvent.click(button)
+    expect(spyOnSubmit).toBeCalledTimes(1)
+    expect(spyOnSubmit).toBeCalledWith(
+      {
+        test1: 'val3',
+        test2: 'val4'
+      },
+      {
+        changed: false,
+        touched: true,
+        valid: true,
+        fields: {
+          test1: { changed: false, touched: true, valid: true, value: 'val3' },
+          test2: { changed: false, touched: false, valid: true, value: 'val4' }
+        }
+      }
+    )
+    fireEvent.change(input2, { target: { value: 'val5' } })
+    fireEvent.submit(screen.getByRole('form'))
+    expect(spyOnSubmit).toBeCalledTimes(2)
+    expect(spyOnSubmit).toBeCalledWith(
+      {
+        test1: 'val3',
+        test2: 'val5'
+      },
+      {
+        changed: true,
+        touched: true,
+        valid: true,
+        fields: {
+          test1: { changed: false, touched: true, valid: true, value: 'val3' },
+          test2: { changed: true, touched: true, valid: true, value: 'val5' }
+        }
       }
     )
   })
