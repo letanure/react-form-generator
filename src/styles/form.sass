@@ -1,81 +1,175 @@
-.field
-  --target-height: 40px
+.form
   --color-primary: #2e3440
-  --color-error: #BF616A
-  --color-AAA: #d8dee9
+  --color-inactive: #d8dee9
   --color-hover: #afb4bd
-  --color-focus: #5e81ac
+  --color-active: #5e81ac
+  --color-error: #BF616A
+  --target-height: 40px
   --font-size: calc(var(--target-height) * 0.4)
-  --line-height: 1.5
-  --width: 100%
-  --background-color: transparent
-  --border-color: var(--color-AAA)
-  --border-radius: calc(var(--font-size) / 4)
-  --border-width: calc(var(--font-size) / 9)
-  --label-fz: calc(var(--font-size) * 0.813)
-  --label-fw: 600
-  --label-pb: calc(var(--font-size) / 4)
-  --label-d: block
   --height: calc(var(--font-size) * 2.5)
   --base-padding: calc((var(--height) - var(--font-size)) / 2)
+  --border-radius: calc(var(--font-size) / 4)
+  --background-color: transparent
+  --border-width: calc(var(--font-size) / 9)
+  --border-color: var(--color-inactive)
+  --border-style: solid
+  --border-inactive: var(--border-width) var(--border-style) var(--border-color)
+  --border-active: var(--border-width) var(--border-style) var(--color-active)
+  --border-error: var(--border-width) var(--border-style) var(--color-error)
+  --border: var(--border-inactive)
+  --line-height: calc(var(--target-height) - (var(--border-width) * 2))
+  --label-fz: calc(var(--font-size) * 0.813)
+  --label-fw: 600
+  --label-c: var(--color-primary)
+  --label-pb: calc(var(--base-padding) / 2)
   --transition-field: color 0.1s ease, border-color 0.1s ease
 
-  .hasError
-    --border-color: var(--color-error)
-    &:hover
-    &:focus,
-    &:focus-visible
-      --border-color: var(--color-error)
-
-  // font-size: var(--font-size)
+  font-size: var(--font-size)
   box-sizing: border-box
-  margin-bottom: var(--base-padding)
+
+  [data-valid="false"]
+    --border: var(--border-error)
   *
     box-sizing: border-box
     padding: 0
 
-  button
-    display: inline-block
+  fieldset, legend
+    border: none
+    padding: 0
+
+  .fieldset
+    display: grid
+
+  input:not([type='checkbox'], [type='radio']), textarea, select
+    appearance: none
+    background-color: var(--background-color)
     border-radius: var(--border-radius)
-    border: var(--border-width) solid var(--border-color)
-    background-color: var(--border-color)
-    padding: var(--base-padding)
+    border: var(--border)
+    font-size: var(--font-size)
     height: var(--height)
-    cursor: pointer
+    padding: 0 var(--base-padding)
     transition: var(--transition-field)
-    &:hover
-      --border-color: var(--color-hover)
+    width: 100%
+    &:hover,
     &:focus,
     &:focus-visible
       outline: none
-      --border-color: var(--color-focus)
-      color: white
+      --border: var(--border-active)
 
-  &-errors
-    font-size: var(--label-fz)
-    color: var(--color-error)
+  .field
+    margin-bottom: var(--base-padding)
+    accent-color: var(--color-active)
 
+    display: grid
+    grid-template-columns: 1fr
+    grid-template-rows: auto
+    grid-template-areas: "label" "control" "errors"
 
-  &-label
-      display: var(--label-d)
-      font-weight: var(--label-fw)
+    // grid-template-columns: 1fr 2fr
+    // grid-template-areas: "label control" ".  errors "
+
+    &-label
+      grid-area: label
       font-size: var(--label-fz)
+      font-weight: var(--label-fw)
+      color: var(--label-c)
       padding-bottom: var(--label-pb)
+      // padding-right: var(--base-padding)
+      // white-space: nowrap
+      // align-self: center
 
-  &-hidden
-    display: none
+    &-control
+      grid-area: control
+      position: relative
 
-  &-radioGroup
-    height: auto
-    .field-wrapper
-      border: 0
-    input[type="radio"]
-      width: calc(var(--font-size) * 0.8)
-      height: calc(var(--font-size) * 0.8)
+    &-errors
+      grid-area: errors
+      font-size: var(--label-fz)
+      color: var(--color-error)
 
-  &-object
-    .field-wrapper
-      border: 0
+    &-range
+      input
+        appearance: none
+        padding: 0
+        border: none
+        &::-webkit-slider-runnable-track
+          background: var(--color-inactive)
+          border-radius: var(--border-radius)
+          border: var(--border)
+          cursor: pointer
+          height: calc(var(--height) / 3)
+          width: 100%
+        &::-webkit-slider-thumb
+          -webkit-appearance: none
+          background: var(--color-active)
+          border-radius: var(--border-radius)
+          border: 0
+          cursor: pointer
+          height: var(--height)
+          margin-top: calc(((var(--height) / 3) * -1 ) - var(--border-width))
+          width: calc(var(--height) / 2)
+          &:hover
+            background: var(--color-active)
+
+    &-color
+      input
+        padding: 0
+        &::-webkit-color-swatch-wrapper
+          padding: 0
+          padding: calc(var(--base-padding) /4)
+        &::-webkit-color-swatch
+          border-radius: var(--border-radius)
+          border: 0
+
+    &-textarea
+      textarea
+        height: auto
+        display: block
+        line-height: 1.3
+        font-family: inherit
+        padding-top: calc(var(--base-padding) / 2)
+        &::-webkit-scrollbar
+          width: 0
+
+    &-select
+      .field-wrapper
+        position: relative
+        select
+          appearance: none
+        &::after
+          background-color: var(--border-color)
+          clip-path: polygon(50% 80%, 90% 40%, 100% 50%, 50% 100%, 0% 50%, 10% 40%)
+          content: ""
+          height: var(--font-size)
+          pointer-events: none
+          position: absolute
+          right: var(--base-padding)
+          top: calc(var(--base-padding) - var(--border-width))
+          width: var(--font-size)
+        &:hover::after
+          background-color: var(--color-active)
+
+    &-hidden
+      display: none
+
+    &-radioGroup
+      .field-wrapper
+        display: flex
+        column-gap: var(--base-padding)
+      .field-option
+        display: inline-block
+        padding: var(--base-padding) 0
+        cursor: pointer
+        font-size: var(--font-size)
+        white-space: nowrap
+
+      input[type="radio"]
+        margin-right: calc(var(--base-padding) / 2)
+        display: inline-block
+        width: calc(var(--font-size) * 0.8)
+        height: calc(var(--font-size) * 0.8)
+
+    &-object
       legend
         border-bottom: var(--border-width) solid #d8dee9
         padding: 0
@@ -99,87 +193,51 @@
             border-width: 0 0 var(--border-width) var(--border-width)
             top: calc((var(--target-height) / 2 * -1) - var(--base-padding))
             left: calc(var(--base-padding) * -1)
-  &-array
-    ol
-      li
-        display: flex
-        column-gap: var(--base-padding)
-        &:nth-child(1)
-          .field .field-label
-            display: block
-          button
-            margin-top: calc(var(--base-padding) * 1.6)
-        .field .field-label
-          display: none
-        .fieldset
-          display: flex
-          column-gap: var(--base-padding)
-          margin: 0
-        button
-          margin-bottom: calc(var(--base-padding) * 0.9)
 
-  [class*='field-input']
-    appearance: none
-    background-color: var(--background-color)
+    &-array
+      ol
+        padding-left: calc(var(--base-padding) * 2)
+        counter-reset: li
+      li
+        border-left: var(--border-width) solid var(--border-color)
+        padding-left: var(--base-padding)
+        &:before
+          content: counter(li, decimal-leading-zero)
+          counter-increment: li
+          color: var(--color-active)
+          margin: 0
+          position: absolute
+          width: calc(var(--base-padding) * 2)
+          height: calc(var(--base-padding) * 2)
+          display: block
+          // vertical-align: middle
+          // border-radius: var(--border-radius)
+          // border: var(--border)
+          background-color: var(--color-inactive)
+          text-align: center
+          line-height: calc(var(--base-padding) * 2)
+          margin-left: calc(var(--base-padding) * -3)
+          font-size: calc(var(--base-padding) * 0.9)
+
+        &::marker
+          display: none
+
+  button
+    background-color: var(--border-color)
     border-radius: var(--border-radius)
     border: var(--border-width) solid var(--border-color)
+    cursor: pointer
+    display: block
     font-size: var(--font-size)
     height: var(--height)
-    line-height: var(--line-height)
     padding: var(--base-padding)
     transition: var(--transition-field)
-    width: var(--width)
-
+    width: 100%
+    margin-bottom: var(--base-padding)
     &:hover
       --border-color: var(--color-hover)
     &:focus,
     &:focus-visible
       outline: none
-      --border-color: var(--color-focus)
-
-  .field-input
-    &-color
-      padding: calc(var(--base-padding) / 2)
-      &::-webkit-color-swatch-wrapper
-        padding: 0
-      &::-webkit-color-swatch
-        border-radius: var(--border-radius)
-        border: 0
-
-    &-textarea
-      --height: auto
-      font-family: inherit
-
-    &-select
-      width: 100%
-      padding: 0 var(--base-padding)
-      border: var(--border-width) solid var(--border-color)
-      border-radius: var(--border-radius)
-      line-height: var(--line-height)
-      margin: 0
-      padding-right: var(--target-height)
-      &-wrapper
-        padding: 0
-        border: 0
-        position: relative
-        &::after
-          position: absolute
-          top: var(--base-padding)
-          right: var(--base-padding)
-          content: ""
-          width: var(--font-size)
-          height: var(--font-size)
-          background-color: var(--border-color)
-          clip-path: polygon(80% 10%, 0% 10%, 40% 80%)
-          pointer-events: none
-
-    &-radioGroup
-      border: 0
-      height: auto
-      padding: calc(var(--target-height) / 5) 0
-      &-option
-        height: auto
-        padding: 0 var(--base-padding) 0 0
-        border: 0
-        &-label
-          border: 0
+      --border-color: var(--color-active)
+      color: white

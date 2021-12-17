@@ -297,6 +297,21 @@ describe('<Field />', () => {
       expect(screen.getByRole('textbox')).toHaveAttribute('type', 'text')
     })
 
+    it('should render a range field', () => {
+      renderWithProps({
+        type: 'range',
+        min: 0,
+        max: 100,
+        step: 2,
+        options: [
+          { value: '20', label: 'Option 1' },
+          { value: '30', label: 'Option 2' },
+          { value: '40', label: 'Option 3' }
+        ]
+      })
+      expect(screen.getByRole('slider')).toHaveAttribute('type', 'range')
+    })
+
     it('should render a text field by default', () => {
       renderWithProps()
       expect(screen.getByRole('textbox')).toHaveAttribute('type', 'text')

@@ -25,6 +25,9 @@ const Field = (props: FieldProps): JSX.Element => {
   const fields = 'fields' in props && props.fields
   const options = 'options' in props && props.options
   const rows = 'rows' in props && props.rows
+  const min = 'min' in props && props.min
+  const max = 'max' in props && props.max
+  const step = 'step' in props && props.step
 
   const [errorsMessages, setEerrorsMessages] = useState<string[]>([])
   const [fieldData, setFieldData] = useState<FieldData>({
@@ -102,29 +105,24 @@ const Field = (props: FieldProps): JSX.Element => {
     })
   }
 
-  const classNames = (classesObj: ClassesObject) =>
-    Object.entries(classesObj)
-      .filter(([, show]) => show)
-      .reduce((classesStr, item) => `${classesStr} ${item[0]}`, '')
-      .trim()
-
   const TagWrapper = ['object', 'radioGroup'].includes(type)
     ? 'fieldset'
     : 'label'
   const TagLabel = ['object', 'radioGroup'].includes(type) ? 'legend' : 'div'
   return (
-    <div className={`field field-${type}`}>
-      <TagWrapper className={` field-wrapper`}>
-        {!!label && label !== '' && (
-          <TagLabel className="field-label">{label}</TagLabel>
-        )}
-
+    <TagWrapper
+      className={`field field-${type}`}
+      data-valid={fieldData.valid}
+      data-touched={fieldData.touched}
+      data-changed={fieldData.changed}
+    >
+      {!!label && label !== '' && (
+        <TagLabel className="field-label">{label}</TagLabel>
+      )}
+      <div className="field-control">
         {type === 'textarea' && (
           <textarea
-            className={classNames({
-              hasError: !fieldData.valid,
-              [`field-input-${type}`]: true
-            })}
+            className={`field-input-${type}`}
             disabled={disabled}
             name={name}
             onChange={(e) => handleOnChange(e.target.value)}
@@ -136,15 +134,10 @@ const Field = (props: FieldProps): JSX.Element => {
         )}
 
         {type === 'radioGroup' && (
-          <div
-            className={classNames({
-              hasError: !fieldData.valid,
-              [`field-input-${type}`]: true
-            })}
-          >
+          <div className={`field-wrapper`}>
             {options &&
               options.map((option: FieldOption, index) => (
-                <label key={index} className="field-input-radioGroup-option">
+                <label key={index} className="field-option">
                   <input
                     checked={fieldData.value === option.value}
                     disabled={disabled}
@@ -154,21 +147,16 @@ const Field = (props: FieldProps): JSX.Element => {
                     type="radio"
                     value={option.value as string}
                   />
-                  <span className="field-input-radioGroup-option-label">
-                    {option.label}
-                  </span>
+                  <span className="field-option-label">{option.label}</span>
                 </label>
               ))}
           </div>
         )}
 
         {type === 'select' && (
-          <div className="field-input-select-wrapper">
+          <div className="field-wrapper">
             <select
-              className={classNames({
-                hasError: !fieldData.valid,
-                [`field-input-${type}`]: true
-              })}
+              className={`field-input-${type}`}
               disabled={disabled}
               name={name}
               onChange={(e) => handleOnChange(e.target.value)}
@@ -186,14 +174,16 @@ const Field = (props: FieldProps): JSX.Element => {
           </div>
         )}
 
-        {!['textarea', 'select', 'radioGroup', 'object', 'array'].includes(
-          type
-        ) && (
+        {![
+          'range',
+          'textarea',
+          'select',
+          'radioGroup',
+          'object',
+          'array'
+        ].includes(type) && (
           <input
-            className={classNames({
-              hasError: !fieldData.valid,
-              [`field-input-${type}`]: true
-            })}
+            className={`field-input-${type}`}
             disabled={disabled}
             name={name}
             onChange={(e) => handleOnChange(e.target.value)}
@@ -202,6 +192,35 @@ const Field = (props: FieldProps): JSX.Element => {
             type={type}
             value={fieldData.value as string}
           />
+        )}
+
+        {type === 'range' && (
+          <>
+            <input
+              className={`field-input-${type}`}
+              disabled={disabled}
+              name={name}
+              onChange={(e) => handleOnChange(e.target.value)}
+              readOnly={readonly}
+              type={type}
+              min={min as number}
+              max={max as number}
+              step={step as number}
+              value={fieldData.value as string}
+              list={`tickmarks-${name}`}
+            />
+            {options && (
+              <datalist id={`tickmarks-${name}`}>
+                {options.map((option: FieldOption, index) => (
+                  <option
+                    key={index}
+                    value={option.value as string}
+                    label={option.label}
+                  />
+                ))}
+              </datalist>
+            )}
+          </>
         )}
 
         {type === 'object' && !!fields && (
@@ -235,20 +254,20 @@ const Field = (props: FieldProps): JSX.Element => {
             />
           </>
         )}
+      </div>
 
-        {!fieldData.valid && (
-          <div className="field-errors">
-            {errorsMessages
-              .slice(0, maxErrors)
-              .map((errorMessage: string, index) => (
-                <div className="field-error" key={index}>
-                  {errorMessage}
-                </div>
-              ))}
-          </div>
-        )}
-      </TagWrapper>
-    </div>
+      {!fieldData.valid && (
+        <div className="field-errors">
+          {errorsMessages
+            .slice(0, maxErrors)
+            .map((errorMessage: string, index) => (
+              <div className="field-error" key={index}>
+                {errorMessage}
+              </div>
+            ))}
+        </div>
+      )}
+    </TagWrapper>
   )
 }
 

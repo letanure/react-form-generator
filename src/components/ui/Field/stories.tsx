@@ -190,6 +190,21 @@ url.args = {
   value: 'https://www.google.com'
 }
 
+export const range = Template.bind({})
+range.args = {
+  label: 'Range',
+  type: 'range',
+  name: 'range',
+  min: 20,
+  max: 50,
+  step: 5,
+  options: [
+    { value: '20', label: 'Option 1' },
+    { value: '30', label: 'Option 2' },
+    { value: '40', label: 'Option 3' }
+  ]
+}
+
 export const textarea = Template.bind({})
 textarea.args = {
   label: 'Textarea',

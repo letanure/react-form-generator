@@ -1,6 +1,5 @@
 import Fieldset from 'components/ui/Fieldset'
 import React, { useEffect, useRef, useState } from 'react'
-import * as S from './styles'
 
 export type FormProps = FormConfig & {
   value?: FieldsValues | FieldsValues[]
@@ -50,16 +49,14 @@ const Form = ({
     setFormMeta(meta)
   }
   return (
-    <S.Wrapper>
-      <form onSubmit={handleSubmit} aria-label="form">
-        {title && <S.Title>{title}</S.Title>}
-        {description && <S.Description>{description}</S.Description>}
-        {!!fields && (
-          <Fieldset fields={fields} onChange={handleOnChange} value={value} />
-        )}
-        <S.Button type="submit">{submitText}</S.Button>
-      </form>
-    </S.Wrapper>
+    <form onSubmit={handleSubmit} aria-label="form" className="form">
+      {title && <h3>{title}</h3>}
+      {description && <p>{description}</p>}
+      {!!fields && (
+        <Fieldset fields={fields} onChange={handleOnChange} value={value} />
+      )}
+      <button type="submit">{submitText}</button>
+    </form>
   )
 }
 
