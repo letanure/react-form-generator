@@ -1,6 +1,5 @@
 import Field from 'components/ui/Field'
 import React, { useEffect, useRef, useState } from 'react'
-import * as S from './styles'
 
 export type FieldsetProps = {
   fields: FormConfig['fields']
@@ -75,7 +74,7 @@ const Fieldset = ({
   }
 
   return (
-    <S.Wrapper className="fieldset">
+    <div className="fieldset">
       {!!fields &&
         fields.map((fieldProps, indexInput) => (
           <Field
@@ -86,7 +85,7 @@ const Fieldset = ({
           />
         ))}
       {hasSubmit && <button onClick={handleOnSubmit}>{submitText}</button>}
-    </S.Wrapper>
+    </div>
   )
 }
 
