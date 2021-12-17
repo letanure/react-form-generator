@@ -172,10 +172,30 @@ exports[`<Main /> should render the heading 1`] = `
           >
             <input
               class="field-input-range"
+              list="tickmarks-range"
+              max="50"
+              min="20"
               name="range"
+              step="5"
               type="range"
               value="10"
             />
+            <datalist
+              id="tickmarks-range"
+            >
+              <option
+                label="Option 1"
+                value="20"
+              />
+              <option
+                label="Option 2"
+                value="30"
+              />
+              <option
+                label="Option 3"
+                value="40"
+              />
+            </datalist>
           </div>
         </label>
         <label
@@ -793,7 +813,23 @@ some text
       "name": "range",
       "type": "range",
       "value": "10",
-      "min": "5"
+      "min": "20",
+      "max": "50",
+      "step": "5",
+      "options": [
+        {
+          "value": "20",
+          "label": "Option 1"
+        },
+        {
+          "value": "30",
+          "label": "Option 2"
+        },
+        {
+          "value": "40",
+          "label": "Option 3"
+        }
+      ]
     },
     {
       "label": "Email",

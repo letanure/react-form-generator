@@ -33,6 +33,20 @@
       "value": "#ff0000"
     },
     {
+      "label": "Range",
+      "name": "range",
+      "type": "range",
+      "value": "10",
+      "min": "20",
+      "max": "50",
+      "step": "5",
+      "options": [
+        { "value": "20", "label": "Option 1" },
+        { "value": "30", "label": "Option 2" },
+        { "value": "40", "label": "Option 3" }
+      ]
+    },
+    {
       "label": "Email",
       "name": "email",
       "type": "email",

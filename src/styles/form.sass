@@ -65,6 +65,7 @@
     grid-template-rows: auto
     grid-template-areas: "label" "control" "errors"
 
+    // grid-template-columns: 1fr 2fr
     // grid-template-areas: "label control" ".  errors "
 
     &-label
@@ -88,6 +89,7 @@
 
     &-range
       input
+        appearance: none
         padding: 0
         border: none
         &::-webkit-slider-runnable-track
@@ -132,15 +134,17 @@
     &-select
       .field-wrapper
         position: relative
+        select
+          appearance: none
         &::after
           background-color: var(--border-color)
-          clip-path: polygon(80% 10%, 0% 10%, 40% 80%)
+          clip-path: polygon(50% 80%, 90% 40%, 100% 50%, 50% 100%, 0% 50%, 10% 40%)
           content: ""
           height: var(--font-size)
           pointer-events: none
           position: absolute
           right: var(--base-padding)
-          top: var(--base-padding)
+          top: calc(var(--base-padding) - var(--border-width))
           width: var(--font-size)
         &:hover::after
           background-color: var(--color-active)

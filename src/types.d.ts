@@ -46,6 +46,14 @@ interface FieldRadioGroupConfig
   options: FieldOptions
 }
 
+interface FieldConfigInputRange extends Omit<FieldConfigBasic, 'type'> {
+  type: 'range'
+  max?: number
+  min?: number
+  step?: number
+  options?: FieldOptions
+}
+
 interface FieldConfigTextarea extends Omit<FieldConfigBasic, 'type'> {
   type: 'textarea'
   rows?: number
@@ -65,6 +73,7 @@ type FieldConfig =
   | FieldConfigBasic
   | FieldSelectConfig
   | FieldRadioGroupConfig
+  | FieldConfigInputRange
   | FieldConfigTextarea
   | FieldConfigObject
   | FieldConfigArray

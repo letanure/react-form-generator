@@ -25,6 +25,9 @@ const Field = (props: FieldProps): JSX.Element => {
   const fields = 'fields' in props && props.fields
   const options = 'options' in props && props.options
   const rows = 'rows' in props && props.rows
+  const min = 'min' in props && props.min
+  const max = 'max' in props && props.max
+  const step = 'step' in props && props.step
 
   const [errorsMessages, setEerrorsMessages] = useState<string[]>([])
   const [fieldData, setFieldData] = useState<FieldData>({
@@ -171,20 +174,52 @@ const Field = (props: FieldProps): JSX.Element => {
           </div>
         )}
 
-        {!['textarea', 'select', 'radioGroup', 'object', 'array'].includes(
-          type
-        ) && (
+        {![
+          'range',
+          'textarea',
+          'select',
+          'radioGroup',
+          'object',
+          'array'
+        ].includes(type) && (
+          <input
+            className={`field-input-${type}`}
+            disabled={disabled}
+            name={name}
+            onChange={(e) => handleOnChange(e.target.value)}
+            placeholder={placeholder}
+            readOnly={readonly}
+            type={type}
+            value={fieldData.value as string}
+          />
+        )}
+
+        {type === 'range' && (
           <>
             <input
               className={`field-input-${type}`}
               disabled={disabled}
               name={name}
               onChange={(e) => handleOnChange(e.target.value)}
-              placeholder={placeholder}
               readOnly={readonly}
               type={type}
+              min={min as number}
+              max={max as number}
+              step={step as number}
               value={fieldData.value as string}
+              list={`tickmarks-${name}`}
             />
+            {options && (
+              <datalist id={`tickmarks-${name}`}>
+                {options.map((option: FieldOption, index) => (
+                  <option
+                    key={index}
+                    value={option.value as string}
+                    label={option.label}
+                  />
+                ))}
+              </datalist>
+            )}
           </>
         )}
 
