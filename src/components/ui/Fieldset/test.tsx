@@ -46,6 +46,20 @@ describe('<Fieldset />', () => {
     expect(input2).toBeInTheDocument()
   })
 
+  it('should render layout vertical by default ', () => {
+    const { rendered } = renderWithProps()
+    expect(rendered.container.querySelector('label:nth-child(1)')).toHaveClass(
+      'layout-vertical'
+    )
+  })
+
+  it('should render layout horizontal ', () => {
+    const { rendered } = renderWithProps({ layout: 'horizontal' })
+    expect(rendered.container.querySelector('label:nth-child(1)')).toHaveClass(
+      'layout-horizontal'
+    )
+  })
+
   it('should render a button', () => {
     renderWithProps({
       hasSubmit: true,
