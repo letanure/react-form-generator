@@ -11,6 +11,18 @@ export default {
     },
     onSubmit: {
       action: 'submited'
+    },
+    layout: {
+      default: 'vertical',
+      description: 'Layout of input',
+      type: { name: 'string', false: true },
+      table: {
+        defaultValue: { summary: 'vertical' }
+      },
+      options: ['horizontal', 'vertical'],
+      control: {
+        type: 'select'
+      }
     }
   }
 } as ComponentMeta<typeof Form>

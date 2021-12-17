@@ -81,6 +81,7 @@ type FieldConfig =
 
 type FormConfig = {
   fields: FieldConfig[]
+  layout?: 'horizontal' | 'vertical'
   title?: string
   submitText?: string
   description?: string
