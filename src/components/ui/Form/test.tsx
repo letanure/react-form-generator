@@ -42,11 +42,25 @@ describe('<Form />', () => {
       expect(screen.getByText('Test title')).toBeInTheDocument()
     })
 
+    it('should render a title', () => {
+      renderWithProps({
+        title: 'Test title'
+      })
+      expect(screen.getByText('Test title')).toBeInTheDocument()
+    })
+
     it('should render a description', () => {
       renderWithProps({
-        title: 'Test description'
+        description: 'Test description'
       })
       expect(screen.getByText('Test description')).toBeInTheDocument()
+    })
+
+    it('should change the submit button text', () => {
+      renderWithProps({
+        submitText: 'Save'
+      })
+      expect(screen.getByRole('button', { name: /save/i })).toBeInTheDocument()
     })
   })
 
