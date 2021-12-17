@@ -1,12 +1,13 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 
 import Fieldset, { FieldsetProps } from '.'
-import { FieldProps } from '../Field'
 
-const renderWithProps = (props: Partial<FieldProps> = {}) => {
+const renderWithProps = (props: Partial<FieldsetProps> = {}) => {
+  const spyOnChange = jest.fn<FieldData, []>()
+  const spyOnSubmit = jest.fn<FieldData, []>()
   const config: FieldsetProps = {
-    onChange: jest.fn<FieldData, []>(),
-    onSubmit: jest.fn<FieldData, []>(),
+    onChange: spyOnChange,
+    onSubmit: spyOnSubmit,
     fields: [
       {
         name: 'test1',
@@ -25,7 +26,11 @@ const renderWithProps = (props: Partial<FieldProps> = {}) => {
     ],
     ...props
   }
-  return render(<Fieldset {...config} />)
+  return {
+    rendered: render(<Fieldset {...config} />),
+    spyOnChange: spyOnChange,
+    spyOnSubmit: spyOnSubmit
+  }
 }
 
 describe('<Fieldset />', () => {
@@ -39,6 +44,14 @@ describe('<Fieldset />', () => {
     expect(input1).toBeInTheDocument()
     const input2 = screen.getByPlaceholderText(/p2/i)
     expect(input2).toBeInTheDocument()
+  })
+
+  it('should render a button', () => {
+    renderWithProps({
+      hasSubmit: true,
+      submitText: 'save'
+    })
+    expect(screen.getByRole('button', { name: /save/i })).toBeInTheDocument()
   })
 
   it('should get the data from Fields on change', () => {
@@ -136,6 +149,99 @@ describe('<Fieldset />', () => {
             valid: true,
             value: 'val2'
           }
+        }
+      }
+    )
+  })
+
+  it('should call onChange', async () => {
+    const { spyOnChange } = renderWithProps()
+
+    expect(spyOnChange).toBeCalledTimes(1)
+    expect(spyOnChange).toBeCalledWith(
+      {
+        test1: 'val1',
+        test2: 'val2'
+      },
+      {
+        changed: false,
+        fields: {
+          test1: {
+            changed: false,
+            touched: false,
+            valid: true,
+            value: 'val1'
+          },
+          test2: {
+            changed: false,
+            touched: false,
+            valid: true,
+            value: 'val2'
+          }
+        },
+        touched: false,
+        valid: true
+      }
+    )
+    const input1 = screen.getByPlaceholderText(/p1/i)
+    expect(input1).toBeInTheDocument()
+    fireEvent.change(input1, { target: { value: 'bar' } })
+    expect(spyOnChange).toBeCalledTimes(2)
+    expect(spyOnChange).toBeCalledWith(
+      {
+        test1: 'bar',
+        test2: 'val2'
+      },
+      {
+        changed: true,
+        touched: true,
+        valid: true,
+        fields: {
+          test1: { changed: true, touched: true, valid: true, value: 'bar' },
+          test2: { changed: false, touched: false, valid: true, value: 'val2' }
+        }
+      }
+    )
+    fireEvent.change(input1, { target: { value: 'val1' } })
+    expect(spyOnChange).toBeCalledTimes(3)
+    expect(spyOnChange).toBeCalledWith(
+      {
+        test1: 'val1',
+        test2: 'val2'
+      },
+      {
+        changed: false,
+        touched: true,
+        valid: true,
+        fields: {
+          test1: { changed: false, touched: true, valid: true, value: 'val1' },
+          test2: { changed: false, touched: false, valid: true, value: 'val2' }
+        }
+      }
+    )
+  })
+
+  it('should call onSumbit', async () => {
+    const { spyOnSubmit } = renderWithProps({
+      hasSubmit: true,
+      submitText: 'send'
+    })
+    const button = screen.getByRole('button', { name: /send/i })
+    expect(button).toBeInTheDocument()
+    fireEvent.click(button)
+    expect(spyOnSubmit).toBeCalledTimes(1)
+    expect(spyOnSubmit).toBeCalledWith(
+      {
+        test1: 'val1',
+        test2: 'val2'
+      },
+      {
+        changed: false,
+        touched: false,
+        valid: true,
+        fields: {
+          test1: { changed: false, touched: false, valid: true, value: 'val1' },
+          test2: { changed: false, touched: false, valid: true, value: 'val2' }
         }
       }
     )
