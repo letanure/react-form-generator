@@ -9,7 +9,9 @@ export const decorators = [
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
+        <div className='form'>
         <Story />
+        </div>
       </ThemeProvider>
     </>
   )
