@@ -40,6 +40,16 @@ describe('<Field />', () => {
       expect(screen.getByText(/mylabel/i)).toBeInTheDocument()
     })
 
+    it('should render layout vertical by default ', () => {
+      const { container } = renderWithProps()
+      expect(container.firstChild).toHaveClass('layout-vertical')
+    })
+
+    it('should render layout horizontal ', () => {
+      const { container } = renderWithProps({ layout: 'horizontal' })
+      expect(container.firstChild).toHaveClass('layout-horizontal')
+    })
+
     it('should NOT render label tag if not provided ', () => {
       const { container } = renderWithProps()
       expect(container.querySelector('.label')).toBeNull()

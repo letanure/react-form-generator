@@ -8,6 +8,7 @@ interface FieldConfigBasic {
   name: string
   placeholder?: string
   readonly?: boolean
+  layout?: 'horizontal' | 'vertical'
   type?:
     | 'color'
     | 'datetime-local'

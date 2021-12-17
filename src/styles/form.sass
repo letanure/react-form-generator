@@ -24,8 +24,8 @@
   --label-pb: calc(var(--base-padding) / 2)
   --transition-field: color 0.1s ease, border-color 0.1s ease
 
-  font-size: var(--font-size)
   box-sizing: border-box
+  font-size: var(--font-size)
 
   [data-valid="false"]
     --border: var(--border-error)
@@ -38,6 +38,7 @@
     padding: 0
 
   .fieldset
+    grid-area: fieldset
     display: grid
 
   input:not([type='checkbox'], [type='radio']), textarea, select
@@ -57,41 +58,57 @@
       --border: var(--border-active)
 
   .field
-    margin-bottom: var(--base-padding)
     accent-color: var(--color-active)
-
     display: grid
+    grid-template-areas: "label" "control" "errors"
     grid-template-columns: 1fr
     grid-template-rows: auto
-    grid-template-areas: "label" "control" "errors"
+    margin-bottom: var(--base-padding)
 
-    // grid-template-columns: 1fr 2fr
-    // grid-template-areas: "label control" ".  errors "
+    &.layout-horizontal
+      grid-template-areas: "label control" ".  errors "
+      grid-template-columns: 1fr 2fr
+      legend
+        display: contents
+        line-height: var(--line-height)
+      &.field-array > .field-label
+        align-items: start
+        line-height: var(--line-height)
+      &.field-object .field
+        &:nth-child(1)::before
+          height: 0
+          top: calc(var(--height) / 2)
+        &::before
+          width: calc(var(--base-padding) *0.7)
 
     &-label
-      grid-area: label
+      align-items: center
+      color: var(--label-c)
+      display: flex
       font-size: var(--label-fz)
       font-weight: var(--label-fw)
-      color: var(--label-c)
+      grid-area: label
       padding-bottom: var(--label-pb)
-      // padding-right: var(--base-padding)
-      // white-space: nowrap
-      // align-self: center
+      white-space: nowrap
 
     &-control
       grid-area: control
+      min-width: 0
       position: relative
 
+    &-remove
+      grid-area: remove
+
     &-errors
-      grid-area: errors
-      font-size: var(--label-fz)
       color: var(--color-error)
+      font-size: var(--label-fz)
+      grid-area: errors
 
     &-range
       input
         appearance: none
-        padding: 0
         border: none
+        padding: 0
         &::-webkit-slider-runnable-track
           background: var(--color-inactive)
           border-radius: var(--border-radius)
@@ -115,7 +132,6 @@
       input
         padding: 0
         &::-webkit-color-swatch-wrapper
-          padding: 0
           padding: calc(var(--base-padding) /4)
         &::-webkit-color-swatch
           border-radius: var(--border-radius)
@@ -123,10 +139,10 @@
 
     &-textarea
       textarea
-        height: auto
         display: block
-        line-height: 1.3
         font-family: inherit
+        height: auto
+        line-height: 1.3
         padding-top: calc(var(--base-padding) / 2)
         &::-webkit-scrollbar
           width: 0
@@ -154,26 +170,26 @@
 
     &-radioGroup
       .field-wrapper
-        display: flex
         column-gap: var(--base-padding)
+        display: flex
       .field-option
-        display: inline-block
-        padding: var(--base-padding) 0
         cursor: pointer
+        display: inline-block
         font-size: var(--font-size)
+        padding: var(--base-padding) 0
         white-space: nowrap
 
       input[type="radio"]
-        margin-right: calc(var(--base-padding) / 2)
         display: inline-block
-        width: calc(var(--font-size) * 0.8)
         height: calc(var(--font-size) * 0.8)
+        margin-right: calc(var(--base-padding) / 2)
+        width: calc(var(--font-size) * 0.8)
 
     &-object
       legend
         border-bottom: var(--border-width) solid #d8dee9
-        padding: 0
         margin-bottom: var(--base-padding)
+        padding: 0
 
       .fieldset
         padding-left: var(--base-padding)
@@ -184,40 +200,40 @@
             height: calc(100% - (var(--base-padding) * 0.6))
             top: calc((var(--target-height) / 2 * -1) + (var(--base-padding) * 0.6))
           &::before
-            content: ""
-            display: block
-            width: var(--base-padding)
-            height: calc(100% + var(--base-padding))
-            position: absolute
             border: 0 solid var(--border-color)
             border-width: 0 0 var(--border-width) var(--border-width)
-            top: calc((var(--target-height) / 2 * -1) - var(--base-padding))
+            content: ""
+            display: block
+            height: calc(100% + var(--base-padding))
             left: calc(var(--base-padding) * -1)
+            position: absolute
+            top: calc((var(--target-height) / 2 * -1) - var(--base-padding))
+            width: var(--base-padding)
 
     &-array
       ol
-        padding-left: calc(var(--base-padding) * 2)
         counter-reset: li
+        padding-left: calc(var(--base-padding) * 2)
       li
         border-left: var(--border-width) solid var(--border-color)
+        display: grid
+        grid-template-areas: "fieldset fieldset fieldset" ". remove remove"
+        grid-template-columns: 1fr 2fr
+        margin-bottom: calc(var(--base-padding))
         padding-left: var(--base-padding)
         &:before
+          background-color: var(--color-inactive)
+          color: var(--color-active)
           content: counter(li, decimal-leading-zero)
           counter-increment: li
-          color: var(--color-active)
-          margin: 0
-          position: absolute
-          width: calc(var(--base-padding) * 2)
-          height: calc(var(--base-padding) * 2)
           display: block
-          // vertical-align: middle
-          // border-radius: var(--border-radius)
-          // border: var(--border)
-          background-color: var(--color-inactive)
-          text-align: center
+          font-size: calc(var(--base-padding) * 0.9)
+          height: calc(var(--base-padding) * 2)
           line-height: calc(var(--base-padding) * 2)
           margin-left: calc(var(--base-padding) * -3)
-          font-size: calc(var(--base-padding) * 0.9)
+          position: absolute
+          text-align: center
+          width: calc(var(--base-padding) * 2)
 
         &::marker
           display: none
@@ -230,14 +246,14 @@
     display: block
     font-size: var(--font-size)
     height: var(--height)
+    margin-bottom: var(--base-padding)
     padding: var(--base-padding)
     transition: var(--transition-field)
     width: 100%
-    margin-bottom: var(--base-padding)
     &:hover
       --border-color: var(--color-hover)
     &:focus,
     &:focus-visible
-      outline: none
       --border-color: var(--color-active)
       color: white
+      outline: none
