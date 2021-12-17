@@ -20,6 +20,7 @@ const Field = (props: FieldProps): JSX.Element => {
     type = 'text',
     validate,
     value,
+    layout = 'vertical',
     onChange
   } = props
   const fields = 'fields' in props && props.fields
@@ -111,7 +112,7 @@ const Field = (props: FieldProps): JSX.Element => {
   const TagLabel = ['object', 'radioGroup'].includes(type) ? 'legend' : 'div'
   return (
     <TagWrapper
-      className={`field field-${type}`}
+      className={`field field-${type} layout-${layout}`}
       data-valid={fieldData.valid}
       data-touched={fieldData.touched}
       data-changed={fieldData.changed}
@@ -239,7 +240,10 @@ const Field = (props: FieldProps): JSX.Element => {
                       hasSubmit={false}
                       submitText="Add"
                     />
-                    <button onClick={() => removeItemArray(index)}>
+                    <button
+                      className="field-remove"
+                      onClick={() => removeItemArray(index)}
+                    >
                       Remove
                     </button>
                   </li>

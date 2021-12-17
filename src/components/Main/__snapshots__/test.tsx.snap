@@ -80,7 +80,7 @@ exports[`<Main /> should render the heading 1`] = `
         class="fieldset"
       >
         <label
-          class="field field-text"
+          class="field field-text layout-vertical"
           data-changed="false"
           data-touched="false"
           data-valid="false"
@@ -112,7 +112,7 @@ exports[`<Main /> should render the heading 1`] = `
           </div>
         </label>
         <label
-          class="field field-text"
+          class="field field-text layout-vertical"
           data-changed="false"
           data-touched="false"
           data-valid="true"
@@ -135,7 +135,7 @@ exports[`<Main /> should render the heading 1`] = `
           </div>
         </label>
         <label
-          class="field field-color"
+          class="field field-color layout-vertical"
           data-changed="false"
           data-touched="false"
           data-valid="true"
@@ -157,7 +157,7 @@ exports[`<Main /> should render the heading 1`] = `
           </div>
         </label>
         <label
-          class="field field-range"
+          class="field field-range layout-vertical"
           data-changed="false"
           data-touched="false"
           data-valid="true"
@@ -199,7 +199,7 @@ exports[`<Main /> should render the heading 1`] = `
           </div>
         </label>
         <label
-          class="field field-email"
+          class="field field-email layout-vertical"
           data-changed="false"
           data-touched="false"
           data-valid="true"
@@ -221,7 +221,7 @@ exports[`<Main /> should render the heading 1`] = `
           </div>
         </label>
         <label
-          class="field field-number"
+          class="field field-number layout-vertical"
           data-changed="false"
           data-touched="false"
           data-valid="true"
@@ -243,7 +243,7 @@ exports[`<Main /> should render the heading 1`] = `
           </div>
         </label>
         <label
-          class="field field-password"
+          class="field field-password layout-vertical"
           data-changed="false"
           data-touched="false"
           data-valid="true"
@@ -265,7 +265,7 @@ exports[`<Main /> should render the heading 1`] = `
           </div>
         </label>
         <label
-          class="field field-tel"
+          class="field field-tel layout-vertical"
           data-changed="false"
           data-touched="false"
           data-valid="true"
@@ -287,7 +287,7 @@ exports[`<Main /> should render the heading 1`] = `
           </div>
         </label>
         <label
-          class="field field-text"
+          class="field field-text layout-vertical"
           data-changed="false"
           data-touched="false"
           data-valid="true"
@@ -309,7 +309,7 @@ exports[`<Main /> should render the heading 1`] = `
           </div>
         </label>
         <label
-          class="field field-time"
+          class="field field-time layout-vertical"
           data-changed="false"
           data-touched="false"
           data-valid="true"
@@ -331,7 +331,7 @@ exports[`<Main /> should render the heading 1`] = `
           </div>
         </label>
         <label
-          class="field field-url"
+          class="field field-url layout-vertical"
           data-changed="false"
           data-touched="false"
           data-valid="true"
@@ -353,7 +353,7 @@ exports[`<Main /> should render the heading 1`] = `
           </div>
         </label>
         <label
-          class="field field-datetime-local"
+          class="field field-datetime-local layout-vertical"
           data-changed="false"
           data-touched="false"
           data-valid="true"
@@ -375,7 +375,7 @@ exports[`<Main /> should render the heading 1`] = `
           </div>
         </label>
         <label
-          class="field field-hidden"
+          class="field field-hidden layout-vertical"
           data-changed="false"
           data-touched="false"
           data-valid="true"
@@ -397,7 +397,7 @@ exports[`<Main /> should render the heading 1`] = `
           </div>
         </label>
         <label
-          class="field field-month"
+          class="field field-month layout-vertical"
           data-changed="false"
           data-touched="false"
           data-valid="true"
@@ -419,7 +419,7 @@ exports[`<Main /> should render the heading 1`] = `
           </div>
         </label>
         <label
-          class="field field-search"
+          class="field field-search layout-vertical"
           data-changed="false"
           data-touched="false"
           data-valid="true"
@@ -441,7 +441,7 @@ exports[`<Main /> should render the heading 1`] = `
           </div>
         </label>
         <label
-          class="field field-textarea"
+          class="field field-textarea layout-vertical"
           data-changed="false"
           data-touched="false"
           data-valid="true"
@@ -466,7 +466,7 @@ some text
           </div>
         </label>
         <label
-          class="field field-select"
+          class="field field-select layout-vertical"
           data-changed="false"
           data-touched="false"
           data-valid="true"
@@ -506,7 +506,7 @@ some text
           </div>
         </label>
         <fieldset
-          class="field field-radioGroup"
+          class="field field-radioGroup layout-vertical"
           data-changed="false"
           data-touched="false"
           data-valid="true"
@@ -569,7 +569,7 @@ some text
           </div>
         </fieldset>
         <fieldset
-          class="field field-object"
+          class="field field-object layout-vertical"
           data-changed="false"
           data-touched="false"
           data-valid="true"
@@ -586,7 +586,7 @@ some text
               class="fieldset"
             >
               <label
-                class="field field-text"
+                class="field field-text layout-vertical"
                 data-changed="false"
                 data-touched="false"
                 data-valid="true"
@@ -608,7 +608,7 @@ some text
                 </div>
               </label>
               <label
-                class="field field-text"
+                class="field field-text layout-vertical"
                 data-changed="false"
                 data-touched="false"
                 data-valid="true"
@@ -633,7 +633,7 @@ some text
           </div>
         </fieldset>
         <label
-          class="field field-array"
+          class="field field-array layout-vertical"
           data-changed="false"
           data-touched="false"
           data-valid="true"
@@ -652,7 +652,7 @@ some text
                   class="fieldset"
                 >
                   <label
-                    class="field field-text"
+                    class="field field-text layout-vertical"
                     data-changed="false"
                     data-touched="false"
                     data-valid="true"
@@ -674,7 +674,7 @@ some text
                     </div>
                   </label>
                   <label
-                    class="field field-text"
+                    class="field field-text layout-vertical"
                     data-changed="false"
                     data-touched="false"
                     data-valid="true"
@@ -696,7 +696,9 @@ some text
                     </div>
                   </label>
                 </div>
-                <button>
+                <button
+                  class="field-remove"
+                >
                   Remove
                 </button>
               </li>
@@ -705,7 +707,7 @@ some text
               class="fieldset"
             >
               <label
-                class="field field-text"
+                class="field field-text layout-vertical"
                 data-changed="false"
                 data-touched="false"
                 data-valid="true"
@@ -727,7 +729,7 @@ some text
                 </div>
               </label>
               <label
-                class="field field-text"
+                class="field field-text layout-vertical"
                 data-changed="false"
                 data-touched="false"
                 data-valid="true"

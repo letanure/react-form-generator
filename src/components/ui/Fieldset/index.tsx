@@ -5,6 +5,7 @@ export type FieldsetProps = {
   fields: FormConfig['fields']
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   value?: any
+  layout?: FormConfig['layout']
   hasSubmit?: boolean
   submitText?: string
   onSubmit?: (values: FieldsValues | FieldsValues[], meta: FieldsetMeta) => void
@@ -17,6 +18,7 @@ export type FieldsetProps = {
 const Fieldset = ({
   fields = [],
   value = {},
+  layout = 'vertical',
   hasSubmit = false,
   submitText = 'Submit',
   onSubmit,
@@ -80,6 +82,7 @@ const Fieldset = ({
           <Field
             key={indexInput}
             {...fieldProps}
+            layout={fieldProps.layout || layout || 'vertical'}
             value={value[fieldProps.name] || fieldProps.value}
             onChange={(fieldData) => handleOnChange(fieldProps.name, fieldData)}
           />

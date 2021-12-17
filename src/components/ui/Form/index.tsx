@@ -11,6 +11,7 @@ const Form = ({
   title,
   submitText = 'Submit',
   description,
+  layout,
   fields = [],
   value,
   onChange,
@@ -53,7 +54,12 @@ const Form = ({
       {title && <h3>{title}</h3>}
       {description && <p>{description}</p>}
       {!!fields && (
-        <Fieldset fields={fields} onChange={handleOnChange} value={value} />
+        <Fieldset
+          fields={fields}
+          onChange={handleOnChange}
+          value={value}
+          layout={layout}
+        />
       )}
       <button type="submit">{submitText}</button>
     </form>

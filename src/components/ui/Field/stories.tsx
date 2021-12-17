@@ -41,6 +41,18 @@ export default {
         type: 'select'
       }
     },
+    layout: {
+      default: 'horizontal',
+      description: 'Layout of input',
+      type: { name: 'string', false: true },
+      table: {
+        defaultValue: { summary: 'text' }
+      },
+      options: ['horizontal', 'vertical'],
+      control: {
+        type: 'select'
+      }
+    },
     name: {
       description: 'Name of input / object property',
       type: { name: 'string', required: true }
