@@ -49,7 +49,7 @@ const Form = ({
     setFormMeta(meta)
   }
   return (
-    <form onSubmit={handleSubmit} aria-label="form">
+    <form onSubmit={handleSubmit} aria-label="form" className="form">
       {title && <h3>{title}</h3>}
       {description && <p>{description}</p>}
       {!!fields && (

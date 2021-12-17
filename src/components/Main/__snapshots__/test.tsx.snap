@@ -35,7 +35,7 @@ exports[`<Main /> should render the heading 1`] = `
   padding-right: 30px;
 }
 
-.c6 {
+.c2 {
   width: 66.66%;
   position: -webkit-sticky;
   position: sticky;
@@ -46,48 +46,17 @@ exports[`<Main /> should render the heading 1`] = `
   display: flex;
 }
 
-.c6 > div {
+.c2 > div {
   width: 50%;
   padding: 15px;
   overflow: hidden;
 }
 
-.c6 > div pre {
+.c2 > div pre {
   overflow: hidden;
 }
 
-.c4 {
-  margin-bottom: 10px;
-}
-
-.c2 {
-  padding: 15px;
-}
-
 .c3 {
-  font-size: 4rem;
-  margin-bottom: 15px;
-}
-
-.c5 {
-  font-family: inherit;
-  padding: 12px 24px;
-  margin-left: auto;
-  font-size: 16px;
-  font-weight: 500;
-  color: rgb(255,255,255);
-  cursor: pointer;
-  background-color: #b336a0;
-  background-size: 50px 50px;
-  border: none;
-  border-radius: 8px;
-}
-
-.c5:hover {
-  background-color: #b336a0cc;
-}
-
-.c7 {
   font-size: 11px;
   border: 1px solid #999;
   padding: 10px;
@@ -100,597 +69,688 @@ exports[`<Main /> should render the heading 1`] = `
   <div
     class="c1"
   >
-    <div
-      class="c2"
+    <form
+      aria-label="form"
+      class="form"
     >
-      <form
-        aria-label="form"
+      <h3>
+        My form
+      </h3>
+      <div
+        class="fieldset"
       >
-        <h2
-          class="c3"
-        >
-          My form
-        </h2>
-        <div
-          class="c4 fieldset"
+        <label
+          class="field field-text"
+          data-changed="false"
+          data-touched="false"
+          data-valid="false"
         >
           <div
-            class="field field-text"
+            class="field-label"
           >
-            <label
-              class=" field-wrapper"
+            This needs "foo"
+          </div>
+          <div
+            class="field-control"
+          >
+            <input
+              class="field-input-text"
+              name="foo"
+              placeholder="Placeholder test"
+              type="text"
+              value="bar"
+            />
+          </div>
+          <div
+            class="field-errors"
+          >
+            <div
+              class="field-error"
             >
-              <div
-                class="field-label"
+              Must start with foo
+            </div>
+          </div>
+        </label>
+        <label
+          class="field field-text"
+          data-changed="false"
+          data-touched="false"
+          data-valid="true"
+        >
+          <div
+            class="field-label"
+          >
+            Placeholder text
+          </div>
+          <div
+            class="field-control"
+          >
+            <input
+              class="field-input-text"
+              name="placeholder"
+              placeholder="Placeholder test"
+              type="text"
+              value=""
+            />
+          </div>
+        </label>
+        <label
+          class="field field-color"
+          data-changed="false"
+          data-touched="false"
+          data-valid="true"
+        >
+          <div
+            class="field-label"
+          >
+            Color
+          </div>
+          <div
+            class="field-control"
+          >
+            <input
+              class="field-input-color"
+              name="color"
+              type="color"
+              value="#ff0000"
+            />
+          </div>
+        </label>
+        <label
+          class="field field-range"
+          data-changed="false"
+          data-touched="false"
+          data-valid="true"
+        >
+          <div
+            class="field-label"
+          >
+            Range
+          </div>
+          <div
+            class="field-control"
+          >
+            <input
+              class="field-input-range"
+              name="range"
+              type="range"
+              value="10"
+            />
+          </div>
+        </label>
+        <label
+          class="field field-email"
+          data-changed="false"
+          data-touched="false"
+          data-valid="true"
+        >
+          <div
+            class="field-label"
+          >
+            Email
+          </div>
+          <div
+            class="field-control"
+          >
+            <input
+              class="field-input-email"
+              name="email"
+              type="email"
+              value="aa@bb.cc"
+            />
+          </div>
+        </label>
+        <label
+          class="field field-number"
+          data-changed="false"
+          data-touched="false"
+          data-valid="true"
+        >
+          <div
+            class="field-label"
+          >
+            Number
+          </div>
+          <div
+            class="field-control"
+          >
+            <input
+              class="field-input-number"
+              name="number"
+              type="number"
+              value="1"
+            />
+          </div>
+        </label>
+        <label
+          class="field field-password"
+          data-changed="false"
+          data-touched="false"
+          data-valid="true"
+        >
+          <div
+            class="field-label"
+          >
+            Password
+          </div>
+          <div
+            class="field-control"
+          >
+            <input
+              class="field-input-password"
+              name="password"
+              type="password"
+              value="123456"
+            />
+          </div>
+        </label>
+        <label
+          class="field field-tel"
+          data-changed="false"
+          data-touched="false"
+          data-valid="true"
+        >
+          <div
+            class="field-label"
+          >
+            tel
+          </div>
+          <div
+            class="field-control"
+          >
+            <input
+              class="field-input-tel"
+              name="tel"
+              type="tel"
+              value="111222333"
+            />
+          </div>
+        </label>
+        <label
+          class="field field-text"
+          data-changed="false"
+          data-touched="false"
+          data-valid="true"
+        >
+          <div
+            class="field-label"
+          >
+            Text
+          </div>
+          <div
+            class="field-control"
+          >
+            <input
+              class="field-input-text"
+              name="text"
+              type="text"
+              value="my text"
+            />
+          </div>
+        </label>
+        <label
+          class="field field-time"
+          data-changed="false"
+          data-touched="false"
+          data-valid="true"
+        >
+          <div
+            class="field-label"
+          >
+            Time
+          </div>
+          <div
+            class="field-control"
+          >
+            <input
+              class="field-input-time"
+              name="time"
+              type="time"
+              value="12:00"
+            />
+          </div>
+        </label>
+        <label
+          class="field field-url"
+          data-changed="false"
+          data-touched="false"
+          data-valid="true"
+        >
+          <div
+            class="field-label"
+          >
+            URL
+          </div>
+          <div
+            class="field-control"
+          >
+            <input
+              class="field-input-url"
+              name="url"
+              type="url"
+              value="https://www.google.com"
+            />
+          </div>
+        </label>
+        <label
+          class="field field-datetime-local"
+          data-changed="false"
+          data-touched="false"
+          data-valid="true"
+        >
+          <div
+            class="field-label"
+          >
+            Datetime
+          </div>
+          <div
+            class="field-control"
+          >
+            <input
+              class="field-input-datetime-local"
+              name="datetime"
+              type="datetime-local"
+              value="2020-01-01T12:00"
+            />
+          </div>
+        </label>
+        <label
+          class="field field-hidden"
+          data-changed="false"
+          data-touched="false"
+          data-valid="true"
+        >
+          <div
+            class="field-label"
+          >
+            Hidden
+          </div>
+          <div
+            class="field-control"
+          >
+            <input
+              class="field-input-hidden"
+              name="hidden"
+              type="hidden"
+              value="9"
+            />
+          </div>
+        </label>
+        <label
+          class="field field-month"
+          data-changed="false"
+          data-touched="false"
+          data-valid="true"
+        >
+          <div
+            class="field-label"
+          >
+            Month
+          </div>
+          <div
+            class="field-control"
+          >
+            <input
+              class="field-input-month"
+              name="month"
+              type="month"
+              value="2020-01"
+            />
+          </div>
+        </label>
+        <label
+          class="field field-search"
+          data-changed="false"
+          data-touched="false"
+          data-valid="true"
+        >
+          <div
+            class="field-label"
+          >
+            Search
+          </div>
+          <div
+            class="field-control"
+          >
+            <input
+              class="field-input-search"
+              name="search"
+              type="search"
+              value="my search"
+            />
+          </div>
+        </label>
+        <label
+          class="field field-textarea"
+          data-changed="false"
+          data-touched="false"
+          data-valid="true"
+        >
+          <div
+            class="field-label"
+          >
+            Textarea
+          </div>
+          <div
+            class="field-control"
+          >
+            <textarea
+              class="field-input-textarea"
+              name="textarea"
+              rows="4"
+            >
+              some text
+some text
+some text
+            </textarea>
+          </div>
+        </label>
+        <label
+          class="field field-select"
+          data-changed="false"
+          data-touched="false"
+          data-valid="true"
+        >
+          <div
+            class="field-label"
+          >
+            Select
+          </div>
+          <div
+            class="field-control"
+          >
+            <div
+              class="field-wrapper"
+            >
+              <select
+                class="field-input-select"
+                name="select"
               >
-                This needs "foo"
-              </div>
-              <input
-                class="hasError field-input-text"
-                name="foo"
-                placeholder="Placeholder test"
-                type="text"
-                value="bar"
-              />
-              <div
-                class="field-errors"
+                <option
+                  value="1"
+                >
+                  Option 1
+                </option>
+                <option
+                  value="2"
+                >
+                  Option 2
+                </option>
+                <option
+                  value="3"
+                >
+                  Option 3
+                </option>
+              </select>
+            </div>
+          </div>
+        </label>
+        <fieldset
+          class="field field-radioGroup"
+          data-changed="false"
+          data-touched="false"
+          data-valid="true"
+        >
+          <legend
+            class="field-label"
+          >
+            Radio Group
+          </legend>
+          <div
+            class="field-control"
+          >
+            <div
+              class="field-wrapper"
+            >
+              <label
+                class="field-option"
+              >
+                <input
+                  name="radioGroup"
+                  type="radio"
+                  value="1"
+                />
+                <span
+                  class="field-option-label"
+                >
+                  Option 1
+                </span>
+              </label>
+              <label
+                class="field-option"
+              >
+                <input
+                  checked=""
+                  name="radioGroup"
+                  type="radio"
+                  value="2"
+                />
+                <span
+                  class="field-option-label"
+                >
+                  Option 2
+                </span>
+              </label>
+              <label
+                class="field-option"
+              >
+                <input
+                  name="radioGroup"
+                  type="radio"
+                  value="3"
+                />
+                <span
+                  class="field-option-label"
+                >
+                  Option 3
+                </span>
+              </label>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset
+          class="field field-object"
+          data-changed="false"
+          data-touched="false"
+          data-valid="true"
+        >
+          <legend
+            class="field-label"
+          >
+            Object
+          </legend>
+          <div
+            class="field-control"
+          >
+            <div
+              class="fieldset"
+            >
+              <label
+                class="field field-text"
+                data-changed="false"
+                data-touched="false"
+                data-valid="true"
               >
                 <div
-                  class="field-error"
+                  class="field-label"
                 >
-                  Must start with foo
+                  Sub 1
                 </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="field field-text"
-          >
-            <label
-              class=" field-wrapper"
-            >
-              <div
-                class="field-label"
-              >
-                Placeholder text
-              </div>
-              <input
-                class="field-input-text"
-                name="placeholder"
-                placeholder="Placeholder test"
-                type="text"
-                value=""
-              />
-            </label>
-          </div>
-          <div
-            class="field field-color"
-          >
-            <label
-              class=" field-wrapper"
-            >
-              <div
-                class="field-label"
-              >
-                Color
-              </div>
-              <input
-                class="field-input-color"
-                name="color"
-                type="color"
-                value="#ff0000"
-              />
-            </label>
-          </div>
-          <div
-            class="field field-email"
-          >
-            <label
-              class=" field-wrapper"
-            >
-              <div
-                class="field-label"
-              >
-                Email
-              </div>
-              <input
-                class="field-input-email"
-                name="email"
-                type="email"
-                value="aa@bb.cc"
-              />
-            </label>
-          </div>
-          <div
-            class="field field-number"
-          >
-            <label
-              class=" field-wrapper"
-            >
-              <div
-                class="field-label"
-              >
-                Number
-              </div>
-              <input
-                class="field-input-number"
-                name="number"
-                type="number"
-                value="1"
-              />
-            </label>
-          </div>
-          <div
-            class="field field-password"
-          >
-            <label
-              class=" field-wrapper"
-            >
-              <div
-                class="field-label"
-              >
-                Password
-              </div>
-              <input
-                class="field-input-password"
-                name="password"
-                type="password"
-                value="123456"
-              />
-            </label>
-          </div>
-          <div
-            class="field field-tel"
-          >
-            <label
-              class=" field-wrapper"
-            >
-              <div
-                class="field-label"
-              >
-                tel
-              </div>
-              <input
-                class="field-input-tel"
-                name="tel"
-                type="tel"
-                value="111222333"
-              />
-            </label>
-          </div>
-          <div
-            class="field field-text"
-          >
-            <label
-              class=" field-wrapper"
-            >
-              <div
-                class="field-label"
-              >
-                Text
-              </div>
-              <input
-                class="field-input-text"
-                name="text"
-                type="text"
-                value="my text"
-              />
-            </label>
-          </div>
-          <div
-            class="field field-time"
-          >
-            <label
-              class=" field-wrapper"
-            >
-              <div
-                class="field-label"
-              >
-                Time
-              </div>
-              <input
-                class="field-input-time"
-                name="time"
-                type="time"
-                value="12:00"
-              />
-            </label>
-          </div>
-          <div
-            class="field field-url"
-          >
-            <label
-              class=" field-wrapper"
-            >
-              <div
-                class="field-label"
-              >
-                URL
-              </div>
-              <input
-                class="field-input-url"
-                name="url"
-                type="url"
-                value="https://www.google.com"
-              />
-            </label>
-          </div>
-          <div
-            class="field field-datetime-local"
-          >
-            <label
-              class=" field-wrapper"
-            >
-              <div
-                class="field-label"
-              >
-                Datetime
-              </div>
-              <input
-                class="field-input-datetime-local"
-                name="datetime"
-                type="datetime-local"
-                value="2020-01-01T12:00"
-              />
-            </label>
-          </div>
-          <div
-            class="field field-hidden"
-          >
-            <label
-              class=" field-wrapper"
-            >
-              <div
-                class="field-label"
-              >
-                Hidden
-              </div>
-              <input
-                class="field-input-hidden"
-                name="hidden"
-                type="hidden"
-                value="9"
-              />
-            </label>
-          </div>
-          <div
-            class="field field-month"
-          >
-            <label
-              class=" field-wrapper"
-            >
-              <div
-                class="field-label"
-              >
-                Month
-              </div>
-              <input
-                class="field-input-month"
-                name="month"
-                type="month"
-                value="2020-01"
-              />
-            </label>
-          </div>
-          <div
-            class="field field-search"
-          >
-            <label
-              class=" field-wrapper"
-            >
-              <div
-                class="field-label"
-              >
-                Search
-              </div>
-              <input
-                class="field-input-search"
-                name="search"
-                type="search"
-                value="my search"
-              />
-            </label>
-          </div>
-          <div
-            class="field field-textarea"
-          >
-            <label
-              class=" field-wrapper"
-            >
-              <div
-                class="field-label"
-              >
-                Textarea
-              </div>
-              <textarea
-                class="field-input-textarea"
-                name="textarea"
-                rows="4"
-              >
-                some text
-some text
-some text
-              </textarea>
-            </label>
-          </div>
-          <div
-            class="field field-select"
-          >
-            <label
-              class=" field-wrapper"
-            >
-              <div
-                class="field-label"
-              >
-                Select
-              </div>
-              <div
-                class="field-input-select-wrapper"
-              >
-                <select
-                  class="field-input-select"
-                  name="select"
-                >
-                  <option
-                    value="1"
-                  >
-                    Option 1
-                  </option>
-                  <option
-                    value="2"
-                  >
-                    Option 2
-                  </option>
-                  <option
-                    value="3"
-                  >
-                    Option 3
-                  </option>
-                </select>
-              </div>
-            </label>
-          </div>
-          <div
-            class="field field-radioGroup"
-          >
-            <fieldset
-              class=" field-wrapper"
-            >
-              <legend
-                class="field-label"
-              >
-                Radio Group
-              </legend>
-              <div
-                class="field-input-radioGroup"
-              >
-                <label
-                  class="field-input-radioGroup-option"
+                <div
+                  class="field-control"
                 >
                   <input
-                    name="radioGroup"
-                    type="radio"
-                    value="1"
+                    class="field-input-text"
+                    name="sub-1"
+                    type="text"
+                    value="sub 1"
                   />
-                  <span
-                    class="field-input-radioGroup-option-label"
-                  >
-                    Option 1
-                  </span>
-                </label>
-                <label
-                  class="field-input-radioGroup-option"
-                >
-                  <input
-                    checked=""
-                    name="radioGroup"
-                    type="radio"
-                    value="2"
-                  />
-                  <span
-                    class="field-input-radioGroup-option-label"
-                  >
-                    Option 2
-                  </span>
-                </label>
-                <label
-                  class="field-input-radioGroup-option"
-                >
-                  <input
-                    name="radioGroup"
-                    type="radio"
-                    value="3"
-                  />
-                  <span
-                    class="field-input-radioGroup-option-label"
-                  >
-                    Option 3
-                  </span>
-                </label>
-              </div>
-            </fieldset>
-          </div>
-          <div
-            class="field field-object"
-          >
-            <fieldset
-              class=" field-wrapper"
-            >
-              <legend
-                class="field-label"
-              >
-                Object
-              </legend>
-              <div
-                class="c4 fieldset"
+                </div>
+              </label>
+              <label
+                class="field field-text"
+                data-changed="false"
+                data-touched="false"
+                data-valid="true"
               >
                 <div
-                  class="field field-text"
+                  class="field-label"
+                >
+                  Sub 2
+                </div>
+                <div
+                  class="field-control"
+                >
+                  <input
+                    class="field-input-text"
+                    name="sub-2"
+                    type="text"
+                    value="sub 2"
+                  />
+                </div>
+              </label>
+            </div>
+          </div>
+        </fieldset>
+        <label
+          class="field field-array"
+          data-changed="false"
+          data-touched="false"
+          data-valid="true"
+        >
+          <div
+            class="field-label"
+          >
+            Array
+          </div>
+          <div
+            class="field-control"
+          >
+            <ol>
+              <li>
+                <div
+                  class="fieldset"
                 >
                   <label
-                    class=" field-wrapper"
+                    class="field field-text"
+                    data-changed="false"
+                    data-touched="false"
+                    data-valid="true"
                   >
                     <div
                       class="field-label"
                     >
                       Sub 1
                     </div>
-                    <input
-                      class="field-input-text"
-                      name="sub-1"
-                      type="text"
-                      value="sub 1"
-                    />
+                    <div
+                      class="field-control"
+                    >
+                      <input
+                        class="field-input-text"
+                        name="sub1"
+                        type="text"
+                        value="sub 1"
+                      />
+                    </div>
                   </label>
-                </div>
-                <div
-                  class="field field-text"
-                >
                   <label
-                    class=" field-wrapper"
+                    class="field field-text"
+                    data-changed="false"
+                    data-touched="false"
+                    data-valid="true"
                   >
                     <div
                       class="field-label"
                     >
                       Sub 2
                     </div>
-                    <input
-                      class="field-input-text"
-                      name="sub-2"
-                      type="text"
-                      value="sub 2"
-                    />
-                  </label>
-                </div>
-              </div>
-            </fieldset>
-          </div>
-          <div
-            class="field field-array"
-          >
-            <label
-              class=" field-wrapper"
-            >
-              <div
-                class="field-label"
-              >
-                Array
-              </div>
-              <ol>
-                <li>
-                  <div
-                    class="c4 fieldset"
-                  >
                     <div
-                      class="field field-text"
+                      class="field-control"
                     >
-                      <label
-                        class=" field-wrapper"
-                      >
-                        <div
-                          class="field-label"
-                        >
-                          Sub 1
-                        </div>
-                        <input
-                          class="field-input-text"
-                          name="sub1"
-                          type="text"
-                          value="sub 1"
-                        />
-                      </label>
+                      <input
+                        class="field-input-text"
+                        name="sub2"
+                        type="text"
+                        value="sub 2"
+                      />
                     </div>
-                    <div
-                      class="field field-text"
-                    >
-                      <label
-                        class=" field-wrapper"
-                      >
-                        <div
-                          class="field-label"
-                        >
-                          Sub 2
-                        </div>
-                        <input
-                          class="field-input-text"
-                          name="sub2"
-                          type="text"
-                          value="sub 2"
-                        />
-                      </label>
-                    </div>
-                  </div>
-                  <button>
-                    Remove
-                  </button>
-                </li>
-              </ol>
-              <div
-                class="c4 fieldset"
-              >
-                <div
-                  class="field field-text"
-                >
-                  <label
-                    class=" field-wrapper"
-                  >
-                    <div
-                      class="field-label"
-                    >
-                      Sub 1
-                    </div>
-                    <input
-                      class="field-input-text"
-                      name="sub1"
-                      type="text"
-                      value="sub 1"
-                    />
-                  </label>
-                </div>
-                <div
-                  class="field field-text"
-                >
-                  <label
-                    class=" field-wrapper"
-                  >
-                    <div
-                      class="field-label"
-                    >
-                      Sub 2
-                    </div>
-                    <input
-                      class="field-input-text"
-                      name="sub2"
-                      type="text"
-                      value="sub 2"
-                    />
                   </label>
                 </div>
                 <button>
-                  Add
+                  Remove
                 </button>
-              </div>
-            </label>
+              </li>
+            </ol>
+            <div
+              class="fieldset"
+            >
+              <label
+                class="field field-text"
+                data-changed="false"
+                data-touched="false"
+                data-valid="true"
+              >
+                <div
+                  class="field-label"
+                >
+                  Sub 1
+                </div>
+                <div
+                  class="field-control"
+                >
+                  <input
+                    class="field-input-text"
+                    name="sub1"
+                    type="text"
+                    value="sub 1"
+                  />
+                </div>
+              </label>
+              <label
+                class="field field-text"
+                data-changed="false"
+                data-touched="false"
+                data-valid="true"
+              >
+                <div
+                  class="field-label"
+                >
+                  Sub 2
+                </div>
+                <div
+                  class="field-control"
+                >
+                  <input
+                    class="field-input-text"
+                    name="sub2"
+                    type="text"
+                    value="sub 2"
+                  />
+                </div>
+              </label>
+              <button>
+                Add
+              </button>
+            </div>
           </div>
-        </div>
-        <button
-          class="c5"
-          type="submit"
-        >
-          Submit
-        </button>
-      </form>
-    </div>
+        </label>
+      </div>
+      <button
+        type="submit"
+      >
+        Submit
+      </button>
+    </form>
   </div>
   <div
-    class="c6"
+    class="c2"
   >
     <div>
       <h3>
         Config
       </h3>
       <div
-        class="c7"
+        class="c3"
       >
         <code>
           <pre>
@@ -727,6 +787,13 @@ some text
       "name": "color",
       "type": "color",
       "value": "#ff0000"
+    },
+    {
+      "label": "Range",
+      "name": "range",
+      "type": "range",
+      "value": "10",
+      "min": "5"
     },
     {
       "label": "Email",
@@ -903,7 +970,7 @@ some text
         Data
       </h3>
       <div
-        class="c7"
+        class="c3"
       >
         <code>
           <pre>
@@ -911,6 +978,7 @@ some text
   "foo": "bar",
   "placeholder": "",
   "color": "#ff0000",
+  "range": "10",
   "email": "aa@bb.cc",
   "number": "1",
   "password": "123456",
@@ -943,7 +1011,7 @@ some text
         Meta
       </h3>
       <div
-        class="c7"
+        class="c3"
       >
         <code>
           <pre>
@@ -966,6 +1034,12 @@ some text
     },
     "color": {
       "value": "#ff0000",
+      "changed": false,
+      "touched": false,
+      "valid": true
+    },
+    "range": {
+      "value": "10",
       "changed": false,
       "touched": false,
       "valid": true

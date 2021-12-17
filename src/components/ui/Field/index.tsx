@@ -131,10 +131,10 @@ const Field = (props: FieldProps): JSX.Element => {
         )}
 
         {type === 'radioGroup' && (
-          <div className={`field-input-${type}`}>
+          <div className={`field-wrapper`}>
             {options &&
               options.map((option: FieldOption, index) => (
-                <label key={index} className="field-input-radioGroup-option">
+                <label key={index} className="field-option">
                   <input
                     checked={fieldData.value === option.value}
                     disabled={disabled}
@@ -144,9 +144,7 @@ const Field = (props: FieldProps): JSX.Element => {
                     type="radio"
                     value={option.value as string}
                   />
-                  <span className="field-input-radioGroup-option-label">
-                    {option.label}
-                  </span>
+                  <span className="field-option-label">{option.label}</span>
                 </label>
               ))}
           </div>
