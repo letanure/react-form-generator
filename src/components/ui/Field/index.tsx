@@ -30,6 +30,8 @@ const Field = (props: FieldProps): JSX.Element => {
   const max = 'max' in props && props.max
   const step = 'step' in props && props.step
 
+  const [hasFocus, setFocus] = useState(false)
+  const [hasHover, setHover] = useState(false)
   const [errorsMessages, setEerrorsMessages] = useState<string[]>([])
   const [fieldData, setFieldData] = useState<FieldData>({
     value: value,
@@ -116,6 +118,8 @@ const Field = (props: FieldProps): JSX.Element => {
       data-valid={fieldData.valid}
       data-touched={fieldData.touched}
       data-changed={fieldData.changed}
+      data-focus={hasFocus}
+      data-hover={hasHover}
     >
       {!!label && label !== '' && (
         <TagLabel className="field-label">{label}</TagLabel>
@@ -131,6 +135,10 @@ const Field = (props: FieldProps): JSX.Element => {
             readOnly={readonly}
             rows={rows as number}
             value={fieldData.value as string}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
           />
         )}
 
@@ -147,6 +155,10 @@ const Field = (props: FieldProps): JSX.Element => {
                     readOnly={readonly}
                     type="radio"
                     value={option.value as string}
+                    onFocus={() => setFocus(true)}
+                    onBlur={() => setFocus(false)}
+                    onMouseEnter={() => setHover(true)}
+                    onMouseLeave={() => setHover(false)}
                   />
                   <span className="field-option-label">{option.label}</span>
                 </label>
@@ -163,6 +175,10 @@ const Field = (props: FieldProps): JSX.Element => {
               onChange={(e) => handleOnChange(e.target.value)}
               placeholder={placeholder}
               value={fieldData.value as string}
+              onFocus={() => setFocus(true)}
+              onBlur={() => setFocus(false)}
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
             >
               {placeholder && <option value="">{placeholder}</option>}
               {options &&
@@ -192,6 +208,10 @@ const Field = (props: FieldProps): JSX.Element => {
             readOnly={readonly}
             type={type}
             value={fieldData.value as string}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
           />
         )}
 
@@ -209,6 +229,10 @@ const Field = (props: FieldProps): JSX.Element => {
               step={step as number}
               value={fieldData.value as string}
               list={`tickmarks-${name}`}
+              onFocus={() => setFocus(true)}
+              onBlur={() => setFocus(false)}
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
             />
             {options && (
               <datalist id={`tickmarks-${name}`}>
@@ -225,7 +249,11 @@ const Field = (props: FieldProps): JSX.Element => {
         )}
 
         {type === 'object' && !!fields && (
-          <Fieldset fields={fields} onChange={handleOnChangeObject} />
+          <Fieldset
+            fields={fields}
+            onChange={handleOnChangeObject}
+            layout={layout}
+          />
         )}
 
         {type === 'array' && !!fields && (
@@ -239,6 +267,7 @@ const Field = (props: FieldProps): JSX.Element => {
                       fields={fields}
                       hasSubmit={false}
                       submitText="Add"
+                      layout={layout}
                     />
                     <button
                       className="field-remove"
@@ -255,6 +284,7 @@ const Field = (props: FieldProps): JSX.Element => {
               onSubmit={handleOnSubmitArray}
               hasSubmit={true}
               submitText="Add"
+              layout={layout}
             />
           </>
         )}

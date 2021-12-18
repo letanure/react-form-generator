@@ -19,7 +19,7 @@ export default {
       table: {
         defaultValue: { summary: 'vertical' }
       },
-      options: ['horizontal', 'vertical'],
+      options: ['horizontal', 'vertical', 'horizontal-bordered'],
       control: {
         type: 'select'
       }
@@ -52,6 +52,66 @@ Basic.args = {
 export const withSubmit = Template.bind({})
 withSubmit.args = {
   hasSubmit: true,
+  fields: [
+    {
+      label: 'Label 1',
+      type: 'text',
+      name: 'name1',
+      value: '111'
+    },
+    {
+      label: 'Label 2',
+      type: 'text',
+      name: 'name2',
+      value: '222'
+    }
+  ]
+}
+
+export const layoutVertical = Template.bind({})
+layoutVertical.args = {
+  hasSubmit: true,
+  layout: 'vertical',
+  fields: [
+    {
+      label: 'Label 1',
+      type: 'text',
+      name: 'name1',
+      value: '111'
+    },
+    {
+      label: 'Label 2',
+      type: 'text',
+      name: 'name2',
+      value: '222'
+    }
+  ]
+}
+
+export const layoutHorizontal = Template.bind({})
+layoutHorizontal.args = {
+  hasSubmit: true,
+  layout: 'horizontal',
+  fields: [
+    {
+      label: 'Label 1',
+      type: 'text',
+      name: 'name1',
+      value: '111'
+    },
+    {
+      label: 'Label 2',
+      type: 'text',
+      name: 'name2',
+      value: '222'
+    }
+  ]
+}
+
+export const layoutHorizontalBordered = Template.bind({})
+layoutHorizontalBordered.args = {
+  hasSubmit: true,
+  layout: 'horizontal-bordered',
   fields: [
     {
       label: 'Label 1',

@@ -19,7 +19,7 @@ export default {
       table: {
         defaultValue: { summary: 'vertical' }
       },
-      options: ['horizontal', 'vertical'],
+      options: ['horizontal', 'vertical', 'horizontal-bordered'],
       control: {
         type: 'select'
       }
@@ -101,6 +101,86 @@ withInitialValue.args = {
           value: 'sub1-default'
         }
       ]
+    }
+  ]
+}
+
+export const layoutVertical = Template.bind({})
+layoutVertical.args = {
+  title: 'Form Generated',
+  description: 'Form Generated using config',
+  layout: 'vertical',
+  fields: [
+    {
+      label: 'Name',
+      type: 'text',
+      name: 'name1',
+      value: '111'
+    },
+    {
+      label: 'Birthday',
+      type: 'date',
+      name: 'name2',
+      value: '2002-01-02'
+    },
+    {
+      label: 'Email',
+      type: 'email',
+      name: 'name3',
+      value: 'aa@bb.com'
+    }
+  ]
+}
+export const layoutHorizontal = Template.bind({})
+layoutHorizontal.args = {
+  title: 'Form Generated',
+  description: 'Form Generated using config',
+  layout: 'horizontal',
+  fields: [
+    {
+      label: 'Name',
+      type: 'text',
+      name: 'name1',
+      value: '111'
+    },
+    {
+      label: 'Birthday',
+      type: 'date',
+      name: 'name2',
+      value: '2002-01-02'
+    },
+    {
+      label: 'Email',
+      type: 'email',
+      name: 'name3',
+      value: 'aa@bb.com'
+    }
+  ]
+}
+
+export const layoutHorizontalBordered = Template.bind({})
+layoutHorizontalBordered.args = {
+  title: 'Form Generated',
+  description: 'Form Generated using config',
+  layout: 'horizontal-bordered',
+  fields: [
+    {
+      label: 'Name',
+      type: 'text',
+      name: 'name1',
+      value: '111'
+    },
+    {
+      label: 'Birthday',
+      type: 'date',
+      name: 'name2',
+      value: '2002-01-02'
+    },
+    {
+      label: 'Email',
+      type: 'email',
+      name: 'name3',
+      value: 'aa@bb.com'
     }
   ]
 }
