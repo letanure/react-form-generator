@@ -27,12 +27,6 @@
   box-sizing: border-box
   font-size: var(--font-size)
 
-  [data-valid="false"]
-    --border: var(--border-error)
-  *
-    box-sizing: border-box
-    padding: 0
-
   fieldset, legend
     border: none
     padding: 0
@@ -46,6 +40,7 @@
     background-color: var(--background-color)
     border-radius: var(--border-radius)
     border: var(--border)
+    border-color: var(--border-color)
     font-size: var(--font-size)
     height: var(--height)
     padding: 0 var(--base-padding)
@@ -55,7 +50,7 @@
     &:focus,
     &:focus-visible
       outline: none
-      --border: var(--border-active)
+      // --border-color: var(--color-hover)
 
   .field
     accent-color: var(--color-active)
@@ -64,10 +59,27 @@
     grid-template-columns: 1fr
     grid-template-rows: auto
     margin-bottom: var(--base-padding)
+    transition: var(--transition-field)
 
-    &.layout-horizontal
+    *
+      box-sizing: border-box
+      padding: 0
+
+    &[data-valid="false"]
+      --border-color: var(--color-error)
+    &[data-valid="true"]
+      --border-color: var(--color-inactive)
+    &[data-focus="true"], &[data-valid="false"][data-focus="true"]
+      --border-color: var(--color-active)
+    // &[data-hover="true"]
+    &:hover
+      --border-color: var(--color-hover)
+
+    &.layout-horizontal, &.layout-horizontal-bordered
       grid-template-areas: "label control" ".  errors "
       grid-template-columns: 1fr 2fr
+      .field-label
+        padding-bottom: 0
       legend
         display: contents
         line-height: var(--line-height)
@@ -80,6 +92,84 @@
           top: calc(var(--height) / 2)
         &::before
           width: calc(var(--base-padding) *0.7)
+
+    &.layout-horizontal-bordered
+      grid-template-areas: "label control" "errors errors "
+      .field-label
+        border: var(--border-inactive)
+        border-color: var(--border-color)
+        border-right: 0
+        border-top-left-radius: var(--border-radius)
+        border-bottom-left-radius: var(--border-radius)
+        padding-left: var(--base-padding)
+      &.field-radioGroup
+        border: var(--border-inactive)
+        padding-left: var(--base-padding)
+        border-radius: var(--border-radius)
+        height: var(--target-height)
+        legendXX
+          display: block
+      &.field-select
+        select
+          border-left: 0
+          border-top-left-radius: 0
+          border-bottom-left-radius: 0
+      &.field-textarea
+        grid-template-areas: "label label" "control control" "errors errors"
+        .field-label
+          border-bottom: 0
+          border-top-right-radius: var(--border-radius)
+          border-bottom-left-radius: 0
+          border-right: var(--border-inactive)
+          padding-top: calc(var(--base-padding) / 2)
+          border-color: var(--border-color)
+        textarea
+          border-top: 0
+          border-top-left-radius: 0
+          border-top-right-radius: 0
+          padding: calc(var(--base-padding) / 2) var(--base-padding)
+      &.field-range
+        .field-control
+          border-bottom-right-radius: var(--border-radius)
+          border-top-right-radius: var(--border-radius)
+          border: var(--border-inactive)
+          border-left: 0
+          border-color: var(--border-color)
+          height: var(--target-height)
+          padding-right: var(--base-padding)
+      &.field-object
+        grid-template-areas: "label label" "control control" "errors errors"
+        padding: 0 var(--base-padding)
+        border: var(--border-inactive)
+        border-radius: var(--border-radius)
+        border-color: var(--border-color)
+        legend
+          line-height: var(--line-height)
+        .field::before
+          width: var(--base-padding)
+      &.field-array
+        grid-template-areas: "label label" "control control" "errors errors"
+        padding: 0 var(--base-padding)
+        border: var(--border-inactive)
+        border-radius: var(--border-radius)
+        border-color: var(--border-color)
+        li
+          grid-template-areas: "fieldset fieldset fieldset" "remove remove remove"
+          border: var(--border-inactive)
+          padding: var(--base-padding)
+          border-radius: var(--border-radius)
+          border-color: var(--border-color)
+          &:before
+            margin-left: calc( (var(--base-padding) * -3) - var(--border-width))
+        & > .field-label
+          border: 0
+          padding: 0
+      input
+        border-left: 0
+        border-top-left-radius: 0
+        border-bottom-left-radius: 0
+
+
 
     &-label
       align-items: center
@@ -122,9 +212,11 @@
           border-radius: var(--border-radius)
           border: 0
           cursor: pointer
-          height: var(--height)
-          margin-top: calc(((var(--height) / 3) * -1 ) - var(--border-width))
-          width: calc(var(--height) / 2)
+          height: calc(var(--target-height) * 0.8)
+          // margin-top: calc(((var(--height) / 3) * -1 ) - var(--border-width))
+          margin-top: 0
+          transform: translateY(-35%)
+          width: calc(var(--height) / 3)
           &:hover
             background: var(--color-active)
 
