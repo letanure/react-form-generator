@@ -50,6 +50,11 @@ describe('<Field />', () => {
       expect(container.firstChild).toHaveClass('layout-horizontal')
     })
 
+    it('should render layout horizontal bordered', () => {
+      const { container } = renderWithProps({ layout: 'horizontal-bordered' })
+      expect(container.firstChild).toHaveClass('layout-horizontal-bordered')
+    })
+
     it('should NOT render label tag if not provided ', () => {
       const { container } = renderWithProps()
       expect(container.querySelector('.label')).toBeNull()

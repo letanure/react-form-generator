@@ -48,7 +48,7 @@ export default {
       table: {
         defaultValue: { summary: 'text' }
       },
-      options: ['horizontal', 'vertical'],
+      options: ['horizontal', 'vertical', 'horizontal-bordered'],
       control: {
         type: 'select'
       }
@@ -98,6 +98,40 @@ configurable.args = {
   placeholder: 'Placeholder',
   validate: [{ type: 'string', min: 3, max: 255 }, { type: 'email' }]
 }
+
+export const layoutVertical = Template.bind({})
+layoutVertical.args = {
+  label: 'Label',
+  layout: 'vertical',
+  type: 'text',
+  name: 'name',
+  value: 'email@mail.com',
+  placeholder: 'Placeholder',
+  validate: [{ type: 'string', min: 3, max: 255 }, { type: 'email' }]
+}
+
+export const layoutHorizontal = Template.bind({})
+layoutHorizontal.args = {
+  label: 'Label',
+  layout: 'horizontal',
+  type: 'text',
+  name: 'name',
+  value: 'email@mail.com',
+  placeholder: 'Placeholder',
+  validate: [{ type: 'string', min: 3, max: 255 }, { type: 'email' }]
+}
+
+export const layoutHorizontalBordered = Template.bind({})
+layoutHorizontalBordered.args = {
+  label: 'Label',
+  layout: 'horizontal-bordered',
+  type: 'text',
+  name: 'name',
+  value: 'email@mail.com',
+  placeholder: 'Placeholder',
+  validate: [{ type: 'string', min: 3, max: 255 }, { type: 'email' }]
+}
+
 export const color = Template.bind({})
 color.args = {
   label: 'Label',

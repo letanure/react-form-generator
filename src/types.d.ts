@@ -8,7 +8,7 @@ interface FieldConfigBasic {
   name: string
   placeholder?: string
   readonly?: boolean
-  layout?: 'horizontal' | 'vertical'
+  layout?: 'horizontal' | 'vertical' | 'horizontal-bordered'
   type?:
     | 'color'
     | 'datetime-local'
@@ -81,7 +81,7 @@ type FieldConfig =
 
 type FormConfig = {
   fields: FieldConfig[]
-  layout?: 'horizontal' | 'vertical'
+  layout?: 'horizontal' | 'vertical' | 'horizontal-bordered'
   title?: string
   submitText?: string
   description?: string
