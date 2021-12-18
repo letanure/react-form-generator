@@ -53,6 +53,13 @@ describe('<Fieldset />', () => {
     )
   })
 
+  it('should render layout horizontal bordered ', () => {
+    const { rendered } = renderWithProps({ layout: 'horizontal-bordered' })
+    expect(rendered.container.querySelector('label:nth-child(1)')).toHaveClass(
+      'layout-horizontal-bordered'
+    )
+  })
+
   it('should render layout horizontal ', () => {
     const { rendered } = renderWithProps({ layout: 'horizontal' })
     expect(rendered.container.querySelector('label:nth-child(1)')).toHaveClass(
