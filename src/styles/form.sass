@@ -94,6 +94,7 @@
           width: calc(var(--base-padding) *0.7)
 
     &.layout-horizontal-bordered
+      grid-template-columns: auto 2fr
       grid-template-areas: "label control" "errors errors "
       .field-label
         border: var(--border-inactive)
@@ -235,7 +236,7 @@
         font-family: inherit
         height: auto
         line-height: 1.3
-        padding-top: calc(var(--base-padding) / 2)
+        padding: calc(var(--base-padding) / 2) var(--base-padding) var(--base-padding) var(--base-padding)
         &::-webkit-scrollbar
           width: 0
 
@@ -244,6 +245,7 @@
         position: relative
         select
           appearance: none
+          padding: 0 var(--base-padding)
         &::after
           background-color: var(--border-color)
           clip-path: polygon(50% 80%, 90% 40%, 100% 50%, 50% 100%, 0% 50%, 10% 40%)
