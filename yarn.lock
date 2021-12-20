@@ -2994,10 +2994,10 @@
     "@swc/core-win32-ia32-msvc" "^1.2.119"
     "@swc/core-win32-x64-msvc" "^1.2.119"
 
-"@swc/jest@^0.2.12":
-  version "0.2.12"
-  resolved "https://registry.npmjs.org/@swc/jest/-/jest-0.2.12.tgz"
-  integrity sha512-L/fr97Tbpv64O1rqIR1IzmhLYvhlMMBj9z/GEDlSOb9/xWsQCAufDsEXqs6JtQeSriPV8ABRltYBIp4qi7IQhw==
+"@swc/jest@^0.2.15":
+  version "0.2.15"
+  resolved "https://registry.yarnpkg.com/@swc/jest/-/jest-0.2.15.tgz#e0418c88bce0c9ad49ba78a5fb29f7ba33490da9"
+  integrity sha512-Ja+YCVPOGPX/nFnPvPKaWpx2HUwrtuvHP1onHOey1gNGhq8CktQ7xQhCFSuyYBQJiW3WOZ+qMsv3aZk1XUBSOg==
   dependencies:
     "@jest/create-cache-key-function" "^27.3.1"
 
@@ -4827,10 +4827,10 @@ chownr@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/chownr/-/chownr-2.0.0.tgz"
 
-chromatic@^6.2.0:
-  version "6.2.0"
-  resolved "https://registry.npmjs.org/chromatic/-/chromatic-6.2.0.tgz"
-  integrity sha512-2RR4cpDXPsct1jvimixh02hcrfTYAj831Ngo9pLjXU8el4QFQm3jwDYqtsbNYH3CrDoWkeppR5oYPoTQGIazrg==
+chromatic@^6.2.3:
+  version "6.2.3"
+  resolved "https://registry.yarnpkg.com/chromatic/-/chromatic-6.2.3.tgz#d359f7603954c753bfe37e966d1f879d6879b41e"
+  integrity sha512-+uzSjyaph6xaH0nhrFu5rZIQ/nW89w8aX5/BvluQ2iBwW8QT5o8lrRw0Z/NEir54+T13M4GLNessw5ZlF2w8UQ==
 
 chrome-trace-event@^1.0.2:
   version "1.0.3"
