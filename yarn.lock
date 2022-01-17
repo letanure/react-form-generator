@@ -1367,9 +1367,10 @@
     slash "^3.0.0"
     strip-ansi "^6.0.0"
 
-"@jest/create-cache-key-function@^27.3.1":
+"@jest/create-cache-key-function@^27.4.2":
   version "27.4.2"
-  resolved "https://registry.npmjs.org/@jest/create-cache-key-function/-/create-cache-key-function-27.4.2.tgz"
+  resolved "https://registry.yarnpkg.com/@jest/create-cache-key-function/-/create-cache-key-function-27.4.2.tgz#09b585f9dbafec0f56cfb0e4d4edfe2bec0e0768"
+  integrity sha512-aSSCAJwUNX4R1hJQoyimsND5l+2EsFgzlepS8NuOJJHjXij/UdxYFngac44tmv9IYdI+kglAyORg0plt4/aFMQ==
   dependencies:
     "@jest/types" "^27.4.2"
 
@@ -2994,12 +2995,12 @@
     "@swc/core-win32-ia32-msvc" "^1.2.119"
     "@swc/core-win32-x64-msvc" "^1.2.119"
 
-"@swc/jest@^0.2.12":
-  version "0.2.12"
-  resolved "https://registry.npmjs.org/@swc/jest/-/jest-0.2.12.tgz"
-  integrity sha512-L/fr97Tbpv64O1rqIR1IzmhLYvhlMMBj9z/GEDlSOb9/xWsQCAufDsEXqs6JtQeSriPV8ABRltYBIp4qi7IQhw==
+"@swc/jest@^0.2.17":
+  version "0.2.17"
+  resolved "https://registry.yarnpkg.com/@swc/jest/-/jest-0.2.17.tgz#0a36083cf5bca39c3c03323cdfc84b61fd670ac2"
+  integrity sha512-n/g989+O8xxMcTZnP0phDrrgezGZBQBf7cX4QuzEsn07QkWbqmMsfaCxdF0kzajXublXWJ8yk5vRe3VNk1tczA==
   dependencies:
-    "@jest/create-cache-key-function" "^27.3.1"
+    "@jest/create-cache-key-function" "^27.4.2"
 
 "@testing-library/dom@^8.0.0":
   version "8.11.1"
